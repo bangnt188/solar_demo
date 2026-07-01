@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lúa Xanh Đồng Bằng - Giải pháp Năng lượng Mặt trời toàn diện</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface": "#fbf8fc",
+                        "on-primary-container": "#7585a8",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#4f5e7f",
+                        "primary-fixed": "#d7e2ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e9e7ea",
+                        "on-surface-variant": "#44474d",
+                        "on-tertiary-container": "#a97c59",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303033",
+                        "background": "#fbf8fc",
+                        "secondary-container": "#ff8a00",
+                        "inverse-primary": "#b6c7ec",
+                        "outline": "#75777e",
+                        "secondary-fixed": "#ffdcc4",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#311600",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#374766",
+                        "on-secondary-fixed": "#2f1500",
+                        "surface-variant": "#e4e2e5",
+                        "on-secondary-container": "#613100",
+                        "on-primary-fixed": "#091b38",
+                        "on-tertiary-fixed-variant": "#623f21",
+                        "on-surface": "#1b1b1e",
+                        "surface-dim": "#dbd9dc",
+                        "tertiary": "#090200",
+                        "tertiary-fixed-dim": "#f0bc95",
+                        "secondary": "#914c00",
+                        "primary": "#00030f",
+                        "secondary-fixed-dim": "#ffb77f",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fbf8fc",
+                        "primary-fixed-dim": "#b6c7ec",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-container": "#efedf0",
+                        "surface-container-low": "#f5f3f6",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#6f3900",
+                        "on-background": "#1b1b1e",
+                        "surface-container-highest": "#e4e2e5",
+                        "outline-variant": "#c5c6ce",
+                        "tertiary-fixed": "#ffdcc3",
+                        "primary-container": "#0b1d3a",
+                        "inverse-on-surface": "#f2f0f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "section-padding-sm": "48px",
+                        "desktop-canvas": "1440px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "section-padding-lg": "120px",
+                        "section-padding-md": "80px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "navigation": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h4": ["Plus Jakarta Sans"],
+                        "h1-mobile": ["Plus Jakarta Sans"],
+                        "button": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h2": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "navigation": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "h4": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "h1-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "h1": ["48px", { "lineHeight": "56px", "fontWeight": "700" }],
+                        "h3": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #ff8a00, #ffb77f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation (Shared Component) -->
+<nav class="bg-surface/90 dark:bg-primary/90 backdrop-blur-md font-navigation text-navigation docked full-width top-0 sticky border-b border-outline-variant dark:border-primary-container shadow-sm z-50">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<a class="font-h4 text-h4 font-bold text-primary dark:text-surface flex items-center gap-2" href="#">
+<img src="https://secure.gravatar.com/avatar/29af5f10258d64ce2e1562c8a913a775670dfb473fca8b86f1d5df91e845a5ef?s=120&d=mm&r=g" alt="Logo" class="w-8 h-8 rounded-full" />
+                Lúa Xanh Đồng Bằng
+            </a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-secondary dark:text-secondary-fixed font-bold border-b-2 border-secondary pb-1" href="#">Trang chủ</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Giới thiệu</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Dịch vụ</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Dự án</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Năng lực</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Tin tức</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Liên hệ</a>
+</div>
+<button class="hidden md:flex bg-secondary-container text-on-secondary font-button text-button px-6 py-2 rounded shadow hover:-translate-y-0.5 transition-transform">
+                Nhận báo giá
+            </button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[600px] md:h-[800px] flex items-center justify-center clip-diagonal bg-primary-container">
+<div class="absolute inset-0 w-full h-full opacity-60 mix-blend-overlay">
+<img alt="Large scale solar farm at sunrise with clear skies" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeEeTMWxLLKJdwuNOnBkst6Q6vZDmus9tDIjS-QudzztBSRhw6qhail0xo2VLLt2RLHNn_2vCiQURH6Q2oyySVh73Q9clI9Vhu2QS7Qk-lnvj-gm6cS51djPUdcWSpJmdWiDCXYzECBpYqfHZOoz1qDl5QBnwx_jJy6IEBZvTjA45aax5wcS-tj7oSpAPGU8j2LUqghqt_Pp2u-G-n6bUJBTNWSaab9UmP3UQDXu4Xz-RmEF2WbBO90FNzAtU1ORuKSsSYbQt8fY8"/>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-gutter text-center">
+<h1 class="font-display text-display text-on-primary mb-6 animate-fade-in-up">
+                Giải pháp Năng lượng <br class="hidden md:block"/>
+<span class="text-secondary-container">Mặt trời</span> toàn diện
+            </h1>
+<p class="font-body-lg text-body-lg text-surface-variant max-w-2xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 100ms;">
+                Chuyên nghiệp, hiện đại, công nghệ sạch và tối giản. Lúa Xanh Đồng Bằng cam kết mang lại hiệu quả tối ưu cho doanh nghiệp và gia đình.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 200ms;">
+<button class="bg-secondary-container text-on-secondary font-button text-button px-8 py-3 rounded shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                    Nhận tư vấn miễn phí
+                </button>
+<button class="border border-surface-variant text-on-primary font-button text-button px-8 py-3 rounded hover:bg-surface/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                    Xem video dự án
+                </button>
+</div>
+</div>
+</header>
+<!-- Key Stats Section -->
+<section class="py-12 -mt-20 relative z-20">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="bg-surface rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-surface-variant p-8 md:p-12">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-surface-variant/50">
+<div class="flex flex-col items-center group">
+<span class="material-symbols-outlined text-secondary-container text-[40px] mb-4 group-hover:scale-110 transition-transform">solar_power</span>
+<h3 class="font-h2 text-h2 text-primary-container">160+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dự án tiêu biểu</p>
+</div>
+<div class="flex flex-col items-center group">
+<span class="material-symbols-outlined text-secondary-container text-[40px] mb-4 group-hover:scale-110 transition-transform">groups</span>
+<h3 class="font-h2 text-h2 text-primary-container">200+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Khách hàng</p>
+</div>
+<div class="flex flex-col items-center group">
+<span class="material-symbols-outlined text-secondary-container text-[40px] mb-4 group-hover:scale-110 transition-transform">bolt</span>
+<h3 class="font-h2 text-h2 text-primary-container">50MW+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Công suất lắp đặt</p>
+</div>
+<div class="flex flex-col items-center group">
+<span class="material-symbols-outlined text-secondary-container text-[40px] mb-4 group-hover:scale-110 transition-transform">verified</span>
+<h3 class="font-h2 text-h2 text-primary-container">98%</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hài lòng</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us Preview -->
+<section class="py-section-padding-md">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h4 class="font-h4 text-h4 text-secondary-container mb-2">Về chúng tôi</h4>
+<h2 class="font-h2 text-h2 text-primary-container mb-6">Tiên phong kiến tạo năng lượng xanh</h2>
+<p class="font-body text-body text-on-surface-variant mb-6">
+                    Công ty TNHH Lúa Xanh Đồng Bằng là đơn vị hàng đầu trong lĩnh vực tư vấn, thiết kế và thi công hệ thống điện năng lượng mặt trời. Chúng tôi tự hào mang đến các giải pháp tối ưu, tiết kiệm chi phí và thân thiện với môi trường cho cả khu vực dân dụng và công nghiệp.
+                </p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-container mt-1">check_circle</span>
+<span class="font-body text-body text-on-surface">Đội ngũ kỹ sư giàu kinh nghiệm, chuyên môn cao.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-container mt-1">check_circle</span>
+<span class="font-body text-body text-on-surface">Sử dụng thiết bị chính hãng, bảo hành dài hạn.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-container mt-1">check_circle</span>
+<span class="font-body text-body text-on-surface">Dịch vụ bảo trì, hậu mãi tận tâm 24/7.</span>
+</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary-container font-button text-button hover:text-secondary-container transition-colors group" href="#">
+                    Tìm hiểu thêm về Lúa Xanh
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group">
+<img alt="Engineers inspecting solar panels on a commercial rooftop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABjDscF12MW9Wv5VW5W1Tp4nIKabcT2zTS927RPKJpRTchLBEekYJRwg4PCkeqY0ygLNsegcpT8vYfFswdodvTy5QpxcwrVe-MZ3ul1bXq0zuupqs4vwcfKeTTbZp9gM1aIpSdkZ_0psSXpgR11ROtRpXVX2BUqT5tFrOsTrhq8LQu0dxwmO3FW_pLicz4oiWZCyUERhH4yMcebRt2nMYKQquFDfhT1hbQbo7Qq2MXbMCoe8DyNcSPtSwEiZNzZrsEj84w5lljZfc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
+<div class="text-on-primary">
+<p class="font-h3 text-h3 mb-2">Chất lượng là nền tảng</p>
+<p class="font-body-sm text-body-sm opacity-90">Cam kết hiệu suất trên mọi dự án.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-section-padding-lg bg-surface-container-low clip-diagonal-reverse relative">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h4 class="font-h4 text-h4 text-secondary-container mb-2">Dịch vụ của chúng tôi</h4>
+<h2 class="font-h2 text-h2 text-primary-container">Giải pháp chuyên biệt cho mọi nhu cầu</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service Card 1 -->
+<div class="bg-surface rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgb(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 p-8 border border-outline-variant/30 flex flex-col group">
+<div class="w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[32px]">house</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary-container mb-4">Dân dụng (Rooftop)</h3>
+<p class="font-body text-body text-on-surface-variant mb-6 flex-grow">
+                        Giải pháp điện mặt trời áp mái cho hộ gia đình, giúp giảm hóa đơn tiền điện và tăng giá trị thẩm mỹ cho ngôi nhà.
+                    </p>
+<a class="text-primary-container font-button text-button group-hover:text-secondary-container transition-colors flex items-center gap-2 mt-auto" href="#">
+                        Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgb(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 p-8 border border-outline-variant/30 flex flex-col group">
+<div class="w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[32px]">factory</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary-container mb-4">Công nghiệp</h3>
+<p class="font-body text-body text-on-surface-variant mb-6 flex-grow">
+                        Hệ thống quy mô lớn cho nhà xưởng, khu công nghiệp, tối ưu hóa chi phí vận hành và hướng tới chứng chỉ xanh.
+                    </p>
+<a class="text-primary-container font-button text-button group-hover:text-secondary-container transition-colors flex items-center gap-2 mt-auto" href="#">
+                        Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgb(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 p-8 border border-outline-variant/30 flex flex-col group">
+<div class="w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[32px]">storefront</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary-container mb-4">Thương mại</h3>
+<p class="font-body text-body text-on-surface-variant mb-6 flex-grow">
+                        Đầu tư hiệu quả cho tòa nhà văn phòng, siêu thị, trung tâm thương mại với thời gian hoàn vốn nhanh chóng.
+                    </p>
+<a class="text-primary-container font-button text-button group-hover:text-secondary-container transition-colors flex items-center gap-2 mt-auto" href="#">
+                        Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer (Shared Component) -->
+<footer class="bg-primary dark:bg-primary full-width text-surface py-section-padding-md relative">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-base">
+<div class="md:col-span-1">
+<span class="font-h3 text-h3 text-surface mb-4 block flex items-center gap-2">
+<img src="https://secure.gravatar.com/avatar/29af5f10258d64ce2e1562c8a913a775670dfb473fca8b86f1d5df91e845a5ef?s=120&d=mm&r=g" alt="Logo" class="w-8 h-8 rounded-full" />
+                    Lúa Xanh
+                </span>
+<p class="font-body text-body text-surface-variant mb-6">Giải pháp năng lượng mặt trời toàn diện, uy tín và chất lượng tại Việt Nam.</p>
+</div>
+<div>
+<h4 class="font-h4 text-h4 text-secondary mb-4">Dịch vụ</h4>
+<ul class="space-y-3 font-body text-body">
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Residential Solar</a></li>
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Industrial Solutions</a></li>
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Commercial Projects</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-h4 text-h4 text-secondary mb-4">Công ty</h4>
+<ul class="space-y-3 font-body text-body">
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">About Us</a></li>
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Latest News</a></li>
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-h4 text-h4 text-secondary mb-4">Pháp lý</h4>
+<ul class="space-y-3 font-body text-body">
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-surface-variant hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-12 pt-8 border-t border-surface-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 font-caption text-caption text-surface-variant">
+<p>© 2026 Lúa Xanh Đồng Bằng. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-secondary-fixed transition-colors hover:scale-110" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="hover:text-secondary-fixed transition-colors hover:scale-110" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</footer>
+<!-- SideNavBar (Shared Component) -->
+<div class="fixed right-6 bottom-32 z-50 flex flex-col space-y-4 shadow-xl">
+<a class="bg-primary text-surface rounded-full w-14 h-14 flex items-center justify-center hover:scale-110 hover:shadow-secondary/20 transition-all group relative" href="#">
+<span class="material-symbols-outlined">call</span>
+<span class="absolute right-16 bg-surface text-primary px-3 py-1 rounded shadow text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Hotline</span>
+</a>
+<a class="bg-primary text-surface rounded-full w-14 h-14 flex items-center justify-center hover:scale-110 hover:shadow-secondary/20 transition-all group relative" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="absolute right-16 bg-surface text-primary px-3 py-1 rounded shadow text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Messenger</span>
+</a>
+<a class="bg-primary text-surface rounded-full w-14 h-14 flex items-center justify-center hover:scale-110 hover:shadow-secondary/20 transition-all group relative" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="absolute right-16 bg-surface text-primary px-3 py-1 rounded shadow text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Zalo</span>
+</a>
+</div>
+</body></html>
