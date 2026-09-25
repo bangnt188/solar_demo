@@ -12,7 +12,7 @@ npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
-Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. Giao diện trang chủ bám bố cục/câu chữ của ảnh thiết kế; màu dùng token CSS trong `src/app/globals.css`. Dữ liệu ví dụ nằm ở `src/data/mock/catalog.ts`, ảnh demo trong `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tên dự án, công suất, đối tác và thông tin liên hệ từ ảnh mẫu cần xác minh với khách hàng trước khi công bố là dữ liệu thực tế.
+Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. `src/app/` chỉ ghép route/layout; header/footer ở `src/components/site-chrome.tsx`, các section ở `src/components/home-sections.tsx`, card dùng chung trang chủ và trang danh sách ở `src/components/catalog-cards.tsx`. Màu dùng token CSS trong `src/app/globals.css`. Dữ liệu ví dụ nằm ở `src/data/mock/catalog.ts`, ảnh demo trong `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tên dự án, công suất, đối tác và thông tin liên hệ từ ảnh mẫu cần xác minh với khách hàng trước khi công bố là dữ liệu thực tế.
 
 ## GitHub Pages
 
