@@ -12,7 +12,7 @@ npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
-Kiểm tra bản export: `npm run build`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. Dữ liệu ví dụ nằm ở `src/data/mock/catalog.ts`, ảnh demo trong `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tất cả dự án/thiết bị hiển thị chỉ mang tính minh họa.
+Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. Giao diện trang chủ bám bố cục/câu chữ của ảnh thiết kế; màu dùng token CSS trong `src/app/globals.css`. Dữ liệu ví dụ nằm ở `src/data/mock/catalog.ts`, ảnh demo trong `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tên dự án, công suất, đối tác và thông tin liên hệ từ ảnh mẫu cần xác minh với khách hàng trước khi công bố là dữ liệu thực tế.
 
 ## GitHub Pages
 
@@ -21,7 +21,7 @@ Kiểm tra bản export: `npm run build`. Next.js tạo `out/` với các trang 
 3. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
 4. Kiểm tra <https://bangnt188.github.io/solar_demo/> và hai đường dẫn `/du-an/`, `/thiet-bi/`.
 
-Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo; không thu thập dữ liệu khách hàng. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
+Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo; không thu thập dữ liệu khách hàng. Nút đặt lịch mở ứng dụng email thay vì giả lập gửi khảo sát. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
 
 ## Lộ trình production
 
