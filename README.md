@@ -12,12 +12,14 @@ npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
-Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. `src/app/` chỉ ghép route/layout; header/footer ở `src/components/site-chrome.tsx`, các section ở `src/components/home-sections.tsx`, card dùng chung trang chủ và trang danh sách ở `src/components/catalog-cards.tsx`. Màu dùng token CSS trong `src/app/globals.css`. Dữ liệu ví dụ nằm ở `src/data/mock/catalog.ts`, ảnh demo trong `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tên dự án, công suất, đối tác và thông tin liên hệ từ ảnh mẫu cần xác minh với khách hàng trước khi công bố là dữ liệu thực tế.
+Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. `src/app/(public)/` chỉ ghép route; header/footer ở `src/components/layout/`, các section ở `src/components/sections/`, card dùng chung ở `src/components/ui/`. Màu dùng token CSS trong `src/styles/`. UI đọc dữ liệu qua `src/services/catalog.ts` → `src/repositories/catalog.ts` → `src/data/mock/catalog.ts`; ảnh demo ở `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tên dự án, công suất, đối tác và thông tin liên hệ từ ảnh mẫu cần xác minh với khách hàng trước khi công bố là dữ liệu thực tế.
+
+Các thư mục còn lại theo SA (`src/app/admin`, `src/app/api`, `src/components/admin`, `src/features/*`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`, `docs`, `scripts`…) chỉ có `.gitkeep` để Git lưu cấu trúc. Chúng **chưa có chức năng**; không có route admin/API trên Pages.
 
 ## GitHub Pages
 
 1. Tạo/push nhánh `dev` lên `bangnt188/solar_demo`.
-2. Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions** (cần quyền quản trị repo).
+2. Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**. Repo admin vào **Settings → Environments → github-pages → Deployment branches/tags** thêm `dev` (giữ `main`); nếu không, workflow bị chặn trước khi build.
 3. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
 4. Kiểm tra <https://bangnt188.github.io/solar_demo/> và hai đường dẫn `/du-an/`, `/thiet-bi/`.
 

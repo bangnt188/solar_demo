@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import "./globals.css";
+import { SiteFooter, SiteHeader } from "@/components/layout/site-chrome";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Lúa Xanh Đồng Bằng | Năng lượng mặt trời",

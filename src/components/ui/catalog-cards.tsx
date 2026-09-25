@@ -1,9 +1,6 @@
 import Image from "next/image";
 import { imagePath } from "@/config/site";
-import type { equipment, projects } from "@/data/mock/catalog";
-
-type Project = (typeof projects)[number];
-type Equipment = (typeof equipment)[number];
+import type { Equipment, Project } from "@/types/catalog";
 
 export function ProjectCard({ project, accent = false }: { project: Project; accent?: boolean }) {
   return (

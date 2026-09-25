@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { EquipmentCard, ProjectCard } from "@/components/catalog-cards";
+import { EquipmentCard, ProjectCard } from "@/components/ui/catalog-cards";
 import { imagePath } from "@/config/site";
-import { projects, equipment } from "@/data/mock/catalog";
+import { getEquipment, getProjects } from "@/services/catalog";
 
 const services = [
   { title: "EPC trọn gói", image: "solar-roof.png", points: ["Tư Vấn & Khảo Sát Hiện Trạng", "Thiết kế kỹ thuật chuyên sâu", "Thi công & Lắp đặt chuẩn hóa", "Cung Cấp Thiết bị", "Vận Hành & Bảo Trì (O&M)"] },
@@ -114,7 +114,7 @@ export function FeaturedProjects() {
     <section className="section container projects-section">
       <div className="heading-row"><h2 className="section-heading">DỰ ÁN TIÊU BIỂU</h2><Link href="/du-an/">XEM TẤT CẢ CÁC DỰ ÁN ⟶</Link></div>
       <div className="project-grid">
-        {projects.map((project, index) => <ProjectCard project={project} accent={index % 2 === 0} key={project.title} />)}
+        {getProjects().map((project, index) => <ProjectCard project={project} accent={index % 2 === 0} key={project.title} />)}
       </div>
     </section>
   );
@@ -124,7 +124,7 @@ export function EquipmentOffer() {
   return (
     <section className="section container">
       <div className="offer"><h2>What We Offer</h2><div className="offer-grid">
-        {equipment.map((item) => <EquipmentCard item={item} key={item.title} />)}
+        {getEquipment().map((item) => <EquipmentCard item={item} key={item.title} />)}
       </div><Link href="/thiet-bi/">Xem tất cả sản phẩm ⟶</Link></div>
     </section>
   );
