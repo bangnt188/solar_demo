@@ -14,7 +14,17 @@ export const homeContent = {
   partners: {
     title: "Đối Tác\nChiến Lược",
     brandsLabel: "Đối tác trong mẫu thiết kế",
-    brands: ["AIKO", "BYD", "HUAWEI", "solis", "SMA", "LONGi", "CanadianSolar", "SUNGROW", "AESOLAR"],
+    brands: [
+      { name: "AIKO", emphasis: false },
+      { name: "BYD", emphasis: true },
+      { name: "HUAWEI", emphasis: false },
+      { name: "solis", emphasis: true },
+      { name: "SMA", emphasis: false },
+      { name: "LONGi", emphasis: true },
+      { name: "CanadianSolar", emphasis: false },
+      { name: "SUNGROW", emphasis: false },
+      { name: "AESOLAR", emphasis: false },
+    ],
   },
   services: {
     heading: "CHÚNG TÔI LÀM GÌ",

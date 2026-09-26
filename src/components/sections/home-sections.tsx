@@ -30,7 +30,7 @@ export function Partners({ content }: { content: HomeContent["partners"] }) {
     <section className="partners">
       <div className="container partners-inner">
         <h2>{content.title.split("\n").map((line) => <span key={line}>{line}<br /></span>)}</h2>
-        <div aria-label={content.brandsLabel}>{content.brands.map((brand) => <strong key={brand}>{brand} </strong>)}</div>
+        <div aria-label={content.brandsLabel}>{content.brands.map((brand) => brand.emphasis ? <strong key={brand.name}>{brand.name}</strong> : <span key={brand.name}>{brand.name}</span>)}</div>
       </div>
     </section>
   );

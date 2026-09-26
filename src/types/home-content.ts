@@ -11,7 +11,7 @@ export type HomeHeroContent = {
 
 export type HomeContent = {
   hero: HomeHeroContent;
-  partners: { title: string; brandsLabel: string; brands: string[] };
+  partners: { title: string; brandsLabel: string; brands: { name: string; emphasis: boolean }[] };
   services: {
     heading: string;
     introduction: string;
