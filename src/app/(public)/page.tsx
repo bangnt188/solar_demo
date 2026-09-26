@@ -1,19 +1,16 @@
+import { HomeScreen } from "@/components/screens/home-screen";
 import { homeContent } from "@/data/content/home";
 import { getEquipment, getProjects } from "@/services/catalog";
-import { Contact, EquipmentOffer, Faq, FeaturedProjects, Hero, Partners, Services, Solutions, WhyUs } from "@/components/sections/home-sections";
+import { JsonLd } from "@/components/seo/json-ld";
+import { pageMetadata, pageStructuredData } from "@/lib/seo";
+
+export const metadata = pageMetadata("/");
 
 export default function Home() {
   return (
     <>
-      <Hero content={homeContent.hero} />
-      <Partners content={homeContent.partners} />
-      <Services content={homeContent.services} />
-      <Solutions content={homeContent.solutions} />
-      <WhyUs content={homeContent.whyUs} />
-      <FeaturedProjects content={homeContent.featuredProjects} projects={getProjects()} />
-      <EquipmentOffer content={homeContent.equipmentOffer} equipment={getEquipment()} />
-      <Faq content={homeContent.faq} />
-      <Contact content={homeContent.contact} />
+      <JsonLd data={pageStructuredData("/")} />
+      <HomeScreen content={homeContent} projects={getProjects()} equipment={getEquipment()} />
     </>
   );
 }

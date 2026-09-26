@@ -20,6 +20,7 @@ export type HomeContent = {
   solutions: {
     heading: string;
     introduction: string;
+    actionHref: string;
     items: { title: string; text: string; image: string; icon: string; actionLabel: string }[];
   };
   whyUs: {
@@ -29,6 +30,7 @@ export type HomeContent = {
     images: { image: string; alt: string }[];
   };
   featuredProjects: { heading: string; viewAllLabel: string; viewAllHref: string };
+  testimonials: { title: string; description: string; items: { quote: string; name: string; role: string; location: string; system: string }[] };
   equipmentOffer: { heading: string; viewAllLabel: string; viewAllHref: string };
   faq: {
     heading: string;
