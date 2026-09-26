@@ -1,0 +1,25 @@
+:root {
+  --color-primary: #004AAD;
+  --color-primary-hover: #003F94;
+  --color-primary-dark: #003477;
+  --color-primary-light: #F0F6FF;
+  --color-secondary: #F5B335;
+  --color-secondary-hover: #D99500;
+  --color-secondary-light: #FFF4CC;
+  --color-secondary-subtle: #FFF9E8;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-border: #E2E8F0;
+  --color-surface: #F8FAFC;
+  --color-background: #FFFFFF;
+  --button-primary-bg: var(--color-primary);
+  --button-primary-bg-hover: var(--color-primary-hover);
+  --button-primary-text: var(--color-background);
+  --button-outline-border: var(--color-primary);
+  --button-outline-text: var(--color-primary);
+  --button-outline-bg-hover: var(--color-primary-light);
+  --link-color: var(--color-primary);
+  --link-hover-color: var(--color-primary-hover);
+  --focus-color: var(--color-primary);
+  --card-bg: var(--color-background);
+}
