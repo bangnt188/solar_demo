@@ -12,18 +12,18 @@ npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
-Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/` dưới base path `/solar_demo`. `src/app/(public)/` chỉ ghép route; header/footer ở `src/components/layout/`, các section ở `src/components/sections/`, card dùng chung ở `src/components/ui/`. Màu dùng token CSS trong `src/styles/`. UI đọc dữ liệu qua `src/services/catalog.ts` → `src/repositories/catalog.ts` → `src/data/mock/catalog.ts`; ảnh demo ở `public/images/demo/` (được lưu từ giao diện demo ban đầu; cần xác nhận quyền sử dụng trước khi public production). Tên dự án, công suất, đối tác và thông tin liên hệ từ ảnh mẫu cần xác minh với khách hàng trước khi công bố là dữ liệu thực tế.
+Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/`, `/khao-sat/` dưới base path `/solar_demo`. `src/app/(public)/` chỉ ghép route; header/footer ở `src/components/layout/`, các section ở `src/components/sections/`, card dùng chung ở `src/components/ui/`. Màu dùng token CSS trong `src/styles/`. UI đọc dữ liệu qua `src/services/catalog.ts` → `src/repositories/catalog.ts` → `src/data/mock/catalog.ts`; dự án là công trình thực tế theo xác nhận, còn ảnh trong `public/images/demo/` chỉ mang tính minh họa (cần xác nhận quyền sử dụng trước production). Thông tin sản phẩm, đối tác và liên hệ từ ảnh mẫu cần xác minh với khách hàng.
 
-Các thư mục còn lại theo SA (`src/app/admin`, `src/app/api`, `src/components/admin`, `src/features/*`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`, `docs`, `scripts`…) chỉ có `.gitkeep` để Git lưu cấu trúc. Chúng **chưa có chức năng**; không có route admin/API trên Pages.
+Các thư mục còn lại theo SA (`src/app/admin`, `src/app/api`, `src/components/admin`, phần lớn `src/features/*`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`, `docs`, `scripts`…) chỉ có `.gitkeep` để Git lưu cấu trúc. Chúng **chưa có chức năng**; không có route admin/API trên Pages.
 
 ## GitHub Pages
 
 1. Tạo/push nhánh `dev` lên `bangnt188/solar_demo`.
 2. Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**. Repo admin vào **Settings → Environments → github-pages → Deployment branches/tags** thêm `dev` (giữ `main`); nếu không, workflow bị chặn trước khi build.
 3. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
-4. Kiểm tra <https://bangnt188.github.io/solar_demo/> và hai đường dẫn `/du-an/`, `/thiet-bi/`.
+4. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`.
 
-Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo; không thu thập dữ liệu khách hàng. Nút đặt lịch mở ứng dụng email thay vì giả lập gửi khảo sát. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
+Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo. Trang `/khao-sat/` tạo bản nháp email từ thông tin người dùng điền; người dùng phải tự xác nhận gửi trong ứng dụng email. Website không tự gửi hoặc lưu dữ liệu khảo sát. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
 
 ## Lộ trình production
 

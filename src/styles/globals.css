@@ -121,9 +121,8 @@ nav a:hover, .site-footer a:hover { color: var(--link-hover-color); }
 .contact-section h2 { color: var(--color-secondary-hover); font-size: clamp(32px, 3.5vw, 48px); margin-bottom: 27px; }
 .contact-section p { font-size: 22px; }
 .contact-actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 50px; margin-top: 45px; }
-.contact-button, .contact-phone { display: flex; align-items: center; justify-content: space-between; gap: 30px; min-width: 300px; padding: 5px 6px 5px 25px; border-radius: 10px; font-weight: 700; }
+.contact-button { display: flex; align-items: center; justify-content: space-between; gap: 30px; min-width: 300px; padding: 5px 6px 5px 25px; border-radius: 10px; font-weight: 700; }
 .contact-button { color: var(--color-primary-dark); background: var(--color-primary-light); }
-.contact-phone { border: 1px solid var(--color-secondary); color: var(--color-primary-dark); padding: 16px 24px; }
 .site-footer { background: var(--color-surface); padding: 65px 0 28px; }
 .footer-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .footer-columns > div + div { border-left: 2px solid var(--color-border); padding-left: 45px; }
@@ -135,6 +134,19 @@ nav a:hover, .site-footer a:hover { color: var(--link-hover-color); }
 .page-heading p { font-size: 19px; }
 .page-heading small { color: var(--color-text-secondary); }
 .eyebrow { color: var(--color-primary); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; }
+.survey-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 70px; align-items: start; }
+.survey-section h2 { color: var(--color-primary-dark); font-size: clamp(28px, 3vw, 38px); }
+.survey-section > div p { color: var(--color-text-secondary); font-size: 18px; }
+.survey-form { padding: 34px; border: 1px solid var(--color-border); border-radius: 18px; background: var(--color-background); box-shadow: 0 14px 35px #0f172a10; }
+.survey-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.survey-fields label { display: block; color: var(--color-text-primary); font-weight: 700; }
+.survey-fields label span { display: inline; color: var(--color-primary); }
+.survey-fields .survey-wide { grid-column: 1 / -1; }
+.survey-fields input, .survey-fields select, .survey-fields textarea { display: block; width: 100%; min-width: 0; margin-top: 8px; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-background); color: var(--color-text-primary); font: inherit; font-weight: 400; }
+.survey-fields input:focus-visible, .survey-fields select:focus-visible, .survey-fields textarea:focus-visible { outline: 2px solid var(--focus-color); outline-offset: 2px; }
+.survey-fields textarea { resize: vertical; }
+.survey-disclaimer { margin: 24px 0; color: var(--color-text-secondary); font-size: 14px; }
+.survey-form .button { cursor: pointer; font: inherit; font-weight: 800; }
 @media (max-width: 900px) {
   .container { width: min(100% - 36px, 700px); }
   .nav { padding-block: 13px; align-items: flex-start; flex-wrap: wrap; }
@@ -151,6 +163,7 @@ nav a:hover, .site-footer a:hover { color: var(--link-hover-color); }
   .solution-copy p, .why-copy p { font-size: 16px; }
   .footer-columns { gap: 20px; }
   .footer-columns > div + div { padding-left: 20px; }
+  .survey-section { grid-template-columns: 1fr; gap: 24px; }
 }
 @media (max-width: 700px) {
   .section { padding-block: 65px; }
@@ -182,5 +195,7 @@ nav a:hover, .site-footer a:hover { color: var(--link-hover-color); }
   .faq-image { height: 210px; }
   .contact-section p { font-size: 17px; }
   .contact-actions { gap: 16px; }
-  .contact-button, .contact-phone { min-width: min(100%, 300px); }
+  .contact-button { min-width: min(100%, 300px); }
+  .survey-form { padding: 22px; }
+  .survey-fields { grid-template-columns: 1fr; }
 }

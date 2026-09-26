@@ -6,7 +6,7 @@ import { getEquipment, getProjects } from "@/services/catalog";
 
 const services = [
   { title: "EPC trọn gói", image: "solar-roof.png", points: ["Tư Vấn & Khảo Sát Hiện Trạng", "Thiết kế kỹ thuật chuyên sâu", "Thi công & Lắp đặt chuẩn hóa", "Cung Cấp Thiết bị", "Vận Hành & Bảo Trì (O&M)"] },
-  { title: "Phân phối và cung ứng thiết bị điện mặt trời.", image: "solar-farm.png", points: ["Tấm pin năng lượng mặt trời", "Inverter - bộ biến tần", "Hệ khung & phụ kiện lắp đặt"] },
+  { title: "Phân phối và cung ứng thiết bị điện mặt trời.", image: "solar-farm.png", points: ["Tấm pin năng lượng mặt trời", "Bộ biến tần", "Hệ khung & phụ kiện lắp đặt"] },
   { title: "Các mô hình tài chính/đầu tư", image: "solar-roof.png", points: ["Tự sản – tự tiêu", "Cho thuê thiết bị", "DPPA / bán điện trực tiếp"] },
 ];
 
@@ -17,8 +17,8 @@ const solutions = [
 ];
 
 const questions = [
-  { title: "Hệ thống tấm pin mặt trời có bền không?", text: "Tấm pin mặt trời hiện đại có tuổi thọ 25-30 năm, inverter kéo dài 10-15 năm. Chúng tôi cung cấp bảo hành và hỗ trợ bảo trì để đảm bảo hệ thống hoạt động ổn định." },
-  { title: "Mất bao lâu để hệ thống hoàn vốn?", text: "Thời gian hoàn vốn thường từ 5-8 năm tùy theo mô hệ thống, mức tiêu thụ điện và giá điện. Sau đó, bạn sẽ tiết kiệm chi phí điện hàng năm." },
+  { title: "Hệ thống tấm pin mặt trời có bền không?", text: "Tấm pin thường được nhà sản xuất công bố tuổi thọ khoảng 25–30 năm. Tuổi thọ biến tần và thời hạn bảo hành phụ thuộc từng dòng thiết bị; việc lắp đặt và bảo trì đúng cách giúp hệ thống vận hành ổn định." },
+  { title: "Mất bao lâu để hệ thống hoàn vốn?", text: "Thời gian hoàn vốn phụ thuộc vốn đầu tư, sản lượng điện, mức sử dụng điện ban ngày và giá điện. Chúng tôi sẽ ước tính riêng cho công trình sau khi khảo sát hiện trạng." },
   { title: "Có thể lắp đặt trên mái nhà cũ không?", text: "Có thể, nhưng cần kiểm tra kỹ lưỡng kết cấu mái. Chúng tôi sẽ đánh giá độ bền và đề xuất giải pháp phù hợp trong khảo sát miễn phí." },
 ];
 
@@ -31,7 +31,7 @@ export function Hero() {
           <p className="hero-tagline">Tận tâm · Đồng hành · Chất lượng</p>
           <p>Lúa Xanh Đồng Bằng cung cấp giải pháp điện mặt trời từ khảo sát, thiết kế, thi công đến vận hành và bảo trì dài hạn. Mỗi hệ thống được xây dựng dựa trên nhu cầu sử dụng điện, điều kiện công trình và hiệu quả đầu tư thực tế.</p>
           <div className="actions">
-            <Link className="button" href="/#lien-he">KHẢO SÁT MIỄN PHÍ</Link>
+            <Link className="button" href="/khao-sat/">KHẢO SÁT MIỄN PHÍ</Link>
             <Link className="button button-outline" href="/du-an/">DỰ ÁN THỰC TẾ</Link>
           </div>
         </div>
@@ -123,7 +123,7 @@ export function FeaturedProjects() {
 export function EquipmentOffer() {
   return (
     <section className="section container">
-      <div className="offer"><h2>What We Offer</h2><div className="offer-grid">
+      <div className="offer"><h2>THIẾT BỊ &amp; GIẢI PHÁP LƯU TRỮ</h2><div className="offer-grid">
         {getEquipment().map((item) => <EquipmentCard item={item} key={item.title} />)}
       </div><Link href="/thiet-bi/">Xem tất cả sản phẩm ⟶</Link></div>
     </section>
@@ -138,7 +138,7 @@ export function Faq() {
         <p className="section-lead">Giải đáp các băn khoăn phổ biến của chủ nhà và chủ doanh nghiệp trước khi quyết định đầu tư hệ thống điện mặt trời.</p>
         <div className="faq-panel"><div className="faq-list">{questions.map((question, index) => (
           <article className="faq-item" key={question.title}><span>0{index + 1}</span><div><h3>{question.title}</h3><p>{question.text}</p></div></article>
-        ))}</div><div className="faq-visual"><div className="faq-image"><Image src={imagePath("solar-farm.png")} alt="Hình minh họa trang trại điện mặt trời" fill sizes="(max-width: 760px) 100vw, 40vw" /></div><Link className="faq-link" href="/#lien-he">Tìm Hiểu Thêm <span aria-hidden="true">❯</span></Link></div></div>
+        ))}</div><div className="faq-visual"><div className="faq-image"><Image src={imagePath("solar-farm.png")} alt="Hình minh họa trang trại điện mặt trời" fill sizes="(max-width: 760px) 100vw, 40vw" /></div><Link className="faq-link" href="/khao-sat/">Tìm hiểu khảo sát <span aria-hidden="true">❯</span></Link></div></div>
       </div>
     </section>
   );
@@ -147,7 +147,7 @@ export function Faq() {
 export function Contact() {
   return (
     <section className="contact-section" id="lien-he">
-      <div className="container"><h2>MUỐN BIẾT NHÀ BẠN CÓ PHÙ HỢP<br />ĐỂ LẮP ĐẶT KHÔNG?</h2><p>Liên hệ với chúng tôi hôm nay. Đội kỹ thuật sẽ đến tận nơi trong 48 giờ.</p><div className="contact-actions"><a className="contact-button" href="mailto:lienhe@luaxanhdongbang.vn?subject=H%E1%BA%B9n%20l%E1%BB%8Bch%20kh%E1%BA%A3o%20s%C3%A1t">Hẹn lịch khảo sát miễn phí <span aria-hidden="true">❯</span></a><span className="contact-phone">☎ &nbsp; 0939 xxx xxx</span></div></div>
+      <div className="container"><h2>MUỐN BIẾT NHÀ BẠN CÓ PHÙ HỢP<br />ĐỂ LẮP ĐẶT KHÔNG?</h2><p>Liên hệ với chúng tôi hôm nay. Đội kỹ thuật sẽ đến tận nơi trong 48 giờ.</p><div className="contact-actions"><Link className="contact-button" href="/khao-sat/">Hẹn lịch khảo sát miễn phí <span aria-hidden="true">❯</span></Link></div></div>
     </section>
   );
 }
