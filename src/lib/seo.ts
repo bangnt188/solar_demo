@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { isDemoSite, siteUrl } from "@/config/site";
+import { integrationMode } from "@/config/integrations";
 
 export const siteName = "Lúa Xanh Đồng Bằng";
-export const searchIndexable = process.env.SEO_INDEXABLE === "true";
+export const searchIndexable = integrationMode() === "cloud" && process.env.SEO_INDEXABLE === "true";
 
 if (searchIndexable && isDemoSite) {
   throw new Error("The GitHub Pages demo must remain noindex. Set NEXT_PUBLIC_SITE_URL to the verified production URL before enabling SEO_INDEXABLE.");
 }
 
-// Only published routes belong here. Do not add planned or empty landing pages.
+// Record implemented public routes; `indexable` controls indexing and sitemap membership.
 export const searchPages = {
   "/": {
     title: "Giải pháp điện mặt trời cho gia đình và doanh nghiệp",
@@ -31,10 +32,59 @@ export const searchPages = {
     type: "CollectionPage",
     indexable: true,
   },
+  "/dich-vu/": {
+    title: "Tổng thầu EPC và dịch vụ điện mặt trời",
+    description: "Quy trình dịch vụ điện mặt trời áp mái từ khảo sát, mô phỏng và báo giá đến thi công, giám sát sau bàn giao.",
+    label: "Dịch vụ",
+    type: "WebPage",
+    indexable: false,
+  },
   "/khao-sat/": {
     title: "Chuẩn bị yêu cầu khảo sát điện mặt trời",
     description: "Điền thông tin công trình để tạo bản nháp email yêu cầu khảo sát điện mặt trời. Website không tự gửi email hoặc lưu thông tin khảo sát.",
     label: "Khảo sát",
+    type: "WebPage",
+    indexable: false,
+  },
+  "/giai-phap/ho-gia-dinh/": {
+    title: "Giải pháp điện mặt trời cho hộ gia đình",
+    description: "Các yếu tố cần xem xét khi đánh giá phương án điện mặt trời cho hộ gia đình.",
+    label: "Giải pháp hộ gia đình",
+    type: "WebPage",
+    indexable: false,
+  },
+  "/giai-phap/ho-kinh-doanh/": {
+    title: "Giải pháp điện mặt trời cho hộ kinh doanh vừa và nhỏ",
+    description: "Thông tin sơ bộ về đánh giá phương án điện mặt trời cho hộ kinh doanh vừa và nhỏ.",
+    label: "Giải pháp hộ kinh doanh",
+    type: "WebPage",
+    indexable: false,
+  },
+  "/giai-phap/doanh-nghiep/": {
+    title: "Giải pháp điện mặt trời cho doanh nghiệp và công nghiệp",
+    description: "Thông tin sơ bộ về khảo sát và xem xét phương án điện mặt trời cho doanh nghiệp.",
+    label: "Giải pháp doanh nghiệp",
+    type: "WebPage",
+    indexable: false,
+  },
+  "/dich-vu/epc-tron-goi/": {
+    title: "Dịch vụ EPC điện mặt trời trọn gói",
+    description: "Thông tin sơ bộ về dịch vụ tư vấn, khảo sát, thiết kế, thi công và bàn giao hệ thống điện mặt trời.",
+    label: "EPC trọn gói",
+    type: "WebPage",
+    indexable: false,
+  },
+  "/dich-vu/cung-ung-thiet-bi/": {
+    title: "Dịch vụ phân phối và cung ứng thiết bị điện mặt trời",
+    description: "Thông tin sơ bộ về cung ứng tấm pin, biến tần, hệ khung và phụ kiện cho hệ thống điện mặt trời.",
+    label: "Cung ứng thiết bị",
+    type: "WebPage",
+    indexable: false,
+  },
+  "/dich-vu/mo-hinh-tai-chinh/": {
+    title: "Tư vấn mô hình tài chính và đầu tư điện mặt trời",
+    description: "Thông tin sơ bộ về các mô hình tự đầu tư, cho thuê thiết bị và mua bán điện trực tiếp.",
+    label: "Mô hình tài chính/đầu tư",
     type: "WebPage",
     indexable: false,
   },
@@ -46,8 +96,8 @@ export function absoluteUrl(path: string): string {
   return `${siteUrl}${path.replace(/^\//, "")}`;
 }
 
-export function pageMetadata(path: SearchPath): Metadata {
-  const page = searchPages[path];
+export function pageMetadata(path: SearchPath, overrides: { title?: string; description?: string; indexable?: boolean; image?: string } = {}): Metadata {
+  const page = { ...searchPages[path], ...overrides };
   const title = `${page.title} | ${siteName}`;
   const url = absoluteUrl(path);
 
@@ -63,6 +113,7 @@ export function pageMetadata(path: SearchPath): Metadata {
       title,
       description: page.description,
       url,
+      ...(overrides.image ? { images: [{ url: overrides.image }] } : {}),
     },
     twitter: { card: "summary", title, description: page.description },
   };
@@ -75,8 +126,8 @@ export function pageBreadcrumbs(path: SearchPath) {
   ];
 }
 
-export function pageStructuredData(path: SearchPath) {
-  const page = searchPages[path];
+export function pageStructuredData(path: SearchPath, overrides: { title?: string; description?: string } = {}) {
+  const page = { ...searchPages[path], ...overrides };
   const url = absoluteUrl(path);
   const breadcrumbs = pageBreadcrumbs(path);
   const graph: Record<string, unknown>[] = [

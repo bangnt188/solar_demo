@@ -4,20 +4,41 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-demo.mjs",
     "typecheck": "tsc --noEmit",
-    "test:export": "node --test tests/export.test.mjs"
+    "test:export": "node --test tests/export.test.mjs",
+    "build:demo": "node scripts/build-demo.mjs",
+    "build:server": "node scripts/next-server.mjs build",
+    "dev:server": "node scripts/next-server.mjs dev",
+    "start:server": "node scripts/next-server.mjs start",
+    "test:core": "node --conditions=react-server --import tsx --test tests/core.test.ts tests/mock-integrations.test.ts",
+    "test:integration": "bash scripts/test-integration.sh",
+    "db:migrate": "node --conditions=react-server --import tsx scripts/database.ts migrate",
+    "db:seed:sandbox": "node --conditions=react-server --import tsx scripts/database.ts seed",
+    "smoke:cloud": "node --conditions=react-server --import tsx scripts/smoke-cloud.ts",
+    "dev:mvp": "node scripts/dev-mvp.mjs",
+    "demo:integrations": "node --conditions=react-server --import tsx scripts/demo-integrations.ts",
+    "test:mock-http": "node tests/server-http.mjs --mock"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.1141.0",
+    "@smithy/node-http-handler": "4.12.1",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
     "lenis": "1.3.26",
     "next": "16.3.6",
+    "pg": "8.23.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1",
+    "sharp": "0.35.4"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "@types/pg": "8.23.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "tsx": "4.23.15",
     "typescript": "^5.9.0"
   }
 }

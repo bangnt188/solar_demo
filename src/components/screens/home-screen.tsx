@@ -8,22 +8,28 @@ import { ServicesSection } from "@/components/sections/services-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import { TestimonialSection } from "@/components/sections/testimonial-section";
 import { WhyUsSection } from "@/components/sections/why-us-section";
+import type { ReactNode } from "react";
 import type { HomeContent } from "@/types/home-content";
-import type { Equipment, Project } from "@/types/catalog";
+import type { LandingView, SectionKey } from "@/types/landing";
 
-export function HomeScreen({ content, projects, equipment }: { content: HomeContent; projects: readonly Project[]; equipment: readonly Equipment[] }) {
-  return (
-    <>
-      <HeroSection content={content.hero} />
-      <PartnersSection content={content.partners} />
-      <ServicesSection content={content.services} />
-      <SolutionsSection content={content.solutions} />
-      <WhyUsSection content={content.whyUs} />
-      <FeaturedProjectsSection content={content.featuredProjects} projects={projects} />
-      <TestimonialSection title={content.testimonials.title} description={content.testimonials.description} testimonials={content.testimonials.items} />
-      <EquipmentOfferSection content={content.equipmentOffer} equipment={equipment} />
-      <FaqSection content={content.faq} />
-      <ContactSection content={content.contact} />
-    </>
-  );
+// Dynamic configuration selects only pre-built, typed renderers; never code/HTML.
+const sections: { [K in SectionKey]: (content: HomeContent[K], landing: LandingView) => ReactNode } = {
+  hero: content => <HeroSection content={content} />,
+  partners: content => <PartnersSection content={content} />,
+  services: content => <ServicesSection content={content} />,
+  solutions: content => <SolutionsSection content={content} />,
+  whyUs: content => <WhyUsSection content={content} />,
+  featuredProjects: (content, landing) => <FeaturedProjectsSection content={content} projects={landing.projects} />,
+  testimonials: content => <TestimonialSection title={content.title} description={content.description} testimonials={content.items} />,
+  equipmentOffer: (content, landing) => <EquipmentOfferSection content={content} equipment={landing.equipment} />,
+  faq: content => <FaqSection content={content} />,
+  contact: content => <ContactSection content={content} />,
+};
+function renderSection<K extends SectionKey>(section: { key: K; content: HomeContent[K] }, landing: LandingView) {
+  return sections[section.key](section.content, landing);
 }
+export function HomeScreen({ landing }: { landing: LandingView }) {
+  return <>{landing.sections.map(section => <SectionRenderer key={section.key} section={section} landing={landing} />)}</>;
+}
+
+function SectionRenderer({ section, landing }: { section: LandingView["sections"][number]; landing: LandingView }) { return renderSection(section, landing); }

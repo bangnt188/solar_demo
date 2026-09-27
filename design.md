@@ -12,8 +12,8 @@ Build the supplied UI as reusable defaults for the existing site, not as a catal
 | Molecules | `src/components/molecules/section-heading.tsx`, `savings-estimator.tsx`, `faq-disclosure.tsx`, `comparison-panel.tsx`, `process-step.tsx`, `testimonial-card.tsx` | Compose atoms or semantic elements behind typed content props. Stateful behavior belongs only to the estimator/disclosure. |
 | Organisms | `src/components/organisms/announcement-bar.tsx`, `conversion-dock.tsx`, `site-chrome.tsx`; `src/features/survey/survey-form.tsx` | Reusable global/form UI. Brand, nav, announcement, footer, form labels/options, email, and destinations arrive through props from content data. |
 | Sections | `src/components/sections/*-section.tsx` | Page-level groups assembled from molecules/organisms; accept typed data and child slots. No route-level duplicate markup. |
-| Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx` | Compose sections and pass props. Own screen order/layout, not reusable primitives or campaign copy. |
-| Routes | `src/app/(public)/page.tsx`, `src/app/(public)/khao-sat/page.tsx`, `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
+| Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx`, `detail-page-screen.tsx`, `service-overview-screen.tsx` | Compose sections and pass content; solution and service details share one template. |
+| Routes | `src/app/(public)/page.tsx`, `(public)/dich-vu/page.tsx`, `(public)/khao-sat/page.tsx`, `(public)/giai-phap/*/page.tsx`, `(public)/dich-vu/*/page.tsx`, and `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
 
 CSS remains global and centralized in `src/styles/tokens.css` and `src/styles/components.css`. Existing semantic token names are the source of truth; components consume global defaults and add only their own semantic class. Avoid a parallel token system, Tailwind, monolithic UI modules, or duplicated section markup.
 
@@ -31,13 +31,15 @@ CSS remains global and centralized in `src/styles/tokens.css` and `src/styles/co
 | C-08 Testimonial | `TestimonialSection` maps typed entries to `TestimonialCard` molecules | It renders nothing for an empty list. No approved testimonial data exists; do not fabricate a quote or attribution. |
 | C-09 Lead form | `SurveyScreen` composes the prop-driven `SurveyForm` feature | Existing survey route; retains five required fields and opens an email draft. |
 | C-10 FAQ | `FaqSection` maps content to native `FaqDisclosure` molecules | `HomeScreen`; keyboard-accessible `<details>/<summary>`. |
-| Breadcrumb | `src/components/molecules/breadcrumbs.tsx` nhận danh sách label/href; trạng thái trang hiện tại dùng `aria-current` | Route dự án/thiết bị/khảo sát; dữ liệu từ `src/lib/seo.ts` cũng dùng cho `BreadcrumbList`, không thêm JS client. |
+| Breadcrumb | `src/components/molecules/breadcrumbs.tsx` receives label/href items; the current page uses `aria-current` | Project, equipment, service, and survey routes; `src/lib/seo.ts` uses the same items for `BreadcrumbList` without client-side JS. |
 | C-11 Floating CTA | Right-fixed vertical stack of Zalo, phone, and survey icon actions | Global `RootLayout`; survey is active. Zalo and phone render disabled until verified destinations are supplied. |
+| C-12 Service overview | `ServiceOverviewScreen` composes a service hero and four `ServiceStage` entries from typed content | `/dich-vu/`; hero and process photos use existing demo assets. |
 
 ## Content and behavior
 
-- `src/data/content/home.ts` owns content for the sections currently composed by `HomeScreen`; the calculator, comparison, and process examples are deliberately not included in the screen data.
-- `src/data/content/site-chrome.ts` owns global brand, nav, announcement, footer, and conversion destinations.
+- `src/data/content/solutions.ts` owns the three solution details shared with home cards; `src/data/content/services.ts` owns the three service details shared with service rows and navigation.
+- `src/data/content/service-overview.ts` owns the overview hero and four process stages. Timing, technical, and warranty copy comes from the user-provided image and remains pending real-world confirmation.
+- `src/data/content/site-chrome.ts` owns global brand, nav, announcement, footer, and conversion destinations. The Giải pháp and Dịch vụ desktop menus open on hover/focus; mobile uses nested native disclosures.
 - `src/data/content/survey.ts` owns survey-screen copy and form labels/options. `SurveyForm` receives its content as props.
 - The reusable estimator accepts assumptions and explanatory copy as props. The sample's illustrative 82% savings and 1.36 kWp-per-million-bill assumptions are not a quote or guarantee.
 - The survey form is not presented as server-side lead capture. No form submission is claimed unless a real endpoint is added.
@@ -47,9 +49,9 @@ CSS remains global and centralized in `src/styles/tokens.css` and `src/styles/co
 
 ## Motion contract
 
-- `src/app/(public)/layout.tsx` gắn `MotionRuntime` một lần cho tất cả route công khai. Hero và các phần tử `data-motion` bắt đầu ngoài viewport, rồi trượt vào trong khoảng 2 giây; dịch vụ dùng `data-motion-scrub="service"` để ảnh/chữ đi từ ngoài hai mép theo scroll và đảo chiều. Nội dung server-render trước khi observer hoạt động.
+- `src/app/(public)/layout.tsx` gắn `MotionRuntime` một lần cho route công khai. Hero entrance 760ms; target `data-motion` 520ms, quãng dịch 32px desktop / 16px mobile. Services dùng CSS view timeline với bốn nấc keyframe mỗi pha vào/ra: bắt đầu ngoài màn hình ngang khoảng một viewport cộng chiều rộng phần tử, vào giữa ở 25%, giữ đến 80%, trượt ra ở 100%; cuộn ngược đảo animation. Không chạy JS theo từng frame.
 - `PartnersMarquee` giữ một hàng tên đối tác SSR, chỉ nhân đôi hàng thứ hai sau hydration khi đủ chỗ chạy. Tạm dừng tự động khi hover/chạm, tab ẩn hoặc ngoài viewport; không có nút điều khiển. Khi không có JS hoặc `prefers-reduced-motion`, tên vẫn hiện tĩnh.
-- `src/styles/tokens.css` định nghĩa motion/elevation; `src/styles/components.css` áp dụng hover card, FAQ, CTA và reduced-motion. Lenis chỉ chạy trên desktop có chuột (≥1024px, hover/pointer fine); wheel dùng native trên macOS, còn nền tảng khác dùng `smoothWheel`, `wheelMultiplier: 0.8`, `lerp: 0.1`. `syncTouch: false`, RAF do runtime quản lý; browser không cung cấp loại thiết bị wheel đáng tin cậy nên không phân loại trackpad bằng số delta. Mobile dùng native scroll. Hợp đồng xem `docs/animation-plan.md`.
+- `src/styles/tokens.css` định nghĩa motion/elevation; `src/styles/components.css` áp dụng hover card, FAQ, CTA, view-timeline services và reduced-motion. Lenis RAF chỉ phục vụ desktop scrolling, không điều khiển section animation. Hợp đồng xem `docs/animation-plan.md`.
 
 
 ## Verification

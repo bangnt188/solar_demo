@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SectionHeading } from "@/components/molecules/section-heading";
-import { imagePath } from "@/config/site";
+import { contentImageSrc as imagePath } from "@/config/site";
 import type { HomeContent } from "@/types/home-content";
 
 export function WhyUsSection({ content }: { content: HomeContent["whyUs"] }) {
