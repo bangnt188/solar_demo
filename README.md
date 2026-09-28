@@ -48,3 +48,5 @@ Xem [review điểm nghẽn, cấu trúc thư mục/URL và bằng chứng kiể
 Trước khi đưa `main` lên Vercel: cấu hình `NEXT_PUBLIC_SITE_URL` theo URL chính thức (domain gốc tự bỏ prefix Pages), giữ `SEO_INDEXABLE=false` cho preview. Static export vẫn phù hợp nếu chỉ phục vụ nội dung; chỉ bỏ `output: "export"` khi triển khai chức năng server. Giữ quy ước URL có dấu `/` cuối hoặc chuẩn bị redirect nhất quán trước khi đổi; không tự xóa `trailingSlash` làm lệch canonical. Triển khai server-side authentication/authorization, Neon, R2 upload có kiểm tra quyền/kích thước/MIME/quota, survey lưu Neon trước rồi đồng bộ Google Sheets. Quản lý secret trên Vercel theo `.env.example`; không bật tính năng server trên Pages. Domain cutover chỉ sau khi preview Vercel được duyệt; giữ WordPress cũ để rollback, lập redirect từ URL cũ theo dữ liệu thật và không đổi DNS email.
 
 Quy ước CSS về selector, cascade, token và breakpoint: [docs/css-conventions.md](docs/css-conventions.md).
+
+Thiết kế bộ UI React dùng chung, theme, component/form contracts và migration: [docs/ui-system-architecture.md](docs/ui-system-architecture.md).

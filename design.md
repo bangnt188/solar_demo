@@ -1,5 +1,7 @@
 # Global UI — Atomic Design
 
+Tài liệu này mô tả cách compose UI riêng của website Solar. Kiến trúc bộ chuẩn React dùng lại giữa các dự án, theme/token và contracts của package được quy định tại [docs/ui-system-architecture.md](docs/ui-system-architecture.md). Quy tắc CSS dùng chung nằm tại [docs/css-conventions.md](docs/css-conventions.md).
+
 ## Goal
 
 Build the supplied UI as reusable defaults for the existing site, not as a catalog/showcase page. Keep routes and content in their existing owners. Composition runs upward through atoms → molecules → organisms → sections → screens; pages pass data/children and do not contain repeated UI implementation.
@@ -15,7 +17,7 @@ Build the supplied UI as reusable defaults for the existing site, not as a catal
 | Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx` | Compose sections and pass props. Own screen order/layout, not reusable primitives or campaign copy. |
 | Routes | `src/app/(public)/page.tsx`, `src/app/(public)/khao-sat/page.tsx`, `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
 
-CSS remains global and centralized in `src/styles/tokens.css` and `src/styles/components.css`. Existing semantic token names are the source of truth; components consume global defaults and add only their own semantic class. Avoid a parallel token system, Tailwind, monolithic UI modules, or duplicated section markup.
+Solar currently imports global tokens and styles from `src/styles/`. During migration, package components use colocated CSS Modules and consume the shared semantic token contract; Solar sections and screens remain app-owned. Avoid duplicated section markup and conflicting token sources.
 
 ## Component map
 

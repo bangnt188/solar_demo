@@ -1,11 +1,12 @@
 # CSS conventions
 
-Áp dụng cho các CSS styles trong `src/styles/` và class dùng trong `src/components/`. Mục tiêu là để mỗi style có một nguồn dễ tìm, giữ layout responsive ổn định và cho phép thay đổi giao diện mà không kéo theo ghi đè khó đoán.
+Áp dụng cho CSS hiện tại trong `src/styles/` và CSS Modules của package UI. Kiến trúc package, theme contract và ranh giới component nằm tại [UI System Architecture](ui-system-architecture.md); tài liệu này quy định cách viết và review CSS.
 
 ## Cấu trúc
 
 - Design token dùng cho màu, nền, chữ, khoảng cách, bo góc, focus và motion dùng chung. Tên token thể hiện ý nghĩa giao diện; thêm token khi có nhiều consumer hoặc đó là giá trị chuẩn của brand/design system. Không tạo token chỉ để thay một literal xuất hiện một lần.
-- `base.css` giữ reset và style HTML toàn site; `components.css` giữ component và section hiện có; `tokens.css` giữ custom properties. Không tạo thêm Tailwind utilities hay một lớp CSS thứ hai song song trong `className`.
+- `tokens.css` giữ semantic custom properties dùng xuyên component. CSS Modules giữ style cục bộ bên cạnh component dùng chung. `base.css`/`components.css` trong app hiện tại là legacy app stylesheet; không mở rộng chúng thành stylesheet chung của package.
+- Global theme import chỉ thiết lập token và reset có kiểm soát. Component không thêm inline palette hoặc hệ utility thứ hai. Mỗi style cục bộ có một module CSS và một contract class rõ ràng.
 - Class theo vai trò UI, ví dụ `.project-card`, `.mobile-nav`, `.service-stage`. Dùng class riêng cho component; chia sẻ class khi cả cấu trúc lẫn ý nghĩa hiển thị giống nhau. Selector cha chỉ dùng cho quan hệ thật giữa cha/con và trạng thái HTML.
 
 ## Quy tắc chống trùng và cascade
@@ -24,3 +25,5 @@
 - Bỏ lần ghi đè `.nav { align-items: center }` ở cuối stylesheet để `align-items: flex-start` tại `max-width: 900px` có hiệu lực khi navigation xuống dòng.
 
 Khi review CSS, báo riêng duplicate thật (cùng selector/context/property), cascade cần thiết (state/breakpoint) và giá trị chỉ giống nhau giữa các component khác nghĩa. Không dùng tổng số lần `display:flex`, màu hoặc số pixel giống nhau như thước đo duplication.
+
+Trong package UI, giữ một selector nền cho mỗi lớp trạng thái trong CSS Module. Các class trạng thái như hover, focus, invalid, disabled, scheme, density và breakpoint được tách khi biểu đạt trạng thái hoặc context thực sự; không dùng selector toàn cục để ràng buộc component package.
