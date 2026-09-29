@@ -13,12 +13,19 @@ export function FaqSection({ content }: { content: HomeContent["faq"] }) {
         <div className="faq-panel" data-motion="fade">
           <div className="faq-list">
             {content.questions.map((question, index) => (
-              <FaqDisclosure key={question.title} number={`0${index + 1}`} question={question.title} initiallyOpen={index === 0}>{question.text}</FaqDisclosure>
+              <FaqDisclosure key={question.title} number={`0${index + 1}`} question={question.title} initiallyOpen={index === 0}>
+                {question.text}
+              </FaqDisclosure>
             ))}
           </div>
           <div className="faq-visual">
-            <div className="faq-image"><Image src={imagePath(content.image)} alt={content.imageAlt} fill sizes="(max-width: 760px) 100vw, 40vw" /></div>
-            <Link className="faq-link" href={content.actionHref}>{content.actionLabel} <span aria-hidden="true">❯</span></Link>
+            <div className="faq-image">
+              <Image src={imagePath(content.image)} alt={content.imageAlt} fill sizes="(max-width: 760px) 100vw, 40vw" />
+            </div>
+            <Link className="btn-faq-learn-more" href={content.actionHref}>
+              <span>{content.actionLabel}</span>
+              <span className="arrow-circle" aria-hidden="true">❯</span>
+            </Link>
           </div>
         </div>
       </div>

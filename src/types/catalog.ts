@@ -1,4 +1,6 @@
 export type Project = {
+  id?: string;
+  imageAlt?: string;
   title: string;
   category: string;
   location: string;
@@ -8,6 +10,8 @@ export type Project = {
 };
 
 export type Equipment = {
+  id?: string;
+  imageAlt?: string;
   title: string;
   category: string;
   description: string;

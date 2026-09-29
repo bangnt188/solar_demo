@@ -13,9 +13,15 @@ export function SolutionsSection({ content }: { content: HomeContent["solutions"
           {content.items.map((solution) => (
             <Link className="solution-card-link" href={solution.href} key={solution.title}>
               <article className="solution-card">
-                <div className="solution-image"><Image src={imagePath(solution.image)} alt="" fill sizes="(max-width: 760px) 100vw, 33vw" /></div>
-                <span className="solution-icon" aria-hidden="true">{solution.icon}</span>
-                <div className="solution-copy"><h3>{solution.title}</h3><p>{solution.text}</p><span className="solution-card-action">{solution.actionLabel}</span></div>
+                <div className="solution-image">
+                  <Image src={imagePath(solution.image)} alt={`Giải pháp: ${solution.title}`} fill sizes="(max-width: 760px) 100vw, 33vw" />
+                  <div className="solution-icon" aria-hidden="true">{solution.icon}</div>
+                </div>
+                <div className="solution-copy">
+                  <h3>{solution.title}</h3>
+                  <p>{solution.text}</p>
+                  <span className="solution-card-action">{solution.actionLabel}</span>
+                </div>
               </article>
             </Link>
           ))}

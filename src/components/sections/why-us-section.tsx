@@ -1,20 +1,53 @@
-import Image from "next/image";
-import { SectionHeading } from "@/components/molecules/section-heading";
-import { contentImageSrc as imagePath } from "@/config/site";
 import type { HomeContent } from "@/types/home-content";
+
+const whyUsFeatures = [
+  {
+    icon: "📐",
+    title: "Thiết kế theo nhu cầu thực tế",
+    desc: "Mỗi công trình được phân tích để tối ưu hiệu quả",
+  },
+  {
+    icon: "🛡️",
+    title: "An toàn từ khảo sát đến thi công",
+    desc: "Tuân thủ tiêu chuẩn kỹ thuật, đảm bảo an toàn",
+  },
+  {
+    icon: "📜",
+    title: "Thiết bị rõ nguồn gốc",
+    desc: "Hợp tác với các thương hiệu uy tín, bảo hành chính hãng",
+  },
+  {
+    icon: "🤝",
+    title: "Đồng hành sau bàn giao",
+    desc: "Bảo trì theo định kỳ và hỗ trợ kỹ thuật nhanh chóng, lâu dài",
+  },
+];
 
 export function WhyUsSection({ content }: { content: HomeContent["whyUs"] }) {
   return (
-    <section className="section container" id="ve-chung-toi">
-      <SectionHeading title={content.heading} />
-      <div className="why-grid">
-        <div className="why-gallery" data-motion="up">
-          <div className="why-image"><Image src={imagePath(content.images[0].image)} alt={content.images[0].alt} fill sizes="(max-width: 760px) 100vw, 40vw" /><span>{content.banner}</span></div>
-          <div className="why-image why-small"><Image src={imagePath(content.images[1].image)} alt={content.images[1].alt} fill sizes="(max-width: 760px) 80vw, 25vw" /></div>
+    <section className="section container why-us-section" id="ve-chung-toi">
+      <h2 className="why-us-title">
+        Vì sao <span className="text-primary">chọn Lúa Xanh Đồng Bằng?</span>
+      </h2>
+      <div className="why-us-canva-grid">
+        <div className="why-features-grid" data-motion="up">
+          {whyUsFeatures.map((f) => (
+            <div className="why-feature-card" key={f.title}>
+              <div className="why-feature-icon" aria-hidden="true">{f.icon}</div>
+              <h4>{f.title}</h4>
+              <p>{f.desc}</p>
+            </div>
+          ))}
         </div>
-        <div className="why-copy" data-motion="fade">
-          {content.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          <div className="why-image why-panel"><Image src={imagePath(content.images[2].image)} alt={content.images[2].alt} fill sizes="(max-width: 760px) 100vw, 35vw" /></div>
+        <div className="why-commitment-card" data-motion="fade">
+          <p>
+            {content.paragraphs[0] ??
+              "Chúng tôi cam kết mang đến giải pháp điện mặt trời hiệu quả, an toàn và bền vững, với thiết bị chất lượng, đội ngũ giàu kinh nghiệm và dịch vụ hậu mãi tận tâm."}
+          </p>
+          <div className="why-commitment-brand">
+            <span className="brand-leaf-icon" aria-hidden="true">🌱</span>
+            <span>Ươm mầm năng lượng</span>
+          </div>
         </div>
       </div>
     </section>

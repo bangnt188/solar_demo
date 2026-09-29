@@ -40,28 +40,33 @@ export const siteChromeContent = {
       {
         title: "Giải pháp & Quy trình",
         items: [
-          { label: "Giải pháp theo nhu cầu", href: "/#giai-phap" },
-          { label: "Đặt lịch khảo sát", href: "/khao-sat/" },
+          { label: "Tổng quan các hệ thống", href: "/#giai-phap" },
+          { label: "Quy trình tổng thầu EPC", href: "/dich-vu/" },
+          { label: "Hộ gia đình & Biệt thự", href: "/giai-phap/ho-gia-dinh/" },
+          { label: "Hộ kinh doanh vừa & nhỏ", href: "/giai-phap/ho-kinh-doanh/" },
+          { label: "Doanh nghiệp & Công nghiệp", href: "/giai-phap/doanh-nghiep/" },
         ],
       },
       {
         title: "Hệ thống & Dịch vụ",
         items: [
-          { label: "Quy trình dịch vụ", href: "/dich-vu/" },
-          { label: "Thiết bị điện mặt trời", href: "/thiet-bi/" },
+          { label: "Về chúng tôi", href: "/#ve-chung-toi" },
+          { label: "Sản phẩm chính hãng", href: "/thiet-bi/" },
+          { label: "Dịch vụ trọn gói", href: "/dich-vu/" },
           { label: "Dự án thực tế", href: "/du-an/" },
-          { label: "Câu hỏi thường gặp", href: "/#faq" },
+          { label: "Hỗ trợ khách hàng", href: "/#faq" },
         ],
       },
       {
-        title: "Liên hệ",
+        title: "Liên hệ & Trụ sở",
         items: [
           { label: "13 Đồng Khởi, Phường Ninh Kiều, TP. Cần Thơ" },
+          { label: "0939 xxx xxx", href: "tel:0939000000" },
           { label: "lienhe@luaxanhdongbang.vn", href: "mailto:lienhe@luaxanhdongbang.vn" },
           { label: "Thứ 2 - Thứ 7: 07:30 - 18:00" },
         ],
       },
     ],
-    note: "Bản demo giao diện · Ảnh dự án, sản phẩm, đối tác và thông tin liên hệ cần xác minh trước khi sử dụng thực tế.",
+    note: "Bản demo giao diện · Lúa Xanh Đồng Bằng",
   },
 };

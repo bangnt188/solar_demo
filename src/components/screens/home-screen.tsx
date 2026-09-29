@@ -16,11 +16,13 @@ export function HomeScreen({ content, projects, equipment }: { content: HomeCont
     <>
       <HeroSection content={content.hero} />
       <PartnersSection content={content.partners} />
-      <ServicesSection content={content.services} />
       <SolutionsSection content={content.solutions} />
+      <ServicesSection content={content.services} />
       <WhyUsSection content={content.whyUs} />
       <FeaturedProjectsSection content={content.featuredProjects} projects={projects} />
-      <TestimonialSection title={content.testimonials.title} description={content.testimonials.description} testimonials={content.testimonials.items} />
+      {content.testimonials.items.length > 0 && (
+        <TestimonialSection title={content.testimonials.title} description={content.testimonials.description} testimonials={content.testimonials.items} />
+      )}
       <EquipmentOfferSection content={content.equipmentOffer} equipment={equipment} />
       <FaqSection content={content.faq} />
       <ContactSection content={content.contact} />

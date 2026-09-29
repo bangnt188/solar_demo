@@ -34,17 +34,34 @@ type SiteFooterProps = { columns: readonly FooterColumn[]; note: string };
 export function SiteFooter({ columns, note }: SiteFooterProps) {
   return (
     <footer className="site-footer">
-      <div className="container footer-columns">
-        {columns.map((column) => (
-          <div key={column.title}>
-            <h2>{column.title}</h2>
-            {column.items.map((item) => item.href
-              ? <p key={item.label}><Link href={item.href}>{item.label}</Link></p>
-              : <p key={item.label}>{item.label}</p>)}
-          </div>
-        ))}
+      <div className="container footer-inner">
+        <div className="footer-columns">
+          {columns.map((column) => (
+            <div key={column.title} className="footer-column">
+              <h2>{column.title}</h2>
+              {column.items.map((item) => (
+                <p key={item.label}>
+                  {item.href ? (
+                    item.href.startsWith("tel:") || item.href.startsWith("mailto:") ? (
+                      <a href={item.href} className="footer-contact-link">{item.label}</a>
+                    ) : (
+                      <Link href={item.href}>{item.label}</Link>
+                    )
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="footer-brand-mark" aria-hidden="true">
+          <Image src={`${basePath}/images/common/logo.png`} alt="" width={140} height={140} className="footer-watermark" />
+        </div>
       </div>
-      <p className="demo-note container">{note}</p>
+      <div className="container footer-bottom">
+        <p className="demo-note">{note}</p>
+      </div>
     </footer>
   );
 }

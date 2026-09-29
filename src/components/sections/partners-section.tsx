@@ -11,3 +11,4 @@ export function PartnersSection({ content }: { content: HomeContent["partners"] 
     </section>
   );
 }
+
