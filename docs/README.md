@@ -17,6 +17,7 @@ Trạng thái 27/09/2026: SQL, migration runner, PostgreSQL/R2 adapters, public 
 
 ## Tài liệu landing page hiện có
 
+- [Quy ước CSS](css-conventions.md): token, class, responsive cascade và cách nhận diện duplicate thật.
 - [Animation plan](animation-plan.md)
 - [SEO/AEO review](seo-aeo-review.md)
 - [Search evidence](search-evidence.md)

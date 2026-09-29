@@ -16,7 +16,7 @@ Tách **build target** (`DEPLOY_TARGET=demo|server`) khỏi **integration mode**
 | --- | --- | --- |
 | Neon/content | `createMockContent`, nguồn nội dung landing local | Adapter PostgreSQL/migration đã chuẩn bị nhưng chỉ dùng khi bật cloud; chưa provision Neon |
 | R2 | Cùng validation/re-encode ảnh, transport lưu metadata trong memory; put/head/delete | S3 adapter đã chuẩn bị; chưa gọi bucket thực tế |
-| Google Sheets | `createSubmissionSheet` + `createMockSubmissionSheet`, định dạng `values.update`/RAW, hàng cố định | Auth service account, HTTP/SDK transport, cấp quyền Sheet và nghiệm thu cloud chưa triển khai |
+| Google Sheets | `createSubmissionSheet` + `createMockSubmissionSheet`, định dạng `values.update`/RAW, hàng cố định | Auth service account, HTTP/SDK transport, cấp VỚiquyền Sheet và nghiệm thu cloud chưa triển khai |
 
 Router public giữ allowlist ba resource landing/projects/equipment. `npm run dev:mvp` chạy Next runtime ở `/`, ép mock, sandbox, noindex và origin metadata `https://mvp.invalid`. Browser mở `http://localhost:3000/`; origin metadata này không phải domain triển khai.
 

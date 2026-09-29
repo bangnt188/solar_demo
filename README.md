@@ -22,6 +22,8 @@ Giải pháp và dịch vụ là nội dung giới thiệu sơ bộ, chưa đư�
 
 Menu điều hướng ở `src/components/organisms/site-navigation.tsx`: desktop chỉ hiển thị một dropdown khi chuyển giữa Giải pháp/Dịch vụ (ưu tiên mục đang focus bằng bàn phím); mobile dùng `<details>` cho từng nhóm.
 
+Quy ước chống CSS duplicate, token và breakpoint ở [docs/css-conventions.md](docs/css-conventions.md). Giữ responsive/interaction trong CSS ngữ nghĩa hiện có; không thêm Tailwind song song.
+
 Các module server đã có: `src/core`, `src/infrastructure/database`, `src/infrastructure/storage`, `src/features/landing`, hai content repositories và `/api/v1/[resource]`. Bản Pages vẫn không có route API/admin; build demo tạo bản sao tạm chỉ có public routes. `src/app/admin`, auth và survey backend vẫn chưa có chức năng. Xem [hướng dẫn core](docs/backend-core.md) để chạy server và kiểm thử.
 
 ## GitHub Pages
