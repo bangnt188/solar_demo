@@ -9,4 +9,3 @@ next-env.d.ts
 .DS_Store
 .agents
 skills-lock.json
-packages/ui/dist/

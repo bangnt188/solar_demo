@@ -44,7 +44,7 @@ Atomic Design mô tả độ sâu composition, không bắt buộc mỗi khái n
 ## Cấu trúc package
 
 ```text
-packages/ui/
+packages/ui/           # Git submodule: bangnt188/component-ui, đồng thời là npm workspace @solar/ui
   src/
     tokens/          # tên token, kiểu theme và entry point theme
     basic/           # Button, ButtonGroup và control HTML semantic
@@ -67,6 +67,8 @@ src/features/        # tính năng/catalog, schema khảo sát thuộc ứng d�
 ```
 
 Package công khai các entry point có chủ đích như `basic`, `components`, `forms`, `validation`, `tokens`, `styles`; consumer không import đường dẫn nội bộ. Adapter phụ thuộc framework để ở ứng dụng; control dùng chung không phụ thuộc Next.js router hay Image.
+
+Repo [component-ui](https://github.com/bangnt188/component-ui) sở hữu source, tests, build và lockfile riêng. App Solar giữ workspace/lockfile consumer, pin commit bằng gitlink ở `packages/ui`; muốn nâng package phải cập nhật commit submodule và kiểm tra lại build của app.
 
 Không tạo song song `atoms/` và `ui/` cùng chứa một loại control. Mỗi trách nhiệm có một tên công khai và một implementation. Không bọc primitive bằng component chuyển tiếp props đơn thuần; chỉ tạo Basic khi nó tạo được seam ổn định cho style, accessibility hoặc tương thích.
 

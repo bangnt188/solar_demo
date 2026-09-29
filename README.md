@@ -7,14 +7,17 @@ Nhánh `dev` là bản demo frontend Next.js static, xuất sang GitHub Pages t�
 Yêu cầu Node.js 22 và npm.
 
 ```sh
+git submodule update --init --recursive
 npm ci
 npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
-Kiểm tra bản export: `npm run build && npm run test:export`. `@solar/ui` ở `packages/ui/` là workspace dùng chung, công khai các entry point `@solar/ui`, `@solar/ui/basic`, `@solar/ui/components`, `@solar/ui/forms`, `@solar/ui/validation`, `@solar/ui/i18n`, `@solar/ui/tokens`, `@solar/ui/styles`; theme import trong `src/app/layout.tsx`. `src/features/catalog/` giữ card cần kiểu dữ liệu và ảnh riêng Solar; `src/features/survey/` giữ schema/form nghiệp vụ, dùng adapter RHF của package. Sections, screens và chrome còn lại trong `src/components/` vẫn là composition của app Solar, không export từ package.
+Kiểm tra bản export: `npm run build && npm run test:export`. `@solar/ui` ở `packages/ui/` là npm workspace **và Git submodule** trỏ tới [component-ui](https://github.com/bangnt188/component-ui). Clone mới dùng `git clone --recurse-submodules`, hoặc chạy `git submodule update --init --recursive` trước `npm ci`. Package công khai các entry point `@solar/ui`, `@solar/ui/basic`, `@solar/ui/components`, `@solar/ui/forms`, `@solar/ui/validation`, `@solar/ui/i18n`, `@solar/ui/tokens`, `@solar/ui/styles`; theme import trong `src/app/layout.tsx`. `src/features/catalog/` giữ card cần kiểu dữ liệu và ảnh riêng Solar; `src/features/survey/` giữ schema/form nghiệp vụ, dùng adapter RHF của package. Sections, screens và chrome còn lại trong `src/components/` vẫn là composition của app Solar, không export từ package.
 
 `src/app/layout.tsx` import theme của package và gắn `data-ui-root` lên `<body>` để reset được giới hạn trong app. Chạy `npm run test:ui` để kiểm tra package; `npm run build && npm run test:export` xác minh app tiêu thụ UI và static export.
+
+Thay đổi UI chung phải commit và push trong `component-ui` trước, rồi cập nhật gitlink bằng `git submodule update --remote packages/ui` và commit con trỏ mới ở Solar. Không sửa UI chung trực tiếp ở repo Solar mà quên push submodule.
 
 Package có các control phổ biến `Avatar`, `ButtonGroup`, `ProgressBar`, `Modal`, `Drawer`, `Popover`, `DropdownMenu`, `PasswordField` và adapter `FormPasswordField` bên cạnh bộ field/navigation đã có. Popup/menu nhận `open`/`defaultOpen`/`onOpenChange`, không giữ hai bản open state; app tiếp tục sở hữu dữ liệu, quyền và hành động nghiệp vụ. `NumberField` định dạng số hữu hạn theo locale và dùng hidden native input cho form; `DecimalField` giữ chuỗi canonical chính xác. Xem [hợp đồng component/state](docs/ui-system-architecture.md).
 
@@ -24,8 +27,9 @@ Các khu vực còn chưa triển khai (`src/app/admin`, `src/app/api`, `src/com
 
 1. Tạo/push nhánh `dev` lên `bangnt188/solar_demo`.
 2. Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**. Repo admin vào **Settings → Environments → github-pages → Deployment branches/tags** thêm `dev` (giữ `main`); nếu không, workflow bị chặn trước khi build.
-3. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
-4. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`.
+3. Repo `component-ui` riêng tư cần Actions secret `COMPONENT_UI_READ_TOKEN` trong `solar_demo` với quyền **Contents: Read** trên **cả `solar_demo` và `component-ui`** (hoặc GitHub App token có cùng quyền). `actions/checkout` dùng cùng token cho repo cha và submodule trước `npm ci`; quyền Git trên máy cá nhân không tự cấp quyền cho GitHub Actions.
+4. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
+5. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`.
 
 Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo. Trang `/khao-sat/` tạo bản nháp email từ thông tin người dùng điền; người dùng phải tự xác nhận gửi trong ứng dụng email. Website không tự gửi hoặc lưu dữ liệu khảo sát. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
 

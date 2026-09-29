@@ -1,8 +1,0 @@
-.group {
-  display: inline-flex;
-  gap: var(--ui-space-sm);
-  flex-wrap: wrap;
-  max-inline-size: 100%;
-}
-
-.vertical { flex-direction: column; align-items: stretch; }
