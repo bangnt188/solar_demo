@@ -1,0 +1,9 @@
+.container {
+  inline-size: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.sm { max-inline-size: 40rem; }
+.md { max-inline-size: 60rem; }
+.lg { max-inline-size: 80rem; }
+.full { max-inline-size: none; }

@@ -47,27 +47,30 @@ Atomic Design mô tả độ sâu composition, không bắt buộc mỗi khái n
 packages/ui/
   src/
     tokens/          # tên token, kiểu theme và entry point theme
-    basic/           # primitive Base UI đã gắn style và control HTML semantic
+    basic/           # Button, ButtonGroup và control HTML semantic
     components/
       layout/        # Stack, Grid, Container, Divider
-      fields/        # FieldFrame, TextField, Textarea, Select, Combobox,
-                     # NumberField, DecimalField, Checkbox, Radio, Switch
-      feedback/      # Alert, Toast, Loading, EmptyState, ConfirmDialog
-      navigation/    # Tabs, Breadcrumb, Pagination
-      data/          # Badge, Card, Table cơ bản
+      fields/        # TextField, PasswordField, TextareaField, SelectField,
+                     # ComboboxField, NumberField, DecimalField, CheckboxField,
+                     # RadioGroupField, SwitchField
+      feedback/      # Alert, Toast, LoadingIndicator, EmptyState,
+                     # ConfirmDialog, Modal, Drawer, Popover
+      navigation/    # Tabs, Breadcrumbs, Pagination, DropdownMenu
+      data/          # Badge, Card, Table, Avatar, ProgressBar
     forms/           # adapter React Hook Form
     validation/      # khối Zod thuần, không phụ thuộc React
     i18n/            # thông điệp mặc định tiếng Việt/Anh
-    internal/        # helper nội bộ, không phải public API
-  styles/            # CSS Modules đặt cạnh component
+  styles/            # theme/reset CSS; CSS Modules đặt cạnh component
   package.json       # export có chủ đích và hợp đồng peer dependencies
 
-apps/solar/          # route, feature, nội dung, API và composition riêng Solar
+src/features/        # tính năng/catalog, schema khảo sát thuộc ứng dụng Solar
 ```
 
 Package công khai các entry point có chủ đích như `basic`, `components`, `forms`, `validation`, `tokens`, `styles`; consumer không import đường dẫn nội bộ. Adapter phụ thuộc framework để ở ứng dụng; control dùng chung không phụ thuộc Next.js router hay Image.
 
 Không tạo song song `atoms/` và `ui/` cùng chứa một loại control. Mỗi trách nhiệm có một tên công khai và một implementation. Không bọc primitive bằng component chuyển tiếp props đơn thuần; chỉ tạo Basic khi nó tạo được seam ổn định cho style, accessibility hoặc tương thích.
+
+Những primitive phổ biến từ checklist tham chiếu đã thiếu (Avatar, ButtonGroup, ProgressBar, Modal, Drawer, Popover, DropdownMenu, PasswordField) có implementation React trong package. Các widget mang nghiệp vụ hoặc nặng phụ thuộc (office/PDF viewer, rich editor, branch/worklist, tree combo) không được nhân bản từ package Svelte tham chiếu. File/date/time có thể dùng native `Input`/`TextField` và ứng dụng tự quyết định validation; `Badge` là nhãn hiển thị, không thay thế state của tag editor.
 
 ## Hợp đồng token và theme
 
@@ -96,6 +99,10 @@ Component dùng token ngữ nghĩa, không nhúng màu thương hiệu của d�
 Không xóa/đổi tên token Solar trong cùng một thay đổi với việc khai báo token đích. Migration giữ alias tương thích trong một khoảng chuyển tiếp; chỉ xóa alias sau khi tìm và chuyển hết consumer. Giá trị cũ là baseline tham chiếu, không phải bộ màu bắt buộc cho dự án tiếp theo.
 
 Hợp đồng theme gồm light/dark và comfortable/compact. Density chỉ thay đổi khoảng cách/kích thước control, không thay đổi ý nghĩa nội dung hoặc validation. Cặp foreground/background phải đủ tương phản trong mọi scheme. Dự án thay token trong theme file, không vá selector của component.
+
+Mỗi ứng dụng import `@solar/ui/styles` một lần. Chọn scheme/mật độ trên vùng UI bằng `data-ui-scheme="light|dark"` và `data-ui-density="comfortable|compact"`; gắn `data-ui-root` lên container chung nhỏ nhất để reset của package không ảnh hưởng phần còn lại của trang. `:root` cung cấp token mặc định light/comfortable.
+
+Portal của dialog/drawer/popover/menu/combobox mặc định đặt trong `<body>`. Nếu scheme/density chỉ gắn lên một vùng con, truyền `portalContainer` (DOM element hoặc React ref tới element đó) để popup kế thừa token của vùng đó; nếu không, đặt scheme/density lên `<body>`.
 
 Theme khai báo ở build time là cấu hình tin cậy. Nội dung runtime từ CMS/database không được biến thành CSS tùy ý, class hoặc URL chưa kiểm tra. Nếu sau này cho phép chỉnh theme runtime, phải validate theo schema token giới hạn và allowlist giá trị trước khi áp dụng.
 
@@ -135,13 +142,17 @@ Mỗi field liên kết label, trợ giúp và lỗi với control. `aria-descri
 
 Control có thể nhận `value`/`onValueChange` hoặc `defaultValue`; một instance không đổi mode sau khi mount. Adapter form nối state hiện tại của form vào control, không giữ thêm một bản state giá trị trong field.
 
-`NumberField` nhận `number` hữu hạn hoặc `null` và định dạng theo locale. `DecimalField` bảo toàn chuỗi thập phân chính xác. Giá trị đang gõ có thể chưa hoàn chỉnh; giá trị commit/submit chuẩn dùng dấu chấm thập phân, không có dấu phân nhóm. Parsing/formatting ở một module duy nhất, dùng chung với validation; không chuyển qua floating point JavaScript rồi âm thầm làm tròn số chính xác. Empty, số âm, min/max, precision và locale phải thành props hoặc schema constraint tường minh.
+`NumberField` nhận `number` hữu hạn hoặc `null`; Base UI định dạng theo `locale`, giữ `min`/`max`/`step` và serialize số canonical qua input native ẩn. Chỉnh số ngoài biên được chuẩn hóa khi blur; dùng `DecimalField` nếu cần giữ chính xác chữ số/trailing zero. `DecimalField` bảo toàn chuỗi thập phân chính xác; giá trị đang gõ có thể chưa hoàn chỉnh, còn giá trị submit chuẩn dùng dấu chấm thập phân, không có dấu phân nhóm. Parsing/formatting decimal nằm ở một module dùng chung với validation, không chuyển qua floating point JavaScript rồi âm thầm làm tròn. Empty, số âm, min/max, precision và locale phải thành props hoặc schema constraint tường minh.
+
+`@solar/ui/validation` cung cấp `decimalSchema({ min: { value }, max: { value }, maxFractionDigits, allowNegative, requiredMessage })`. Min/max là chuỗi thập phân canonical và được so sánh chính xác, không qua `Number`; chuỗi rỗng được chấp nhận nếu không truyền `requiredMessage`.
 
 Table cơ bản lo cấu trúc truy cập được, định nghĩa cột và render hàng. Sort, filter, pagination, selection, query server là state/callback được kiểm soát hoặc do adapter ứng dụng sở hữu. Table dùng chung không tự fetch hoặc suy đoán quyền.
 
 ## State form và validation
 
 Trong form ghép, React Hook Form sở hữu giá trị, dirty/touched, trạng thái submit và lỗi đã map. Primitive độc lập chỉ giữ state tương tác cần cho accessibility của chính nó. State điều khiển từ ngoài không được sao chép vào React state cục bộ.
+
+`Modal`, `Drawer`, `Popover`, `DropdownMenu` chuyển thẳng `open`/`defaultOpen`/`onOpenChange` cho Base UI; Base UI giữ open state khi không controlled, keyboard navigation, focus trap và trả focus. `PasswordField` chỉ giữ visibility boolean, không sao chép giá trị input; `ProgressBar` nhận tiến trình (hoặc `null` indeterminate), không giả lập upload; `Avatar` dùng fallback khi ảnh không tải được. Form adapter truyền disabled của caller vào RHF để giá trị disabled không được submit.
 
 Zod schema nằm cạnh feature sở hữu form; package có thể export helper validation thuần dùng lại. Field chỉ hiển thị kết quả validation, không quyết định quy tắc sản phẩm. Chính sách mặc định:
 

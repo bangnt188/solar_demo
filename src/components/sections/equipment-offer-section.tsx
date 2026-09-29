@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EquipmentCard } from "@/components/ui/catalog-cards";
+import { EquipmentCard } from "@/features/catalog/catalog-cards";
 import type { Equipment } from "@/types/catalog";
 
 type Content = { heading: string; viewAllLabel: string; viewAllHref: string };

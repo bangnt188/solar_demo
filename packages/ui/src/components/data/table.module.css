@@ -1,0 +1,24 @@
+.viewport { max-inline-size: 100%; overflow-x: auto; }
+
+.table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  background: var(--ui-color-surface-raised);
+  color: var(--ui-color-text-primary);
+}
+
+.table caption {
+  padding: var(--ui-space-sm);
+  color: var(--ui-color-text-secondary);
+  text-align: start;
+}
+
+.table th,
+.table td {
+  padding: var(--ui-space-sm) var(--ui-space-md);
+  border-block-end: 1px solid var(--ui-color-border);
+  text-align: start;
+}
+
+.table th { font-weight: 700; }
+.empty { color: var(--ui-color-text-secondary); text-align: center !important; }

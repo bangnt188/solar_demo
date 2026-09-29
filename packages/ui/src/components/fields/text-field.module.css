@@ -1,0 +1,61 @@
+.field {
+  display: grid;
+  gap: var(--ui-space-sm);
+  min-inline-size: 0;
+}
+
+.top {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.start {
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 2fr);
+  align-items: start;
+  gap: var(--ui-space-md);
+}
+
+.label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  color: var(--ui-color-text-primary);
+  font-size: var(--ui-font-size-md);
+  font-weight: 600;
+}
+
+.required,
+.error {
+  color: var(--ui-color-error);
+}
+
+.controlGroup {
+  min-inline-size: 0;
+}
+
+.controlWithAction {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-sm);
+}
+
+.controlWithAction > input { flex: 1; min-inline-size: 0; }
+
+.description,
+.error {
+  margin-block-start: var(--ui-space-sm);
+  font-size: var(--ui-font-size-sm);
+}
+
+.description {
+  color: var(--ui-color-text-secondary);
+}
+
+.error {
+  font-weight: 600;
+}
+
+@media (max-width: 42rem) {
+  .start {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

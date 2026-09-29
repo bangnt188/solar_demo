@@ -1,0 +1,29 @@
+.alert {
+  display: grid;
+  gap: var(--ui-space-sm);
+  padding: var(--ui-space-md);
+  border: 1px solid var(--ui-color-border);
+  border-radius: var(--ui-radius-control);
+  background: var(--ui-color-surface);
+  color: var(--ui-color-text-primary);
+}
+
+.title {
+  font-weight: 700;
+}
+
+.info {
+  border-inline-start: 0.25rem solid var(--ui-color-action);
+}
+
+.success {
+  border-inline-start: 0.25rem solid var(--ui-color-success);
+}
+
+.warning {
+  border-inline-start: 0.25rem solid var(--ui-color-warning);
+}
+
+.error {
+  border-inline-start: 0.25rem solid var(--ui-color-error);
+}

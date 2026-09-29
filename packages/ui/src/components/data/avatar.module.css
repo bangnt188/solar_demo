@@ -1,0 +1,17 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--ui-color-surface);
+  color: var(--ui-color-text-primary);
+  font-weight: 700;
+}
+
+.sm { inline-size: 2rem; block-size: 2rem; font-size: var(--ui-font-size-sm); }
+.md { inline-size: 2.75rem; block-size: 2.75rem; font-size: var(--ui-font-size-md); }
+.lg { inline-size: 3.5rem; block-size: 3.5rem; font-size: var(--ui-font-size-lg); }
+
+.image { inline-size: 100%; block-size: 100%; object-fit: cover; }
+.fallback { text-align: center; }

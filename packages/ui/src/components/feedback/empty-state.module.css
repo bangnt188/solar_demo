@@ -1,0 +1,13 @@
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--ui-space-md);
+  padding: var(--ui-space-lg);
+  border: 1px dashed var(--ui-color-border);
+  border-radius: var(--ui-radius-control);
+  color: var(--ui-color-text-secondary);
+  text-align: center;
+}
+
+.empty h2,
+.empty p { margin: 0; }

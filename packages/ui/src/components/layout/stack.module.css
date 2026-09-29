@@ -1,0 +1,6 @@
+.stack { display: flex; }
+.vertical { flex-direction: column; }
+.horizontal { flex-direction: row; align-items: center; }
+.sm { gap: var(--ui-space-sm); }
+.md { gap: var(--ui-space-md); }
+.lg { gap: var(--ui-space-lg); }

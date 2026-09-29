@@ -111,14 +111,8 @@ nav a:hover, .site-footer a:hover { color: var(--link-hover-color); }
 .survey-section > div p { color: var(--color-text-secondary); font-size: 18px; }
 .survey-form { padding: 34px; border: 1px solid var(--color-border); border-radius: 18px; background: var(--color-background); box-shadow: 0 14px 35px #0f172a10; }
 .survey-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.survey-fields label { display: block; color: var(--color-text-primary); font-weight: 700; }
-.survey-fields label span { display: inline; color: var(--color-primary); }
 .survey-fields .survey-wide { grid-column: 1 / -1; }
-.survey-fields input, .survey-fields select, .survey-fields textarea { display: block; width: 100%; min-width: 0; margin-top: 8px; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-background); color: var(--color-text-primary); font: inherit; font-weight: 400; }
-.survey-fields input:focus-visible, .survey-fields select:focus-visible, .survey-fields textarea:focus-visible { outline: 2px solid var(--focus-color); outline-offset: 2px; }
-.survey-fields textarea { resize: vertical; }
 .survey-disclaimer { margin: 24px 0; color: var(--color-text-secondary); font-size: 14px; }
-.survey-form .button { cursor: pointer; font: inherit; font-weight: 800; }
 @media (max-width: 900px) {
   .container { width: min(100% - 36px, 700px); }
   .nav { padding-block: 13px; align-items: flex-start; flex-wrap: wrap; }

@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/ui/catalog-cards";
+import { ProjectCard } from "@/features/catalog/catalog-cards";
 import { getProjects } from "@/services/catalog";
 import { Breadcrumbs } from "@/components/molecules/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";

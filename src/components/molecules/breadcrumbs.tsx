@@ -1,15 +1,16 @@
-import Link from "next/link";
+import { Breadcrumbs as UiBreadcrumbs } from "@solar/ui";
+import { basePath } from "@/config/site";
 
 export function Breadcrumbs({ items }: { items: readonly { label: string; href: string }[] }) {
   return (
-    <nav className="container breadcrumbs" aria-label="Đường dẫn trang">
-      <ol>
-        {items.map((item, index) => (
-          <li key={item.href}>
-            {index === items.length - 1 ? <span aria-current="page">{item.label}</span> : <Link href={item.href}>{item.label}</Link>}
-          </li>
-        ))}
-      </ol>
-    </nav>
+    <UiBreadcrumbs
+      className="container breadcrumbs"
+      label="Đường dẫn trang"
+      items={items.map((item, index) => ({
+        ...item,
+        href: `${basePath}${item.href}`,
+        current: index === items.length - 1,
+      }))}
+    />
   );
 }

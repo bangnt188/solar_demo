@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ProjectCard } from "@/components/ui/catalog-cards";
+import { ProjectCard } from "@/features/catalog/catalog-cards";
 import { SectionHeading } from "@/components/molecules/section-heading";
 import type { Project } from "@/types/catalog";
 

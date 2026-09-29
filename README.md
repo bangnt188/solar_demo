@@ -12,9 +12,13 @@ npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
-Kiểm tra bản export: `npm run build && npm run test:export`. Next.js tạo `out/` với các trang `/`, `/du-an/`, `/thiet-bi/`, `/khao-sat/` dưới base path `/solar_demo`. `src/app/(public)/layout.tsx` gắn motion runtime cho các route công khai; header/footer ở `src/components/organisms/`, các section ở `src/components/sections/`, card dùng chung ở `src/components/ui/`. Màu và motion token dùng CSS trong `src/styles/`. UI đọc dữ liệu qua `src/services/catalog.ts` → `src/repositories/catalog.ts` → `src/data/mock/catalog.ts`; dự án là công trình thực tế theo xác nhận, còn ảnh trong `public/images/demo/` chỉ mang tính minh họa (cần xác nhận quyền sử dụng trước production). Thông tin sản phẩm, đối tác và liên hệ từ ảnh mẫu cần xác minh với khách hàng.
+Kiểm tra bản export: `npm run build && npm run test:export`. `@solar/ui` ở `packages/ui/` là workspace dùng chung, công khai các entry point `@solar/ui`, `@solar/ui/basic`, `@solar/ui/components`, `@solar/ui/forms`, `@solar/ui/validation`, `@solar/ui/i18n`, `@solar/ui/tokens`, `@solar/ui/styles`; theme import trong `src/app/layout.tsx`. `src/features/catalog/` giữ card cần kiểu dữ liệu và ảnh riêng Solar; `src/features/survey/` giữ schema/form nghiệp vụ, dùng adapter RHF của package. Sections, screens và chrome còn lại trong `src/components/` vẫn là composition của app Solar, không export từ package.
 
-Các thư mục còn lại theo SA (`src/app/admin`, `src/app/api`, `src/components/admin`, phần lớn `src/features/*`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`, `docs`, `scripts`…) chỉ có `.gitkeep` để Git lưu cấu trúc. Chúng **chưa có chức năng**; không có route admin/API trên Pages.
+`src/app/layout.tsx` import theme của package và gắn `data-ui-root` lên `<body>` để reset được giới hạn trong app. Chạy `npm run test:ui` để kiểm tra package; `npm run build && npm run test:export` xác minh app tiêu thụ UI và static export.
+
+Package có các control phổ biến `Avatar`, `ButtonGroup`, `ProgressBar`, `Modal`, `Drawer`, `Popover`, `DropdownMenu`, `PasswordField` và adapter `FormPasswordField` bên cạnh bộ field/navigation đã có. Popup/menu nhận `open`/`defaultOpen`/`onOpenChange`, không giữ hai bản open state; app tiếp tục sở hữu dữ liệu, quyền và hành động nghiệp vụ. `NumberField` định dạng số hữu hạn theo locale và dùng hidden native input cho form; `DecimalField` giữ chuỗi canonical chính xác. Xem [hợp đồng component/state](docs/ui-system-architecture.md).
+
+Các khu vực còn chưa triển khai (`src/app/admin`, `src/app/api`, `src/components/admin`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`) vẫn chỉ là placeholders; không có route admin/API trên Pages.
 
 ## GitHub Pages
 

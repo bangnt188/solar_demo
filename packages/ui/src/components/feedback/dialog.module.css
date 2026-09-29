@@ -1,0 +1,51 @@
+.backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgb(0 0 0 / 0.48);
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+.backdrop[data-ending-style] { opacity: 0; }
+
+.dialog {
+  position: fixed;
+  z-index: 1001;
+  inset: 50% auto auto 50%;
+  inline-size: min(32rem, calc(100vw - 2rem));
+  max-block-size: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: var(--ui-space-lg);
+  border: 1px solid var(--ui-color-border);
+  border-radius: var(--ui-radius-control);
+  background: var(--ui-color-surface-raised);
+  color: var(--ui-color-text-primary);
+  box-shadow: var(--ui-shadow-overlay);
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+.dialog[data-ending-style] { opacity: 0; }
+
+.title {
+  margin: 0;
+  font-size: var(--ui-font-size-lg);
+}
+
+.description {
+  margin-block: var(--ui-space-md);
+  color: var(--ui-color-text-secondary);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ui-space-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .dialog { transition: none; }
+}

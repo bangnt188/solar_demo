@@ -1,0 +1,11 @@
+@layer ui-reset {
+  :where([data-ui-root]) {
+    font-family: var(--ui-font-body);
+    color: var(--ui-color-text-primary);
+    background: var(--ui-color-canvas);
+  }
+
+  :where([data-ui-root] *, [data-ui-root] *::before, [data-ui-root] *::after) {
+    box-sizing: border-box;
+  }
+}

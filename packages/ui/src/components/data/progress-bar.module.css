@@ -1,0 +1,38 @@
+.progress {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--ui-space-sm);
+  min-inline-size: 0;
+  color: var(--ui-color-text-primary);
+}
+
+.label { font-weight: 600; }
+.value { color: var(--ui-color-text-secondary); font-variant-numeric: tabular-nums; }
+
+.track {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  block-size: 0.5rem;
+  border-radius: var(--ui-radius-control);
+  background: var(--ui-color-surface);
+}
+
+.indicator {
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--ui-color-action);
+}
+
+.indicator[data-indeterminate] {
+  inline-size: 40%;
+  animation: ui-progress-indeterminate 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes ui-progress-indeterminate {
+  from { transform: translateX(0); }
+  to { transform: translateX(150%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator { animation: none; }
+}

@@ -1,0 +1,23 @@
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-sm);
+  color: var(--ui-color-text-secondary);
+}
+
+.spinner {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  border: 2px solid var(--ui-color-border);
+  border-block-start-color: var(--ui-color-action);
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+}

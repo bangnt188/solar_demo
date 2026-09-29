@@ -1,0 +1,13 @@
+.card {
+  min-inline-size: 0;
+  padding: var(--ui-space-lg);
+  border: 1px solid var(--ui-color-border);
+  border-radius: var(--ui-radius-control);
+  background: var(--ui-color-surface);
+  color: var(--ui-color-text-primary);
+}
+
+.raised {
+  background: var(--ui-color-surface-raised);
+  box-shadow: var(--ui-shadow-overlay, 0 0.25rem 1rem rgb(0 0 0 / 0.12));
+}

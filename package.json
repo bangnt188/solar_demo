@@ -2,22 +2,37 @@
   "name": "solar-demo",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/ui"
+  ],
   "scripts": {
+    "build:ui": "npm run build --workspace=@solar/ui",
+    "predev": "npm run build:ui",
     "dev": "next dev",
+    "prebuild": "npm run build:ui",
     "build": "next build",
+    "pretypecheck": "npm run build:ui",
     "typecheck": "tsc --noEmit",
-    "test:export": "node --test tests/export.test.mjs"
+    "test:export": "node --test tests/export.test.mjs",
+    "pretest:ui": "npm run build:ui",
+    "test:ui": "node --import tsx --test packages/ui/tests/*.test.ts packages/ui/tests/*.test.tsx"
   },
   "dependencies": {
+    "@base-ui/react": "^1.8.0",
+    "@hookform/resolvers": "^5.9.1",
+    "@solar/ui": "0.1.0",
     "lenis": "1.3.26",
     "next": "16.3.6",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-hook-form": "^7.89.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.0"
   }
 }

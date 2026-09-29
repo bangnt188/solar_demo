@@ -1,0 +1,59 @@
+.choiceField {
+  display: grid;
+  justify-items: start;
+  gap: var(--ui-space-sm);
+  min-inline-size: 0;
+}
+
+.choiceLabel,
+.switchLabel,
+.radioLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-sm);
+  min-block-size: max(var(--ui-control-block-size), 2.75rem);
+
+  color: var(--ui-color-text-primary);
+}
+
+.choiceLabel,
+.switchLabel { cursor: pointer; }
+
+.choiceLabel input:focus-visible,
+.switchLabel input:focus-visible,
+.radioLabel input:focus-visible {
+  outline: 3px solid var(--ui-color-focus);
+  outline-offset: 3px;
+}
+
+.radioGroup {
+  display: grid;
+  gap: var(--ui-space-sm);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-block-end: var(--ui-space-sm);
+  color: var(--ui-color-text-primary);
+  font-weight: 600;
+}
+
+.required,
+.error { color: var(--ui-color-error); }
+
+.options { display: flex; gap: var(--ui-space-md); }
+.vertical .options { flex-direction: column; }
+.horizontal .options { flex-direction: row; flex-wrap: wrap; }
+
+.radioLabel input { accent-color: var(--ui-color-action); }
+.radioLabel:has(input:disabled),
+.choiceLabel:has(input:disabled),
+.switchLabel:has(input:disabled) { color: var(--ui-color-disabled); cursor: not-allowed; }
+
+.description,
+.error { font-size: var(--ui-font-size-sm); }
+.description { color: var(--ui-color-text-secondary); }
+.error { font-weight: 600; }
