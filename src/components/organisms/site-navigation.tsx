@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-export type SiteLink = { label: string; href: string; overviewLabel?: string; children?: readonly { label: string; href: string }[] };
+import type { SiteLink } from "@/types/landing";
 
 type SiteNavigationProps = {
   navLabel: string;

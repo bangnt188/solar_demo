@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ActionLink } from "@/components/atoms/action-link";
-import { imagePath } from "@/config/site";
+import { contentImageSrc as imagePath } from "@/config/site";
 import type { HomeContent } from "@/types/home-content";
 
 export function HeroSection({ content }: { content: HomeContent["hero"] }) {

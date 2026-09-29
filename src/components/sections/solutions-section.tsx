@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/molecules/section-heading";
-import { imagePath } from "@/config/site";
+import { contentImageSrc as imagePath } from "@/config/site";
 import type { HomeContent } from "@/types/home-content";
 
 export function SolutionsSection({ content }: { content: HomeContent["solutions"] }) {

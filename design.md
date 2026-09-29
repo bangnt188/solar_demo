@@ -23,7 +23,7 @@ Build the supplied UI as reusable defaults for the existing site, not as a catal
 | Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx`, `detail-page-screen.tsx`, `service-overview-screen.tsx` | Compose sections and pass content; solution and service details share one template. |
 | Routes | `src/app/(public)/page.tsx`, `(public)/dich-vu/page.tsx`, `(public)/khao-sat/page.tsx`, `(public)/giai-phap/*/page.tsx`, `(public)/dich-vu/*/page.tsx`, and `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
 
-Solar currently imports global tokens and styles from `src/styles/`. During migration, package components use colocated CSS Modules and consume the shared semantic token contract; Solar sections and screens remain app-owned. Avoid duplicated section markup and conflicting token sources.
+Solar imports app-owned global tokens and styles from `src/styles/`. During migration, shared package components use colocated CSS Modules and the semantic token contract; Solar sections and screens remain app-owned. Keep app typography on the existing semantic tokens, avoid conflicting token sources, duplicated shared controls, or duplicated section markup.
 
 ## Component map
 
@@ -45,9 +45,11 @@ Solar currently imports global tokens and styles from `src/styles/`. During migr
 
 ## Reference UI controls
 
-- `@solar/ui` trong `packages/ui/` là Git submodule `component-ui`; các control/field/feedback/navigation dùng chung được công khai qua package, không sao chép vào `src/components/ui/`.
-- `src/features/catalog/` giữ card theo dữ liệu Solar; `src/features/survey/` dùng form adapter và validation của package nhưng giữ hành vi soạn email trong demo. `src/components/` chỉ chứa phần ghép màn hình, section và chrome đặc thù Solar.
-- Hợp đồng prop, theme và state của package xem [docs/ui-system-architecture.md](docs/ui-system-architecture.md); hình tham chiếu nghiệm thu ở `docs/ui-components-reference.png`.
+- `@solar/ui` in `packages/ui/` is the `component-ui` Git submodule; shared controls, fields, feedback, and navigation are public package exports. Do not add duplicate shared implementations to `src/components/ui/`.
+- `src/features/catalog/` owns Solar-specific catalog cards; `src/features/survey/` adapts shared form controls and validation while retaining the demo email-draft behavior. `src/components/` owns Solar composition, sections, and chrome.
+- During migration, existing local `ProjectCard`, `EquipmentCard`, and other UI components remain app-owned until their consumers move to package exports. `Toast` takes `tone`, text, `onDismiss`, and optional duration; hover/focus pauses dismissal. `ConfirmDialog` and `Pagination` use controlled state. `Choice` and `Switch` use native checkbox/radio state; `FeatureCard` owns its favorite mark.
+- `NumberField` accepts controlled `value`/`onValueChange` or `defaultValue`; callback/form values preserve unformatted decimal-comma text and trailing zeros while the visible input groups thousands. Do not convert through floating point or truncate precision.
+- Package prop, theme, and state contracts: [docs/ui-system-architecture.md](docs/ui-system-architecture.md); visual reference: `docs/ui-components-reference.png`.
 
 ## Content and behavior
 
