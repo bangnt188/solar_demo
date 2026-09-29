@@ -1,4 +1,6 @@
 import type { HomeContent } from "@/types/home-content";
+import { solutionPages } from "@/data/content/solutions";
+import { servicePages } from "@/data/content/services";
 
 export const homeContent = {
   hero: {
@@ -30,19 +32,18 @@ export const homeContent = {
     heading: "CHÚNG TÔI LÀM GÌ",
     introduction: "Công ty TNHH Lúa Xanh Đồng Bằng được thành lập với định vị là đối tác thực thi toàn diện trong lĩnh vực điện mặt trời áp mái. Lúa Xanh Đồng Bằng không chỉ là nhà thầu EPC, chúng tôi cung cấp giải pháp tư vấn pháp lý trọn gói. Đội ngũ chuyên trách của chúng tôi am hiểu sâu sắc quy định của EVN, sẵn sàng đại diện chủ đầu tư xử lý toàn bộ các thủ tục phức tạp.",
     items: [
-      { title: "EPC trọn gói", image: "solar-roof.webp", points: ["Tư Vấn & Khảo Sát Hiện Trạng", "Thiết kế kỹ thuật chuyên sâu", "Thi công & Lắp đặt chuẩn hóa", "Cung Cấp Thiết bị", "Vận Hành & Bảo Trì (O&M)"] },
-      { title: "Phân phối và cung ứng thiết bị điện mặt trời.", image: "solar-farm.webp", points: ["Tấm pin năng lượng mặt trời", "Bộ biến tần", "Hệ khung & phụ kiện lắp đặt"] },
-      { title: "Các mô hình tài chính/đầu tư", image: "solar-roof.webp", points: ["Tự sản – tự tiêu", "Cho thuê thiết bị", "DPPA / bán điện trực tiếp"] },
+      { title: servicePages.epc.rowTitle, href: servicePages.epc.href, image: servicePages.epc.image, points: servicePages.epc.points },
+      { title: servicePages.equipmentSupply.rowTitle, href: servicePages.equipmentSupply.href, image: servicePages.equipmentSupply.image, points: servicePages.equipmentSupply.points },
+      { title: servicePages.investmentModels.rowTitle, href: servicePages.investmentModels.href, image: servicePages.investmentModels.image, points: servicePages.investmentModels.points },
     ],
   },
   solutions: {
     heading: "GIẢI PHÁP CHUYÊN BIỆT\nCHO TỪNG NHÓM KHÁCH HÀNG",
-    introduction: "Mỗi giải pháp đều được thiết kế riêng theo nhu cầu thực tế của từng khách hàng. Hãy cho Lúa Xanh Đồng Bằng biết bạn là ai và điều bạn cần. Chúng tôi sẽ giúp bạn tìm ra phương án phù hợp nhất.",
-    actionHref: "/khao-sat/",
+    introduction: "Chọn nhóm khách hàng phù hợp để xem những thông tin cần cân nhắc trước khi khảo sát.",
     items: [
-      { title: "Hộ gia đình", text: "Giảm hóa đơn điện hàng tháng, hệ gọn và an toàn cho mái nhà.", image: "solar-roof.webp", icon: "⌂", actionLabel: "Yêu cầu khảo sát ⟶" },
-      { title: "Hộ kinh doanh vừa & nhỏ", text: "Hiệu quả phụ thuộc vào giờ vận hành. Tính phương án dựa trên hóa đơn điện và khung giờ dùng điện.", image: "solar-farm.webp", icon: "⚙", actionLabel: "Yêu cầu khảo sát ⟶" },
-      { title: "Doanh nghiệp & công nghiệp", text: "Triển khai theo quy trình EPC, có hồ sơ kỹ thuật và hỗ trợ thủ tục đấu nối, PCCC, đo đếm theo quy định.", image: "solar-roof.webp", icon: "▤", actionLabel: "Yêu cầu khảo sát ⟶" },
+      { ...solutionPages.household.card, image: solutionPages.household.image, href: solutionPages.household.href, actionLabel: "Tìm hiểu giải pháp ⟶" },
+      { ...solutionPages.smallBusiness.card, image: solutionPages.smallBusiness.image, href: solutionPages.smallBusiness.href, actionLabel: "Tìm hiểu giải pháp ⟶" },
+      { ...solutionPages.enterprise.card, image: solutionPages.enterprise.image, href: solutionPages.enterprise.href, actionLabel: "Tìm hiểu giải pháp ⟶" },
     ],
   },
   whyUs: {

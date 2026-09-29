@@ -16,11 +16,7 @@ export function MotionRuntime() {
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const desktop = window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine)");
-    // const nativeMacWheel = /Macintosh|Mac OS X/.test(navigator.userAgent);
-    const rows = Array.from(main.querySelectorAll<HTMLElement>('[data-motion-scrub="service"]'));
-    const activeRows = new Set<HTMLElement>();
-    const measuredRows: HTMLElement[] = [];
-    const progresses: number[] = [];
+    const supportsServiceTimeline = CSS.supports("animation-timeline: view(block)") && CSS.supports("animation-range: entry 0% exit 100%");
     const animations = new Map<HTMLElement, Animation>();
     const seen = new WeakSet<HTMLElement>();
     const targets = main.querySelectorAll<HTMLElement>("[data-motion]");
@@ -28,8 +24,6 @@ export function MotionRuntime() {
     const heroVisual = main.querySelector<HTMLElement>(".hero-visual");
     let lenis: Lenis | null = null;
     let frameId = 0;
-    let ticking = false;
-    let dirty = true;
     let disposed = false;
     let importing = false;
     let importToken = 0;
@@ -39,15 +33,14 @@ export function MotionRuntime() {
       seen.add(element);
       if (reduced.matches || document.hidden) return;
 
-      const bounds = element.getBoundingClientRect();
-      const distance = hero || direction === "left" || direction === "right"
-        ? window.innerWidth + bounds.width
-        : window.innerHeight + bounds.height;
+      const small = window.matchMedia("(max-width: 700px)").matches;
+      const rootStyle = getComputedStyle(document.documentElement);
+      const distance = hero ? small ? 24 : 48 : Number.parseFloat(rootStyle.getPropertyValue("--motion-distance")) || 32;
       const x = direction === "left" ? -distance : direction === "right" ? distance : 0;
       const y = direction === "up" || direction === "fade" ? distance : 0;
       const order = Number(element.dataset.motionOrder);
-      const delay = hero ? 0 : Number.isFinite(order) ? Math.min(210, Math.max(0, order * 70)) : 0;
-      const durationValue = getComputedStyle(document.documentElement).getPropertyValue(hero ? "--motion-hero" : "--motion-reveal").trim();
+      const delay = hero ? 0 : Number.isFinite(order) ? Math.min(90, Math.max(0, order * 30)) : 0;
+      const durationValue = rootStyle.getPropertyValue(hero ? "--motion-hero" : "--motion-reveal").trim();
       const duration = (Number.parseFloat(durationValue) || 2) * (durationValue.endsWith("ms") ? 1 : 1000);
       // Individual translate keeps CSS transform free for interactive card hover states.
       const animation = element.animate(
@@ -115,55 +108,22 @@ export function MotionRuntime() {
     if (directArrival) skipHashTarget();
 
     for (const element of targets) {
+      if (supportsServiceTimeline && element.hasAttribute("data-motion-scroll")) {
+        seen.add(element);
+        continue;
+      }
       if (seen.has(element)) continue;
       if (reduced.matches || (directArrival && inView(element))) seen.add(element);
       else revealObserver.observe(element);
     }
 
-    const updateServices = () => {
-      if (reduced.matches || document.hidden) return;
-      const height = window.innerHeight;
-      let count = 0;
-      for (const row of activeRows) {
-        measuredRows[count] = row;
-        progresses[count] = Math.max(0, Math.min(1, (0.9 * height - row.getBoundingClientRect().top) / (0.45 * height)));
-        count++;
-      }
-      for (let index = 0; index < count; index++) {
-        const value = String(progresses[index]);
-        if (measuredRows[index].style.getPropertyValue("--service-progress") !== value) {
-          measuredRows[index].style.setProperty("--service-progress", value);
-        }
-      }
-      measuredRows.length = 0;
-      progresses.length = 0;
-    };
 
     const tick = (time: number) => {
       frameId = 0;
       if (document.hidden || disposed) return;
-      ticking = true;
       lenis?.raf(time);
-      if (dirty) {
-        dirty = false;
-        updateServices();
-      }
-      ticking = false;
       if (lenis) frameId = requestAnimationFrame(tick);
     };
-    const schedule = () => {
-      dirty = true;
-      if (!ticking && !frameId && !document.hidden) frameId = requestAnimationFrame(tick);
-    };
-    const serviceObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        const row = entry.target as HTMLElement;
-        if (entry.isIntersecting) activeRows.add(row);
-        else activeRows.delete(row);
-      }
-      schedule();
-    }, { rootMargin: "20% 0px 20% 0px" });
-    for (const row of rows) serviceObserver.observe(row);
 
     const stopLenis = () => {
       ++importToken;
@@ -173,7 +133,6 @@ export function MotionRuntime() {
       delete document.documentElement.dataset.lenisActive;
       if (frameId) cancelAnimationFrame(frameId);
       frameId = 0;
-      if (!disposed) schedule();
     };
     const syncLenis = () => {
       if (disposed || reduced.matches || !desktop.matches || document.hidden) {
@@ -196,7 +155,7 @@ export function MotionRuntime() {
           stopInertiaOnNavigate: true,
         });
         document.documentElement.dataset.lenisActive = "true";
-        schedule();
+        frameId = requestAnimationFrame(tick);
       }).catch(() => { if (token === importToken) importing = false; }); // Native scrolling remains available if loading fails.
     };
 
@@ -207,9 +166,6 @@ export function MotionRuntime() {
         for (const element of targets) seen.add(element);
         for (const animation of animations.values()) animation.cancel();
         animations.clear();
-        for (const row of rows) row.style.removeProperty("--service-progress");
-      } else {
-        schedule();
       }
       syncLenis();
     };
@@ -219,7 +175,6 @@ export function MotionRuntime() {
         for (const element of targets) {
           if (inView(element)) skipReveal(element);
         }
-        schedule();
       } else {
         heroEntered.current = true;
         for (const animation of animations.values()) animation.cancel();
@@ -243,12 +198,9 @@ export function MotionRuntime() {
         for (const element of targets) {
           if (inView(element)) skipReveal(element);
         }
-        schedule();
       });
     };
 
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
     window.addEventListener("hashchange", onHistoryArrival);
     window.addEventListener("popstate", onHistoryArrival);
     main.addEventListener("focusin", onFocus);
@@ -256,16 +208,10 @@ export function MotionRuntime() {
     reduced.addEventListener("change", onReducedChange);
     desktop.addEventListener("change", syncLenis);
     syncLenis();
-    schedule();
 
     return () => {
       disposed = true;
       revealObserver.disconnect();
-      serviceObserver.disconnect();
-      for (const animation of animations.values()) animation.cancel();
-      for (const row of rows) row.style.removeProperty("--service-progress");
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
       window.removeEventListener("hashchange", onHistoryArrival);
       window.removeEventListener("popstate", onHistoryArrival);
       main.removeEventListener("focusin", onFocus);

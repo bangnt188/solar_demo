@@ -20,8 +20,8 @@ Build the supplied UI as reusable defaults for the existing site, not as a catal
 | Molecules | `src/components/molecules/section-heading.tsx`, `savings-estimator.tsx`, `faq-disclosure.tsx`, `comparison-panel.tsx`, `process-step.tsx`, `testimonial-card.tsx` | Compose atoms or semantic elements behind typed content props. Stateful behavior belongs only to the estimator/disclosure. |
 | Organisms | `src/components/organisms/announcement-bar.tsx`, `conversion-dock.tsx`, `site-chrome.tsx`; `src/features/survey/survey-form.tsx` | Reusable global/form UI. Brand, nav, announcement, footer, form labels/options, email, and destinations arrive through props from content data. |
 | Sections | `src/components/sections/*-section.tsx` | Page-level groups assembled from molecules/organisms; accept typed data and child slots. No route-level duplicate markup. |
-| Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx` | Compose sections and pass props. Own screen order/layout, not reusable primitives or campaign copy. |
-| Routes | `src/app/(public)/page.tsx`, `src/app/(public)/khao-sat/page.tsx`, `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
+| Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx`, `detail-page-screen.tsx`, `service-overview-screen.tsx` | Compose sections and pass content; solution and service details share one template. |
+| Routes | `src/app/(public)/page.tsx`, `(public)/dich-vu/page.tsx`, `(public)/khao-sat/page.tsx`, `(public)/giai-phap/*/page.tsx`, `(public)/dich-vu/*/page.tsx`, and `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
 
 Solar currently imports global tokens and styles from `src/styles/`. During migration, package components use colocated CSS Modules and consume the shared semantic token contract; Solar sections and screens remain app-owned. Avoid duplicated section markup and conflicting token sources.
 
@@ -39,13 +39,21 @@ Solar currently imports global tokens and styles from `src/styles/`. During migr
 | C-08 Testimonial | `TestimonialSection` maps typed entries to `TestimonialCard` molecules | It renders nothing for an empty list. No approved testimonial data exists; do not fabricate a quote or attribution. |
 | C-09 Lead form | `SurveyScreen` composes the prop-driven `SurveyForm` feature | Existing survey route; retains five required fields and opens an email draft. |
 | C-10 FAQ | `FaqSection` maps content to native `FaqDisclosure` molecules | `HomeScreen`; keyboard-accessible `<details>/<summary>`. |
-| Breadcrumb | `src/components/molecules/breadcrumbs.tsx` nhận danh sách label/href; trạng thái trang hiện tại dùng `aria-current` | Route dự án/thiết bị/khảo sát; dữ liệu từ `src/lib/seo.ts` cũng dùng cho `BreadcrumbList`, không thêm JS client. |
+| Breadcrumb | `src/components/molecules/breadcrumbs.tsx` receives label/href items; the current page uses `aria-current` | Project, equipment, service, and survey routes; `src/lib/seo.ts` uses the same items for `BreadcrumbList` without client-side JS. |
 | C-11 Floating CTA | Right-fixed vertical stack of Zalo, phone, and survey icon actions | Global `RootLayout`; survey is active. Zalo and phone render disabled until verified destinations are supplied. |
+| C-12 Service overview | `ServiceOverviewScreen` composes a service hero and four `ServiceStage` entries from typed content | `/dich-vu/`; hero and process photos use existing demo assets. The process line starts at the hero photo edge, crosses the stage images, and stops inside the last image; mobile follows the numbered-step gutter instead. Stages 2 and 4 retain their tinted surface, rounded corners, and soft shadow on mobile as well as desktop. |
+
+## Reference UI controls
+
+- `@solar/ui` trong `packages/ui/` là Git submodule `component-ui`; các control/field/feedback/navigation dùng chung được công khai qua package, không sao chép vào `src/components/ui/`.
+- `src/features/catalog/` giữ card theo dữ liệu Solar; `src/features/survey/` dùng form adapter và validation của package nhưng giữ hành vi soạn email trong demo. `src/components/` chỉ chứa phần ghép màn hình, section và chrome đặc thù Solar.
+- Hợp đồng prop, theme và state của package xem [docs/ui-system-architecture.md](docs/ui-system-architecture.md); hình tham chiếu nghiệm thu ở `docs/ui-components-reference.png`.
 
 ## Content and behavior
 
-- `src/data/content/home.ts` owns content for the sections currently composed by `HomeScreen`; the calculator, comparison, and process examples are deliberately not included in the screen data.
-- `src/data/content/site-chrome.ts` owns global brand, nav, announcement, footer, and conversion destinations.
+- `src/data/content/solutions.ts` owns the three solution details shared with home cards; `src/data/content/services.ts` owns the three service details shared with service rows and navigation.
+- `src/data/content/service-overview.ts` owns the overview hero and four process stages. Timing, technical, and warranty copy comes from the user-provided image and remains pending real-world confirmation.
+- `src/data/content/site-chrome.ts` owns global brand, nav, announcement, footer, and conversion destinations. Desktop Giải pháp/Dịch vụ menus open on hover/focus and close on page scroll; mobile uses nested native disclosures that both collapse on page scroll.
 - `src/data/content/survey.ts` owns survey-screen copy and form labels/options. `SurveyForm` receives its content as props.
 - The reusable estimator accepts assumptions and explanatory copy as props. The sample's illustrative 82% savings and 1.36 kWp-per-million-bill assumptions are not a quote or guarantee.
 - The survey form is not presented as server-side lead capture. No form submission is claimed unless a real endpoint is added.
@@ -55,9 +63,9 @@ Solar currently imports global tokens and styles from `src/styles/`. During migr
 
 ## Motion contract
 
-- `src/app/(public)/layout.tsx` gắn `MotionRuntime` một lần cho tất cả route công khai. Hero và các phần tử `data-motion` bắt đầu ngoài viewport, rồi trượt vào trong khoảng 2 giây; dịch vụ dùng `data-motion-scrub="service"` để ảnh/chữ đi từ ngoài hai mép theo scroll và đảo chiều. Nội dung server-render trước khi observer hoạt động.
+- `src/app/(public)/layout.tsx` gắn `MotionRuntime` một lần cho route công khai. Hero entrance 760ms; target `data-motion` 520ms, quãng dịch 32px desktop / 16px mobile. Services dùng CSS view timeline: từng ảnh/chữ vào qua bốn nấc (0/12/24/36% timeline của phần tử), giữ nguyên vị trí để đọc cả ba hàng; lớp bọc chỉ rút ra theo timeline chung của nhóm ở 89–100% khi hàng cuối gần rời viewport. Cuộn ngược đảo cả hai chuyển động, không chạy JS theo từng frame; reduced-motion giữ nội dung tĩnh.
 - `PartnersMarquee` giữ một hàng tên đối tác SSR, chỉ nhân đôi hàng thứ hai sau hydration khi đủ chỗ chạy. Tạm dừng tự động khi hover/chạm, tab ẩn hoặc ngoài viewport; không có nút điều khiển. Khi không có JS hoặc `prefers-reduced-motion`, tên vẫn hiện tĩnh.
-- `src/styles/tokens.css` định nghĩa motion/elevation; `src/styles/components.css` áp dụng hover card, FAQ, CTA và reduced-motion. Lenis chỉ chạy trên desktop có chuột (≥1024px, hover/pointer fine); wheel dùng native trên macOS, còn nền tảng khác dùng `smoothWheel`, `wheelMultiplier: 0.8`, `lerp: 0.1`. `syncTouch: false`, RAF do runtime quản lý; browser không cung cấp loại thiết bị wheel đáng tin cậy nên không phân loại trackpad bằng số delta. Mobile dùng native scroll. Hợp đồng xem `docs/animation-plan.md`.
+- `src/styles/tokens.css` định nghĩa motion/elevation; `src/styles/components.css` áp dụng hover card, FAQ, CTA, view-timeline services và reduced-motion. Lenis RAF chỉ phục vụ desktop scrolling, không điều khiển section animation. Hợp đồng xem `docs/animation-plan.md`.
 
 
 ## Verification

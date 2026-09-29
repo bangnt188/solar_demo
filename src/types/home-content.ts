@@ -15,13 +15,12 @@ export type HomeContent = {
   services: {
     heading: string;
     introduction: string;
-    items: { title: string; image: string; points: string[] }[];
+    items: { title: string; href: string; image: string; points: string[] }[];
   };
   solutions: {
     heading: string;
     introduction: string;
-    actionHref: string;
-    items: { title: string; text: string; image: string; icon: string; actionLabel: string }[];
+    items: { title: string; text: string; image: string; icon: string; href: string; actionLabel: string }[];
   };
   whyUs: {
     heading: string;

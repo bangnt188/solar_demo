@@ -1,3 +1,6 @@
+import { servicePages } from "@/data/content/services";
+import { solutionPages } from "@/data/content/solutions";
+
 export const siteChromeContent = {
   announcement: {
     lead: "Giải pháp điện mặt trời:",
@@ -14,8 +17,18 @@ export const siteChromeContent = {
     label: "Điều hướng chính",
     items: [
       { label: "Trang chủ", href: "/" },
-      { label: "Giải pháp", href: "/#giai-phap" },
-      { label: "Dịch vụ", href: "/#dich-vu" },
+      {
+        label: "Giải pháp",
+        href: "/#giai-phap",
+        overviewLabel: "Tổng quan giải pháp",
+        children: Object.values(solutionPages).map(({ card, href }) => ({ label: card.title, href })),
+      },
+      {
+        label: "Dịch vụ",
+        href: "/dich-vu/",
+        overviewLabel: "Tổng quan dịch vụ",
+        children: Object.values(servicePages).map(({ rowTitle: label, href }) => ({ label, href })),
+      },
       { label: "Dự án", href: "/du-an/" },
       { label: "Thiết bị", href: "/thiet-bi/" },
     ],
@@ -34,6 +47,7 @@ export const siteChromeContent = {
       {
         title: "Hệ thống & Dịch vụ",
         items: [
+          { label: "Quy trình dịch vụ", href: "/dich-vu/" },
           { label: "Thiết bị điện mặt trời", href: "/thiet-bi/" },
           { label: "Dự án thực tế", href: "/du-an/" },
           { label: "Câu hỏi thường gặp", href: "/#faq" },

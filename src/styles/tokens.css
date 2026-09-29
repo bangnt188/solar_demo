@@ -16,7 +16,10 @@
   --surface-container-low: #f2f3ff;
   --surface-container-high: #e2e7ff;
   --surface-container-lowest: #ffffff;
-  --color-tertiary: #004319;
+  --color-success: #005a2b;
+  --color-success-surface: #e9f6ee;
+  --color-error: #8a1c13;
+  --color-error-surface: #fcecea;
   --color-tertiary-fixed: #7ffc97;
   --button-primary-bg: var(--color-primary);
   --button-primary-bg-hover: var(--color-primary-hover);
@@ -36,10 +39,12 @@
   --space-xl: 2.5rem;
   --radius-card: 1rem;
   --radius-control: 0.5rem;
-  --font-size-label: 0.8125rem;
-  --font-size-body: 1rem;
-  --font-size-title: 1.125rem;
-  --font-size-headline: clamp(1.75rem, 3.5vw, 3rem);
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
   --motion-ease-out: cubic-bezier(.16, 1, .3, 1);
   --motion-fast: 160ms;
   --motion-medium: 280ms;

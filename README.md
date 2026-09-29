@@ -31,7 +31,7 @@ Các khu vực còn chưa triển khai (`src/app/admin`, `src/app/api`, `src/com
 2. Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**. Repo admin vào **Settings → Environments → github-pages → Deployment branches/tags** thêm `dev` (giữ `main`); nếu không, workflow bị chặn trước khi build.
 3. Repo `component-ui` riêng tư cần Actions secret `COMPONENT_UI_READ_TOKEN` trong `solar_demo` với quyền **Contents: Read** trên **cả `solar_demo` và `component-ui`** (hoặc GitHub App token có cùng quyền). `actions/checkout` dùng cùng token cho repo cha và submodule trước `npm ci`; quyền Git trên máy cá nhân không tự cấp quyền cho GitHub Actions.
 4. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
-5. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`.
+5. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`, `/dich-vu/` cùng ba trang giải pháp và ba trang dịch vụ.
 
 Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo. Trang `/khao-sat/` tạo bản nháp email từ thông tin người dùng điền; người dùng phải tự xác nhận gửi trong ứng dụng email. Website không tự gửi hoặc lưu dữ liệu khảo sát. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
 
@@ -40,7 +40,7 @@ Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, 
 Xem [review điểm nghẽn, cấu trúc thư mục/URL và bằng chứng kiểm chứng](docs/seo-aeo-review.md), cùng [nguồn chính thức Google/OpenAI/Anthropic](docs/search-evidence.md).
 
 - `src/config/site.ts` nhận `NEXT_PUBLIC_SITE_URL` (URL HTTPS công khai, bao gồm prefix nếu có); mặc định giữ `https://bangnt188.github.io/solar_demo/`. Link Next và ảnh dùng cùng base path.
-- `src/lib/seo.ts` quản lý metadata riêng cho 4 trang, canonical, Open Graph/Twitter, schema và breadcrumb. `src/app/robots.ts`, `src/app/sitemap.ts` xuất file tĩnh khi build.
+- `src/lib/seo.ts` quản lý metadata riêng cho trang chủ, danh mục, khảo sát và bảy trang giải pháp/dịch vụ; canonical, Open Graph/Twitter, schema và breadcrumb. `src/app/robots.ts`, `src/app/sitemap.ts` xuất file tĩnh khi build.
 - Mặc định **noindex** cho demo/preview; sitemap không có URL. Workflow Pages cố định `SEO_INDEXABLE=false`. `robots.txt` cho phép crawl để bot đọc noindex; file robots trong `/solar_demo/` không thay thế robots ở root host.
 - Chỉ đặt `SEO_INDEXABLE=true` cùng URL chính thức sau khi xác minh nội dung và ảnh. Trang khảo sát vẫn noindex; sitemap xuất bản chỉ chứa trang chủ/dự án/thiết bị. Công tắc này không tự biến dữ liệu mẫu thành nội dung đã được duyệt.
 - Không thêm `llms.txt`, FAQ rich-result schema hoặc thông tin giá/đánh giá/doanh nghiệp suy đoán. Hai ảnh minh họa đã chuyển sang WebP lossless; không đổi nội dung hình.

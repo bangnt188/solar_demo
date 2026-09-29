@@ -11,11 +11,13 @@ export function SolutionsSection({ content }: { content: HomeContent["solutions"
         <SectionHeading title={content.heading} description={content.introduction} />
         <div className="solution-grid" data-motion="up">
           {content.items.map((solution) => (
-            <article className="solution-card" key={solution.title}>
-              <div className="solution-image"><Image src={imagePath(solution.image)} alt={`Hình minh họa: ${solution.title}`} fill sizes="(max-width: 760px) 100vw, 33vw" /></div>
-              <span className="solution-icon" aria-hidden="true">{solution.icon}</span>
-              <div className="solution-copy"><h3>{solution.title}</h3><p>{solution.text}</p><Link href={content.actionHref}>{solution.actionLabel}</Link></div>
-            </article>
+            <Link className="solution-card-link" href={solution.href} key={solution.title}>
+              <article className="solution-card">
+                <div className="solution-image"><Image src={imagePath(solution.image)} alt="" fill sizes="(max-width: 760px) 100vw, 33vw" /></div>
+                <span className="solution-icon" aria-hidden="true">{solution.icon}</span>
+                <div className="solution-copy"><h3>{solution.title}</h3><p>{solution.text}</p><span className="solution-card-action">{solution.actionLabel}</span></div>
+              </article>
+            </Link>
           ))}
         </div>
       </div>
