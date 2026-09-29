@@ -122,6 +122,8 @@ Props dùng chung có một ý nghĩa:
 - `disabled` chặn tương tác và không đưa giá trị vào submit; `readOnly` cho phép đọc/focus nhưng không sửa.
 - `required`, `description`, `error`, `name`, `id` và native constraint giữ nghĩa chuẩn của chúng.
 
+Với field có label phía trên, nội dung grid được căn đầu; thông báo lỗi vẫn nằm trong flow và không làm input/select của field bên cạnh lệch trục dọc khi cùng hàng.
+
 Hợp đồng minh họa (tên TypeScript export chính xác được hoàn thiện khi triển khai):
 
 ```ts
