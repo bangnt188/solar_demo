@@ -2,6 +2,12 @@
 
 Tài liệu này mô tả cách compose UI riêng của website Solar. Kiến trúc bộ chuẩn React dùng lại giữa các dự án, theme/token và contracts của package được quy định tại [docs/ui-system-architecture.md](docs/ui-system-architecture.md). Quy tắc CSS dùng chung nằm tại [docs/css-conventions.md](docs/css-conventions.md).
 
+## UI component reference
+
+![Bản thiết kế tham chiếu UI Components với các trạng thái control, field, feedback, navigation, data và layout](docs/ui-components-reference.png)
+
+Ảnh gốc 1312 × 1199 px là chuẩn nghiệm thu giao diện cho `@solar/ui` trong repo `component-ui`; các ô chứa state minh họa (focus, disabled, loading, open). Bản preview của package phải hiển thị component thật và cho phép kiểm tra tương tác; không thay UI bằng ảnh tĩnh. Quy tắc responsive và accessibility vẫn áp dụng ở kích thước nhỏ hơn ảnh.
+
 ## Goal
 
 Build the supplied UI as reusable defaults for the existing site, not as a catalog/showcase page. Keep routes and content in their existing owners. Composition runs upward through atoms → molecules → organisms → sections → screens; pages pass data/children and do not contain repeated UI implementation.

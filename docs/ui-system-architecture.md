@@ -17,6 +17,8 @@ Xây dựng một package UI có version cho các dự án React web responsive,
 
 Tên package và registry riêng là cấu hình phát hành, sẽ điền khi tổ chức chọn nơi lưu package. Mặc định dùng registry riêng để tránh công khai package nội bộ. Tài liệu này không tạo credentials hay phát hành package.
 
+Ảnh nghiệm thu cho thư viện: [UI Components reference](ui-components-reference.png) (1312 × 1199). Đây là ảnh chuẩn cho light/comfortable: Primary `#004AAD`, Accent `#FEBB3C`, success `#005A2B`, error `#8A1C13`, surface `#f2f3ff`, canvas `#faf8ff`. Preview của repo `component-ui` phải dùng chính React exports (không phải ảnh dựng tĩnh); trạng thái keyboard, hover, disabled, busy và popup phải hoạt động, kể cả ở viewport mobile. Các màu chữ/trạng thái phải giữ độ tương phản và dark theme có thể dùng sắc độ khác ảnh để đọc được.
+
 ## Quyền sở hữu và chiều phụ thuộc
 
 ```text
@@ -47,12 +49,12 @@ Atomic Design mô tả độ sâu composition, không bắt buộc mỗi khái n
 packages/ui/           # Git submodule: bangnt188/component-ui, đồng thời là npm workspace @solar/ui
   src/
     tokens/          # tên token, kiểu theme và entry point theme
-    basic/           # Button, ButtonGroup và control HTML semantic
+    basic/           # Button, ButtonGroup, Input/Select/Checkbox/Switch, Qr, Loading
     components/
       layout/        # Stack, Grid, Container, Divider
       fields/        # TextField, PasswordField, TextareaField, SelectField,
-                     # ComboboxField, NumberField, DecimalField, CheckboxField,
-                     # RadioGroupField, SwitchField
+                     # ComboboxField, NumberField, DecimalField, DateField,
+                     # ColorField, UploadField, CheckboxField, RadioGroupField, SwitchField
       feedback/      # Alert, Toast, LoadingIndicator, EmptyState,
                      # ConfirmDialog, Modal, Drawer, Popover
       navigation/    # Tabs, Breadcrumbs, Pagination, DropdownMenu
@@ -72,7 +74,7 @@ Repo [component-ui](https://github.com/bangnt188/component-ui) sở hữu source
 
 Không tạo song song `atoms/` và `ui/` cùng chứa một loại control. Mỗi trách nhiệm có một tên công khai và một implementation. Không bọc primitive bằng component chuyển tiếp props đơn thuần; chỉ tạo Basic khi nó tạo được seam ổn định cho style, accessibility hoặc tương thích.
 
-Những primitive phổ biến từ checklist tham chiếu đã thiếu (Avatar, ButtonGroup, ProgressBar, Modal, Drawer, Popover, DropdownMenu, PasswordField) có implementation React trong package. Các widget mang nghiệp vụ hoặc nặng phụ thuộc (office/PDF viewer, rich editor, branch/worklist, tree combo) không được nhân bản từ package Svelte tham chiếu. File/date/time có thể dùng native `Input`/`TextField` và ứng dụng tự quyết định validation; `Badge` là nhãn hiển thị, không thay thế state của tag editor.
+Những primitive phổ biến từ checklist tham chiếu đã thiếu (Avatar, ButtonGroup, ProgressBar, Modal, Drawer, Popover, DropdownMenu, PasswordField) có implementation React trong package. Ảnh nghiệm thu bổ sung QR thực từ chuỗi dữ liệu, loading spinner/trạng thái bất đồng bộ, DateField, ColorField và UploadField với selection/removal thực. Các widget mang nghiệp vụ hoặc nặng phụ thuộc (office/PDF viewer, rich editor, branch/worklist, tree combo) không được nhân bản từ package Svelte tham chiếu. File/date/time dùng native `Input` khi đủ semantics; `Badge` là nhãn hiển thị, không thay thế state của tag editor.
 
 ## Hợp đồng token và theme
 

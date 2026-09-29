@@ -21,6 +21,8 @@ Thay đổi UI chung phải commit và push trong `component-ui` trước, rồi
 
 Package có các control phổ biến `Avatar`, `ButtonGroup`, `ProgressBar`, `Modal`, `Drawer`, `Popover`, `DropdownMenu`, `PasswordField` và adapter `FormPasswordField` bên cạnh bộ field/navigation đã có. Popup/menu nhận `open`/`defaultOpen`/`onOpenChange`, không giữ hai bản open state; app tiếp tục sở hữu dữ liệu, quyền và hành động nghiệp vụ. `NumberField` định dạng số hữu hạn theo locale và dùng hidden native input cho form; `DecimalField` giữ chuỗi canonical chính xác. Xem [hợp đồng component/state](docs/ui-system-architecture.md).
 
+Ảnh nghiệm thu component nằm ở [design.md](design.md) và [docs/ui-components-reference.png](docs/ui-components-reference.png). Chạy `npm run preview:ui --workspace=@solar/ui` để xem các component thật và thử trạng thái trong thư viện độc lập; bản preview này không thay trang sản phẩm của Solar.
+
 Các khu vực còn chưa triển khai (`src/app/admin`, `src/app/api`, `src/components/admin`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`) vẫn chỉ là placeholders; không có route admin/API trên Pages.
 
 ## GitHub Pages
