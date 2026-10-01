@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T13:08:52.087766+00:00",
+  "title": "Design System: Lúa Xanh Đồng Bằng",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "displayName": "primary",
+        "role": "primary",
+        "tonalRamp": [
+          "#040051",
+          "#000871",
+          "#002f91",
+          "#064eb1",
+          "#2b6dd3",
+          "#4a8df5",
+          "#78bdff",
+          "#a7efff"
+        ]
+      },
+      "primary-hover": {
+        "displayName": "primary-hover",
+        "role": "primary",
+        "tonalRamp": [
+          "#010049",
+          "#001268",
+          "#003387",
+          "#1651a7",
+          "#356fc8",
+          "#538eea",
+          "#80beff",
+          "#b0f0ff"
+        ]
+      },
+      "primary-dark": {
+        "displayName": "primary-dark",
+        "role": "primary",
+        "tonalRamp": [
+          "#00003e",
+          "#001a5c",
+          "#03377a",
+          "#235499",
+          "#4071ba",
+          "#5d90db",
+          "#8abfff",
+          "#baf1ff"
+        ]
+      },
+      "primary-light": {
+        "displayName": "primary-light",
+        "role": "primary",
+        "tonalRamp": [
+          "#070c11",
+          "#1d2228",
+          "#363b41",
+          "#50565d",
+          "#6c7279",
+          "#8a9097",
+          "#b8bec6",
+          "#e8eff7"
+        ]
+      },
+      "secondary": {
+        "displayName": "secondary",
+        "role": "secondary",
+        "tonalRamp": [
+          "#2b0000",
+          "#490000",
+          "#672300",
+          "#864000",
+          "#a65e00",
+          "#c67d00",
+          "#f9ac3c",
+          "#ffdd73"
+        ]
+      },
+      "secondary-hover": {
+        "displayName": "secondary-hover",
+        "role": "secondary",
+        "tonalRamp": [
+          "#2d0000",
+          "#4b0000",
+          "#6a1e00",
+          "#8a3d00",
+          "#aa5a00",
+          "#cb7900",
+          "#fea84b",
+          "#ffd97e"
+        ]
+      },
+      "secondary-light": {
+        "displayName": "secondary-light",
+        "role": "secondary",
+        "tonalRamp": [
+          "#0f0a05",
+          "#262119",
+          "#403932",
+          "#5b544c",
+          "#777068",
+          "#958e85",
+          "#c4bcb3",
+          "#f5ede3"
+        ]
+      },
+      "secondary-subtle": {
+        "displayName": "secondary-subtle",
+        "role": "secondary",
+        "tonalRamp": [
+          "#0f0a04",
+          "#262118",
+          "#3f3a30",
+          "#5a544b",
+          "#777166",
+          "#958e83",
+          "#c3bdb1",
+          "#f5eee2"
+        ]
+      },
+      "text-primary": {
+        "displayName": "text-primary",
+        "role": "neutral",
+        "tonalRamp": [
+          "#030b1a",
+          "#172233",
+          "#2f3b4e",
+          "#49566a",
+          "#657288",
+          "#8290a6",
+          "#b0bfd6",
+          "#e0f0ff"
+        ]
+      },
+      "text-secondary": {
+        "displayName": "text-secondary",
+        "role": "neutral",
+        "tonalRamp": [
+          "#020b1c",
+          "#152235",
+          "#2d3b50",
+          "#47566c",
+          "#63738a",
+          "#8090a8",
+          "#aebfd8",
+          "#def0ff"
+        ]
+      },
+      "border": {
+        "displayName": "border",
+        "role": "neutral",
+        "tonalRamp": [
+          "#080b10",
+          "#1e2228",
+          "#363b41",
+          "#51565c",
+          "#6d7279",
+          "#8a9097",
+          "#b8bec6",
+          "#e9eff7"
+        ]
+      },
+      "surface": {
+        "displayName": "surface",
+        "role": "neutral",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#202223",
+          "#393b3c",
+          "#545557",
+          "#707273",
+          "#8d8f91",
+          "#bcbec0",
+          "#edeff1"
+        ]
+      },
+      "background": {
+        "displayName": "background",
+        "role": "neutral",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#222222",
+          "#3a3a3a",
+          "#555555",
+          "#717171",
+          "#8f8f8f",
+          "#bebebe",
+          "#eeeeee"
+        ]
+      },
+      "success": {
+        "displayName": "success",
+        "role": "feedback",
+        "tonalRamp": [
+          "#001800",
+          "#003300",
+          "#004f00",
+          "#006c10",
+          "#008b32",
+          "#24aa51",
+          "#61db7f",
+          "#95ffaf"
+        ]
+      },
+      "success-surface": {
+        "displayName": "success-surface",
+        "role": "feedback",
+        "tonalRamp": [
+          "#050d09",
+          "#1b241f",
+          "#333d37",
+          "#4d5852",
+          "#69756e",
+          "#87938b",
+          "#b5c1ba",
+          "#e5f2ea"
+        ]
+      },
+      "error": {
+        "displayName": "error",
+        "role": "feedback",
+        "tonalRamp": [
+          "#330000",
+          "#540000",
+          "#750000",
+          "#96291e",
+          "#b8493b",
+          "#da6858",
+          "#ff9785",
+          "#ffc8b4"
+        ]
+      },
+      "error-surface": {
+        "displayName": "error-surface",
+        "role": "feedback",
+        "tonalRamp": [
+          "#120807",
+          "#2a1e1d",
+          "#433736",
+          "#5f5250",
+          "#7c6e6c",
+          "#9a8b8a",
+          "#c9bab8",
+          "#faeae8"
+        ]
+      },
+      "canva-orange": {
+        "displayName": "canva-orange",
+        "role": "secondary",
+        "tonalRamp": [
+          "#300000",
+          "#4f0000",
+          "#6e1800",
+          "#8e3800",
+          "#af5700",
+          "#d07600",
+          "#ffa538",
+          "#ffd670"
+        ]
+      },
+      "ui-accent": {
+        "displayName": "ui-accent",
+        "role": "secondary",
+        "tonalRamp": [
+          "#280000",
+          "#450800",
+          "#632800",
+          "#814500",
+          "#a16200",
+          "#c18100",
+          "#f3b02c",
+          "#ffe169"
+        ]
+      },
+      "ui-surface": {
+        "displayName": "ui-surface",
+        "role": "neutral",
+        "tonalRamp": [
+          "#0a0a12",
+          "#202129",
+          "#393a43",
+          "#54545e",
+          "#70717b",
+          "#8d8e99",
+          "#bcbdc8",
+          "#ecedf9"
+        ]
+      },
+      "ui-text-primary": {
+        "displayName": "ui-text-primary",
+        "role": "neutral",
+        "tonalRamp": [
+          "#050a1b",
+          "#192135",
+          "#313a4f",
+          "#4b556c",
+          "#677189",
+          "#848fa8",
+          "#b2bed8",
+          "#e2efff"
+        ]
+      },
+      "ui-text-secondary": {
+        "displayName": "ui-text-secondary",
+        "role": "neutral",
+        "tonalRamp": [
+          "#080a15",
+          "#1e212c",
+          "#373a46",
+          "#515562",
+          "#6d717f",
+          "#8b8e9d",
+          "#b9bdcc",
+          "#eaeefe"
+        ]
+      },
+      "ui-border": {
+        "displayName": "ui-border",
+        "role": "neutral",
+        "tonalRamp": [
+          "#090a14",
+          "#1f212c",
+          "#373a46",
+          "#525461",
+          "#6e717e",
+          "#8c8e9c",
+          "#babdcc",
+          "#eaeefd"
+        ]
+      },
+      "ui-error": {
+        "displayName": "ui-error",
+        "role": "feedback",
+        "tonalRamp": [
+          "#3b0000",
+          "#5e0000",
+          "#800000",
+          "#a20501",
+          "#c53629",
+          "#e95948",
+          "#ff8a76",
+          "#ffbba5"
+        ]
+      },
+      "ui-disabled": {
+        "displayName": "ui-disabled",
+        "role": "neutral",
+        "tonalRamp": [
+          "#080b12",
+          "#1e212a",
+          "#373a43",
+          "#51555f",
+          "#6d717c",
+          "#8b8f9a",
+          "#b9bec9",
+          "#eaeefa"
+        ]
+      },
+      "ui-disabled-surface": {
+        "displayName": "ui-disabled-surface",
+        "role": "neutral",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#212124",
+          "#3a3a3d",
+          "#555558",
+          "#717175",
+          "#8f8f92",
+          "#bdbdc1",
+          "#eeeef2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "body",
+        "purpose": "Vai trò được mô tả trong design-v2.md; font chưa được xác minh đã tải."
+      },
+      "display": {
+        "displayName": "display",
+        "purpose": "Vai trò được mô tả trong design-v2.md; font chưa được xác minh đã tải."
+      },
+      "headline": {
+        "displayName": "headline",
+        "purpose": "Vai trò được mô tả trong design-v2.md; font chưa được xác minh đã tải."
+      },
+      "title": {
+        "displayName": "title",
+        "purpose": "Vai trò được mô tả trong design-v2.md; font chưa được xác minh đã tải."
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "Vai trò được mô tả trong design-v2.md; font chưa được xác minh đã tải."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-solution-rest",
+        "value": "0 6px 20px rgba(0, 0, 0, 0.05)",
+        "purpose": "Card solution nghỉ/active."
+      },
+      {
+        "name": "shadow-solution-active",
+        "value": "0 16px 32px rgba(0, 74, 173, 0.12)",
+        "purpose": "Card solution nghỉ/active."
+      },
+      {
+        "name": "ui-overlay",
+        "value": "0 0.25rem 1rem rgb(15 23 42 / 0.12)",
+        "purpose": "Overlay hoặc raised card package."
+      }
+    ],
+    "motion": [
+      {
+        "name": "motion-ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-fast",
+        "value": "160ms",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-medium",
+        "value": "280ms",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-reveal",
+        "value": "2000ms",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-hero",
+        "value": "2000ms",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-card",
+        "value": "420ms",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-distance",
+        "value": "32px",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-card-lift",
+        "value": "-10px",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      },
+      {
+        "name": "motion-brand-lift",
+        "value": "-5px",
+        "purpose": "Token app; consumer và phạm vi xem v2."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "app-480",
+        "value": "480px"
+      },
+      {
+        "name": "app-600",
+        "value": "600px"
+      },
+      {
+        "name": "app-700",
+        "value": "700px"
+      },
+      {
+        "name": "app-760",
+        "value": "760px"
+      },
+      {
+        "name": "app-900",
+        "value": "900px"
+      },
+      {
+        "name": "app-1024",
+        "value": "1024px"
+      },
+      {
+        "name": "gallery-mobile",
+        "value": "720px"
+      }
+    ],
+    "previewNotes": [
+      "Sidecar duy nhất của DESIGN.md; dữ liệu từ design-v2.json đã hợp nhất, bản JSON v2 riêng đã được bỏ.",
+      "Tonal ramps được mô phỏng bằng OKLCH lightness 15–95%, giữ chroma/hue, clip gamut sRGB; chỉ là preview.",
+      "Snippet static không xác nhận React behavior, rendered font, dark theme hay browser accessibility."
+    ]
+  },
+  "components": [
+    {
+      "name": "Shared Button primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Light/default-density primitive; không phải CTA marketing.",
+      "html": "<button type=\"button\" class=\"ds-button-primary\">Khảo sát</button>",
+      "css": ".ds-button-primary { display:inline-flex;align-items:center;justify-content:center;min-height:var(--ui-control-block-size,2.75rem);padding:0 var(--ui-space-md,1rem);border:1px solid var(--ui-color-action,#004aad);border-radius:var(--ui-radius-control,.5rem);background:var(--ui-color-action,#004aad);color:var(--ui-color-action-foreground,#fff);font:inherit;font-weight:700;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease; } .ds-button-primary:hover:not(:disabled) { border-color:var(--ui-color-action-hover,#003f94);background:var(--ui-color-action-hover,#003f94); } .ds-button-primary:focus-visible { outline:3px solid var(--ui-color-focus,#004aad); outline-offset:2px; } .ds-button-primary:disabled { border-color:var(--ui-color-border,#c3c6d5);background:var(--ui-color-disabled-surface,#e9e9ed);color:var(--ui-color-disabled,#626670);cursor:not-allowed; } @media(prefers-reduced-motion:reduce) { .ds-button-primary {transition:none;} }"
+    },
+    {
+      "name": "Shared Button secondary",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Light/default-density primitive; không phải CTA marketing.",
+      "html": "<button type=\"button\" class=\"ds-button-secondary\">Khảo sát</button>",
+      "css": ".ds-button-secondary { display:inline-flex;align-items:center;justify-content:center;min-height:var(--ui-control-block-size,2.75rem);padding:0 var(--ui-space-md,1rem);border:1px solid var(--ui-color-border,#c3c6d5);border-radius:var(--ui-radius-control,.5rem);background:var(--ui-color-surface-raised,#fff);color:var(--ui-color-text-primary,#131b2e);font:inherit;font-weight:700;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease; } .ds-button-secondary:hover:not(:disabled) { background:var(--ui-color-surface,#f2f3ff); } .ds-button-secondary:focus-visible { outline:3px solid var(--ui-color-focus,#004aad); outline-offset:2px; } .ds-button-secondary:disabled { border-color:var(--ui-color-border,#c3c6d5);background:var(--ui-color-disabled-surface,#e9e9ed);color:var(--ui-color-disabled,#626670);cursor:not-allowed; } @media(prefers-reduced-motion:reduce) { .ds-button-secondary {transition:none;} }"
+    },
+    {
+      "name": "Shared Button accent",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Light/default-density primitive; không phải CTA marketing.",
+      "html": "<button type=\"button\" class=\"ds-button-accent\">Khảo sát</button>",
+      "css": ".ds-button-accent { display:inline-flex;align-items:center;justify-content:center;min-height:var(--ui-control-block-size,2.75rem);padding:0 var(--ui-space-md,1rem);border:1px solid var(--ui-color-accent,#febb3c);border-radius:var(--ui-radius-control,.5rem);background:var(--ui-color-accent,#febb3c);color:var(--ui-color-accent-foreground,#131b2e);font:inherit;font-weight:700;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease; } .ds-button-accent:hover:not(:disabled) { border-color:var(--ui-color-accent-hover,#e5a926);background:var(--ui-color-accent-hover,#e5a926); } .ds-button-accent:focus-visible { outline:3px solid var(--ui-color-focus,#004aad); outline-offset:2px; } .ds-button-accent:disabled { border-color:var(--ui-color-border,#c3c6d5);background:var(--ui-color-disabled-surface,#e9e9ed);color:var(--ui-color-disabled,#626670);cursor:not-allowed; } @media(prefers-reduced-motion:reduce) { .ds-button-accent {transition:none;} }"
+    },
+    {
+      "name": "Shared Button outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Light/default-density primitive; không phải CTA marketing.",
+      "html": "<button type=\"button\" class=\"ds-button-outline\">Khảo sát</button>",
+      "css": ".ds-button-outline { display:inline-flex;align-items:center;justify-content:center;min-height:var(--ui-control-block-size,2.75rem);padding:0 var(--ui-space-md,1rem);border:1px solid var(--ui-color-action,#004aad);border-radius:var(--ui-radius-control,.5rem);background:transparent;color:var(--ui-color-action,#004aad);font:inherit;font-weight:700;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease; } .ds-button-outline:hover:not(:disabled) { background:var(--ui-color-surface,#f2f3ff); } .ds-button-outline:focus-visible { outline:3px solid var(--ui-color-focus,#004aad); outline-offset:2px; } .ds-button-outline:disabled { border-color:var(--ui-color-border,#c3c6d5);background:var(--ui-color-disabled-surface,#e9e9ed);color:var(--ui-color-disabled,#626670);cursor:not-allowed; } @media(prefers-reduced-motion:reduce) { .ds-button-outline {transition:none;} }"
+    },
+    {
+      "name": "Shared Button quiet",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Light/default-density primitive; không phải CTA marketing.",
+      "html": "<button type=\"button\" class=\"ds-button-quiet\">Khảo sát</button>",
+      "css": ".ds-button-quiet { display:inline-flex;align-items:center;justify-content:center;min-height:var(--ui-control-block-size,2.75rem);padding:0 var(--ui-space-md,1rem);border:1px solid transparent;border-radius:var(--ui-radius-control,.5rem);background:var(--ui-color-surface,#f2f3ff);color:var(--ui-color-text-primary,#131b2e);font:inherit;font-weight:700;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease; } .ds-button-quiet:hover:not(:disabled) { background:var(--ui-color-disabled-surface,#e9e9ed); } .ds-button-quiet:focus-visible { outline:3px solid var(--ui-color-focus,#004aad); outline-offset:2px; } .ds-button-quiet:disabled { border-color:var(--ui-color-border,#c3c6d5);background:var(--ui-color-disabled-surface,#e9e9ed);color:var(--ui-color-disabled,#626670);cursor:not-allowed; } @media(prefers-reduced-motion:reduce) { .ds-button-quiet {transition:none;} }"
+    },
+    {
+      "name": "Text input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Control package; consumer khảo sát có CSS override riêng.",
+      "html": "<label for=\"ds-name\">Họ tên</label><input id=\"ds-name\" class=\"ds-input\" placeholder=\"Nhập họ tên\">",
+      "css": ".ds-input {display:block;width:100%;min-height:var(--ui-control-block-size,2.75rem);padding:var(--ui-space-sm,.5rem) var(--ui-space-md,1rem);border:1px solid var(--ui-color-border,#c3c6d5);border-radius:var(--ui-radius-control,.5rem);background:var(--ui-color-surface-raised,#fff);color:var(--ui-color-text-primary,#131b2e);font:inherit;} .ds-input:focus-visible {outline:3px solid var(--ui-color-focus,#004aad);outline-offset:2px;} .ds-input[aria-invalid=\"true\"]{border-color:var(--ui-color-error,#b42318);} .ds-input:disabled{background:var(--ui-color-disabled-surface,#e9e9ed);color:var(--ui-color-disabled,#626670);cursor:not-allowed;}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card package ở trạng thái default.",
+      "html": "<article class=\"ds-card\"><strong>Giải pháp điện mặt trời</strong><p>Thông tin giải pháp</p></article>",
+      "css": ".ds-card{padding:var(--ui-space-lg,1.5rem);border:1px solid var(--ui-color-border,#c3c6d5);border-radius:var(--ui-radius-control,.5rem);background:var(--ui-color-surface,#f2f3ff);color:var(--ui-color-text-primary,#131b2e);} "
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "description": "Badge trạng thái action của package.",
+      "html": "<span class=\"ds-badge\">Đang xử lý</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;min-height:1.5rem;padding:0 var(--ui-space-md,1rem);border-radius:999px;background:color-mix(in srgb,var(--ui-color-action,#004aad) 14%,var(--ui-color-surface-raised,#fff));color:var(--ui-color-action,#004aad);font-size:var(--ui-font-size-sm,.875rem);font-weight:600;}"
+    },
+    {
+      "name": "Navigation links",
+      "kind": "nav",
+      "description": "Trích đoạn liên kết desktop; không mô phỏng toàn bộ submenu controller.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Điều hướng mẫu\"><a href=\"#ds-home\">Trang chủ</a><a href=\"#ds-solutions\">Giải pháp</a></nav>",
+      "css": ".ds-nav{display:flex;gap:clamp(.5rem,2vw,1.5rem);align-items:center;font-size:1rem;} .ds-nav a{color:var(--color-text-primary,#1E293B);font-weight:600;text-decoration:none;transition:color .15s ease;} .ds-nav a:hover{color:var(--color-primary,#004AAD);} .ds-nav a:focus-visible{outline:3px solid var(--focus-color,#004AAD);outline-offset:3px;}"
+    },
+    {
+      "name": "Marketing CTA",
+      "kind": "button",
+      "refersTo": "action-primary",
+      "description": "ActionLink primary của website Solar ở desktop.",
+      "html": "<a class=\"ds-action-primary\" href=\"#ds-survey\">Khảo sát miễn phí</a>",
+      "css": ".ds-action-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 28px;border:2px solid var(--color-primary,#004AAD);border-radius:9999px;background:var(--color-primary,#004AAD);color:#fff;font-weight:800;font-size:14.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,74,173,.25);transition:background-color .15s ease,transform .1s ease;} .ds-action-primary:hover{background:var(--color-primary-hover,#003F94);transform:translateY(-1px);} .ds-action-primary:focus-visible{outline:3px solid var(--focus-color,#004AAD);outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Năng lượng gần nhà",
+    "overview": "Tài liệu visual canonical, được chọn theo yêu cầu áp dụng đề xuất đối chiếu ngày 2026-10-01. Phạm vi là website Solar ở root và các control `@solar/ui` được tích hợp. Ownership/composition nằm trong [UI composition](docs/ui-composition.md); kiến trúc thư viện nằm trong [UI system architecture](docs/ui-system-architecture.md). [V1](design-v1.md) và [snapshot v2](design-v2.md) chỉ là lịch sử, không phải nguồn visual song song.\n\nNgôn ngữ visual đã được người dùng chọn: **xanh tin cậy, cam ấm; nền phân lớp và shadow nhẹ; control rõ ràng, dễ thao tác**. Hệ thống hiện có dùng tiêu đề xanh, nền trắng/xám nhạt, điểm nhấn cam, hình ảnh điện mặt trời và card bo góc. Mật độ thay đổi theo nhóm nội dung: hero thoáng hơn, danh sách giải pháp/dự án tập trung hơn. Người dùng đã chọn tinh thần **rõ ràng, tin cậy, gần gũi**. Diễn giải này hướng dẫn cách áp dụng identity hiện có; không thay tagline, logo hay copy sản phẩm. Hình ảnh định hướng “Năng lượng gần nhà” đã được người dùng chọn. Anti-reference chưa chốt; tên token vẫn mô tả vai trò, không tự đặt tên màu thương hiệu.",
+    "keyCharacteristics": [
+      "Tiêu đề xanh và các mặt phẳng trung tính phân cấp nội dung.",
+      "CTA marketing bo tròn dạng viên; control dùng chung bo góc nhỏ hơn.",
+      "Grid giảm số cột theo màn hình, navigation chuyển sang disclosure trên mobile.",
+      "Layer nền, border và shadow cùng tạo chiều sâu; không phải hệ thống phẳng hoàn toàn."
+    ],
+    "rules": [
+      {
+        "name": "The Namespace Rule",
+        "body": "Khi mô tả control package, truy về `--ui-*`; khi mô tả section Solar, truy về token app. Không suy ra rằng cùng tên vai trò có nghĩa cùng giá trị.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do truy token từ đúng namespace và xác minh CSS của consumer khi sử dụng package.",
+      "Do giữ phân biệt CTA marketing dạng viên và button/control package.",
+      "Do đối chiếu desktop/mobile và hover/focus/invalid/disabled trước khi xác nhận style; các kết quả local đã đo không thay nghiệm thu đầy đủ.",
+      "Do giữ reduced-motion, disclosure native và nhãn trường trong tài liệu component.",
+      "Do dùng [UI composition](docs/ui-composition.md), [UI architecture](docs/ui-system-architecture.md) và [CSS conventions](docs/css-conventions.md) để tra ownership và contracts."
+    ],
+    "donts": [
+      "Don't coi font-family khai báo là bằng chứng font đã tải.",
+      "Don't biến snapshot working tree hoặc ảnh tham chiếu thành kết quả nghiệm thu trình duyệt.",
+      "Don't mở rộng literal hoặc hiệu ứng của một section thành token chuẩn toàn hệ thống.",
+      "Don't tự tạo testimonial, destination liên hệ hoặc thông báo gửi form thành công khi chưa có bằng chứng.",
+      "Don't dùng HTML/CSS preview để suy ra contract React, theme tối, security hoặc accessibility đã kiểm thử."
+    ]
+  }
+}

@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { ProjectCard } from "@/features/catalog/catalog-cards";
-import { SectionHeading } from "@/components/molecules/section-heading";
+import { ProjectGallery } from "@/features/catalog/project-gallery";
 import type { Project } from "@/types/catalog";
 
 type Content = { heading: string; viewAllLabel: string; viewAllHref: string };
@@ -15,11 +14,7 @@ export function FeaturedProjectsSection({ content, projects }: { content: Conten
           <span className="arrow-circle" aria-hidden="true">❯</span>
         </Link>
       </div>
-      <div className="project-grid">
-        {projects.map((project, index) => (
-          <ProjectCard project={project} accent={index % 2 === 0} key={project.title} />
-        ))}
-      </div>
+      <ProjectGallery projects={projects} label={content.heading} />
     </section>
   );
 }
