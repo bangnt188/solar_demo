@@ -40,7 +40,7 @@ export function ServicesSection({ content }: { content: HomeContent["services"] 
                     <h3>{service.title}</h3>
                     <p>{serviceCanvaDescs[index] ?? service.points.join(", ")}</p>
                     <Link className="service-detail-link" href={service.href}>
-                      Xem chi tiết dịch vụ ⟶
+                      Xem dịch vụ ⟶
                     </Link>
                   </div>
                 </article>

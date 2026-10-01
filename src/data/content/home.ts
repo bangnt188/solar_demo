@@ -32,9 +32,9 @@ export const homeContent = {
     heading: "GIẢI PHÁP CHUYÊN BIỆT\nCHO TỪNG NHÓM KHÁCH HÀNG",
     introduction: "Chọn nhóm khách hàng phù hợp để xem những thông tin cần cân nhắc trước khi khảo sát.",
     items: [
-      { ...solutionPages.household.card, image: solutionPages.household.image, href: solutionPages.household.href, actionLabel: "Xem chi tiết giải pháp ⟶" },
-      { ...solutionPages.smallBusiness.card, image: solutionPages.smallBusiness.image, href: solutionPages.smallBusiness.href, actionLabel: "Xem chi tiết giải pháp ⟶" },
-      { ...solutionPages.enterprise.card, image: solutionPages.enterprise.image, href: solutionPages.enterprise.href, actionLabel: "Xem chi tiết giải pháp ⟶" },
+      { ...solutionPages.household.card, image: solutionPages.household.image, href: solutionPages.household.href, actionLabel: "Xem giải pháp ⟶" },
+      { ...solutionPages.smallBusiness.card, image: solutionPages.smallBusiness.image, href: solutionPages.smallBusiness.href, actionLabel: "Xem giải pháp ⟶" },
+      { ...solutionPages.enterprise.card, image: solutionPages.enterprise.image, href: solutionPages.enterprise.href, actionLabel: "Xem giải pháp ⟶" },
     ],
   },
   services: {

@@ -1,6 +1,7 @@
 import type { DetailPageContent } from "@/types/detail-page";
 
 export type ServiceDetail = DetailPageContent & {
+  anchor: string;
   href: string;
   rowTitle: string;
   points: string[];
@@ -8,7 +9,8 @@ export type ServiceDetail = DetailPageContent & {
 
 export const servicePages = {
   epc: {
-    href: "/dich-vu/epc-tron-goi/",
+    anchor: "epc",
+    href: "/dich-vu/#epc",
     rowTitle: "EPC trọn gói",
     title: "Dịch vụ EPC điện mặt trời trọn gói",
     lead: "Tư vấn, khảo sát, thiết kế, thi công và bàn giao được xem xét theo nhu cầu sử dụng điện cùng điều kiện thực tế của từng công trình.",
@@ -30,7 +32,8 @@ export const servicePages = {
     ],
   },
   equipmentSupply: {
-    href: "/dich-vu/cung-ung-thiet-bi/",
+    anchor: "equipment-supply",
+    href: "/dich-vu/#equipment-supply",
     rowTitle: "Phân phối và cung ứng thiết bị điện mặt trời.",
     title: "Dịch vụ phân phối và cung ứng thiết bị điện mặt trời",
     lead: "Danh mục và cấu hình thiết bị cần được lựa chọn theo yêu cầu kỹ thuật, công trình và khả năng cung ứng tại thời điểm xác nhận.",
@@ -52,7 +55,8 @@ export const servicePages = {
     ],
   },
   investmentModels: {
-    href: "/dich-vu/mo-hinh-tai-chinh/",
+    anchor: "investment-models",
+    href: "/dich-vu/#investment-models",
     rowTitle: "Các mô hình tài chính/đầu tư",
     title: "Tư vấn mô hình tài chính và đầu tư điện mặt trời",
     lead: "Các hình thức tự đầu tư, cho thuê thiết bị hoặc mua bán điện cần được so sánh theo mục tiêu, dữ liệu tiêu thụ và điều kiện áp dụng của từng dự án.",

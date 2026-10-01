@@ -17,18 +17,8 @@ export const siteChromeContent = {
     label: "Điều hướng chính",
     items: [
       { label: "Trang chủ", href: "/" },
-      {
-        label: "Giải pháp",
-        href: "/#giai-phap",
-        overviewLabel: "Tổng quan giải pháp",
-        children: Object.values(solutionPages).map(({ card, href }) => ({ label: card.title, href })),
-      },
-      {
-        label: "Dịch vụ",
-        href: "/dich-vu/",
-        overviewLabel: "Tổng quan dịch vụ",
-        children: Object.values(servicePages).map(({ rowTitle: label, href }) => ({ label, href })),
-      },
+      { label: "Giải pháp", href: "/giai-phap/" },
+      { label: "Dịch vụ", href: "/dich-vu/" },
       { label: "Dự án", href: "/du-an/" },
       { label: "Thiết bị", href: "/thiet-bi/" },
     ],
@@ -40,11 +30,11 @@ export const siteChromeContent = {
       {
         title: "Giải pháp & Quy trình",
         items: [
-          { label: "Tổng quan các hệ thống", href: "/#giai-phap" },
-          { label: "Quy trình tổng thầu EPC", href: "/dich-vu/" },
-          { label: "Hộ gia đình & Biệt thự", href: "/giai-phap/ho-gia-dinh/" },
-          { label: "Hộ kinh doanh vừa & nhỏ", href: "/giai-phap/ho-kinh-doanh/" },
-          { label: "Doanh nghiệp & Công nghiệp", href: "/giai-phap/doanh-nghiep/" },
+          { label: "Tổng quan các hệ thống", href: "/giai-phap/" },
+          { label: "Quy trình tổng thầu EPC", href: servicePages.epc.href },
+          { label: "Hộ gia đình & Biệt thự", href: solutionPages.household.href },
+          { label: "Hộ kinh doanh vừa & nhỏ", href: solutionPages.smallBusiness.href },
+          { label: "Doanh nghiệp & Công nghiệp", href: solutionPages.enterprise.href },
         ],
       },
       {
