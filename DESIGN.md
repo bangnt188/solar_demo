@@ -190,6 +190,8 @@ Container desktop là `min(1200px, calc(100% - 48px))`. Ở ≤900px là `min(10
 
 Hero dùng grid 1.15fr/1fr, gap 48px; chuyển dọc ở ≤900px. Grid giải pháp dùng 3 cột, gap 26px; xuống 2 cột/gap 20px ở ≤900px và 1 cột ở ≤480px. `.project-grid` legacy có cùng thang cột, nhưng dự án tiêu biểu trang chủ hiện render `ProjectGallery`/`ExpandingGallery`: một hàng panel mở rộng, activeRatio 4, chuyển dọc ở ≤720px với chiều cao 36rem. Không dùng rule grid legacy để mô tả gallery hiện hành. Form khảo sát có 2 cột rồi 1 cột ở ≤480px. Trang dịch vụ dùng bố cục copy–ảnh–details, chuyển thành một cột ở ≤760px.
 
+Trang `/du-an` nhóm thẻ theo ba tab có số dự án: hộ gia đình, hộ kinh doanh vừa và nhỏ, doanh nghiệp & công nghiệp. Các danh mục nguồn được ánh xạ tường minh; cơ sở sản xuất và showroom thuộc nhóm doanh nghiệp & công nghiệp. Lưới có ba cột desktop, hai cột ở ≤900px và một cột ở ≤700px; nhóm chỉ có một dự án dùng bố cục ngang rồi xếp dọc trên mobile.
+
 Spacing frontmatter giữ thang xs/sm/md/lg/xl của app. Code hiện tại còn các khoảng cách riêng như 20/26/34/60/70px; không mô tả toàn hệ thống là strict 8px grid. Breakpoint 720px của gallery, 42rem của package field và 1024px của desktop scrolling có vai trò riêng, không đồng nghĩa breakpoint navigation.
 
 **Giới hạn responsive đã quan sát:** ở 390px, trang chủ có scrollWidth 424px cả sau khi đợi 2.5 giây; reduced-motion cho scrollWidth 390px. Desktop 1440px không tràn trong các lần đo. Chưa xác định root cause; không coi đây là mobile PASS và không áp `overflow-x: hidden` để che vấn đề. Evidence ghi kết quả để xử lý bằng một quyết định animation/layout riêng.

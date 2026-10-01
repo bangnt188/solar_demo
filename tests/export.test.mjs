@@ -39,6 +39,24 @@ test("exported pages link to working prefixed routes and local assets", () => {
   const headerEnd = homeHtml.indexOf("</header>", headerStart);
   const headerHtml = homeHtml.slice(headerStart, headerEnd + "</header>".length);
   const solutionHtml = readFileSync(join("out", "giai-phap/index.html"), "utf8");
+  const projectsHtml = readFileSync(join("out", "du-an/index.html"), "utf8");
+  const projectsMainStart = projectsHtml.indexOf("<main");
+  const projectsMainEnd = projectsHtml.indexOf("</main>", projectsMainStart);
+  assert.ok(projectsMainStart >= 0 && projectsMainEnd > projectsMainStart, "Missing projects page main content");
+  const projectsMainHtml = projectsHtml.slice(projectsMainStart, projectsMainEnd + "</main>".length);
+  assert.equal((projectsMainHtml.match(/role="tab"/g) || []).length, 3, "Expected three project category tabs");
+  for (const label of [
+    "Hộ gia đình",
+    "Hộ kinh doanh vừa và nhỏ",
+    "Doanh nghiệp &amp; công nghiệp",
+  ]) {
+    assert.ok(projectsMainHtml.includes(label), `Missing project tab: ${label}`);
+  }
+  const householdStart = projectsMainHtml.indexOf('data-project-group="household"');
+  assert.ok(householdStart >= 0, "Missing default household project group");
+  const householdPanelHtml = projectsMainHtml.slice(householdStart);
+  assert.ok(householdPanelHtml.includes('data-project-count="1"'), "Incorrect default household project count");
+  assert.ok(householdPanelHtml.includes("NHÀ ANH NGUYỄN"), "Missing default household project");
   assert.ok(headerHtml.includes(`href="${prefix}giai-phap/"`), "Missing top-level solution navigation link");
   const solutionMainStart = solutionHtml.indexOf("<main");
   const solutionMainEnd = solutionHtml.indexOf("</main>", solutionMainStart);
