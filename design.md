@@ -20,8 +20,8 @@ Build the supplied UI as reusable defaults for the existing site, not as a catal
 | Molecules | `src/components/molecules/section-heading.tsx`, `savings-estimator.tsx`, `faq-disclosure.tsx`, `comparison-panel.tsx`, `process-step.tsx`, `testimonial-card.tsx` | Compose atoms or semantic elements behind typed content props. Stateful behavior belongs only to the estimator/disclosure. |
 | Organisms | `src/components/organisms/announcement-bar.tsx`, `conversion-dock.tsx`, `site-chrome.tsx`; `src/features/survey/survey-form.tsx` | Reusable global/form UI. Brand, nav, announcement, footer, form labels/options, email, and destinations arrive through props from content data. |
 | Sections | `src/components/sections/*-section.tsx` | Page-level groups assembled from molecules/organisms; accept typed data and child slots. No route-level duplicate markup. |
-| Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx`, `detail-page-screen.tsx`, `service-overview-screen.tsx` | Compose sections and pass content; solution and service details share one template. |
-| Routes | `src/app/(public)/page.tsx`, `(public)/dich-vu/page.tsx`, `(public)/khao-sat/page.tsx`, `(public)/giai-phap/*/page.tsx`, `(public)/dich-vu/*/page.tsx`, and `src/app/layout.tsx` | Thin callers: supply content/catalog props to a screen or global organisms. |
+| Screens | `src/components/screens/home-screen.tsx`, `survey-screen.tsx`, `solutions-overview-screen.tsx`, `detail-overview-section.tsx`, `service-overview-screen.tsx` | Compose typed content into pages. `/giai-phap/` follows the complete `public/images/demo/Giải pháp.png` layout and copy, with all source images omitted; building-type anchors remain available to home cards. |
+| Routes | `src/app/(public)/page.tsx`, `(public)/giai-phap/page.tsx`, `(public)/dich-vu/page.tsx`, `(public)/khao-sat/page.tsx`, and `src/app/layout.tsx` | Peer-level route pages; solution category links and service details use anchors on their overview routes. |
 
 Solar imports app-owned global tokens and styles from `src/styles/`. During migration, shared package components use colocated CSS Modules and the semantic token contract; Solar sections and screens remain app-owned. Keep app typography on the existing semantic tokens, avoid conflicting token sources, duplicated shared controls, or duplicated section markup.
 
@@ -66,6 +66,7 @@ Solar imports app-owned global tokens and styles from `src/styles/`. During migr
 ## Motion contract
 
 - `src/app/(public)/layout.tsx` gắn `MotionRuntime` một lần cho route công khai. Hero entrance 760ms; target `data-motion` 520ms, quãng dịch 32px desktop / 16px mobile. Services dùng CSS view timeline: từng ảnh/chữ vào qua bốn nấc (0/12/24/36% timeline của phần tử), giữ nguyên vị trí để đọc cả ba hàng; lớp bọc chỉ rút ra theo timeline chung của nhóm ở 89–100% khi hàng cuối gần rời viewport. Cuộn ngược đảo cả hai chuyển động, không chạy JS theo từng frame; reduced-motion giữ nội dung tĩnh.
+- `/giai-phap/` theo đầy đủ ảnh tham chiếu: nhu cầu, hệ thống, loại công trình, bốn bước EPC, mô hình đầu tư và CTA cuối. Nội dung chỉ gồm chữ và bề mặt dùng token; reveal chạy qua `MotionRuntime` sẵn có.
 - `PartnersMarquee` giữ một hàng tên đối tác SSR, chỉ nhân đôi hàng thứ hai sau hydration khi đủ chỗ chạy. Tạm dừng tự động khi hover/chạm, tab ẩn hoặc ngoài viewport; không có nút điều khiển. Khi không có JS hoặc `prefers-reduced-motion`, tên vẫn hiện tĩnh.
 - `src/styles/tokens.css` định nghĩa motion/elevation; `src/styles/components.css` áp dụng hover card, FAQ, CTA, view-timeline services và reduced-motion. Lenis RAF chỉ phục vụ desktop scrolling, không điều khiển section animation. Hợp đồng xem `docs/animation-plan.md`.
 
