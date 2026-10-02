@@ -15,8 +15,8 @@ export function FeaturedProjectsSection({ content, projects }: { content: Conten
     .filter((project): project is Project => Boolean(project));
 
   return (
-    <section className="section container projects-section" id="du-an">
-      <div className="projects-header" data-motion="fade">
+    <section className="section projects-section" id="du-an">
+      <div className="container projects-header" data-motion="fade">
         <h2 className="projects-title">{content.heading}</h2>
         <Link className="btn-more-projects" href={content.viewAllHref}>
           <span>{content.viewAllLabel}</span>
