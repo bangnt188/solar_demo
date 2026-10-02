@@ -25,9 +25,8 @@ export const siteChromeContent = {
     callToAction: { label: "Khảo sát", href: "/khao-sat/" },
   },
   conversion: {
-    // Destinations for the demo; replace with the business contacts before publishing.
-    phoneHref: "tel:0939000000",
-    zaloHref: "https://zalo.me/0939000000",
+    phoneHref: "tel:0939126974",
+    zaloHref: "https://zalo.me/0939126974",
     surveyHref: "/khao-sat/",
   },
   footer: {
@@ -56,8 +55,8 @@ export const siteChromeContent = {
         title: "Liên hệ & Trụ sở",
         items: [
           { label: "13 Đồng Khởi, Phường Ninh Kiều, TP. Cần Thơ" },
-          { label: "0939 xxx xxx", href: "tel:0939000000" },
-          { label: "lienhe@luaxanhdongbang.vn", href: "mailto:lienhe@luaxanhdongbang.vn" },
+          { label: "0939 126 974", href: "tel:0939126974" },
+          { label: "nguyenbang.skyone@gmail.com", href: "mailto:nguyenbang.skyone@gmail.com" },
           { label: "Thứ 2 - Thứ 7: 07:30 - 18:00" },
         ],
       },

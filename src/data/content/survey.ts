@@ -7,7 +7,7 @@ export const surveyContent = {
   formHeading: "Bắt đầu từ nhu cầu của bạn",
   formDescription: "Cung cấp thông tin cơ bản; đội ngũ sẽ liên hệ để trao đổi và hẹn lịch khảo sát thực tế.",
   form: {
-    recipient: "lienhe@luaxanhdongbang.vn",
+    recipient: "nguyenbang.skyone@gmail.com",
     subject: "Yêu cầu khảo sát điện mặt trời",
     nameLabel: "Họ và tên",
     phoneLabel: "Số điện thoại",
