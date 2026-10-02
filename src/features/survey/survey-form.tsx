@@ -38,8 +38,8 @@ export function SurveyForm({ content }: { content: SurveyFormContent }) {
         <FormTextField control={control} id="survey-name" name="name" label={content.nameLabel} autoComplete="name" required placeholder={content.namePlaceholder} />
         <FormTextField control={control} id="survey-phone" name="phone" type="tel" label={content.phoneLabel} autoComplete="tel" required placeholder={content.phonePlaceholder} />
         <FormTextField control={control} id="survey-location" name="location" label={content.locationLabel} autoComplete="street-address" required placeholder={content.locationPlaceholder} containerClassName="survey-wide" />
-        <FormSelectField control={control} id="survey-building" name="building" label={content.buildingLabel} required placeholder="Chọn loại công trình" options={content.buildingOptions.map((value) => ({ value, label: value }))} />
-        <FormSelectField control={control} id="survey-bill" name="bill" label={content.billLabel} required placeholder="Chọn khoảng chi phí" options={content.billOptions.map((value) => ({ value, label: value }))} />
+        <FormSelectField control={control} id="survey-building" name="building" label={content.buildingLabel} placeholder="Chọn loại công trình" options={content.buildingOptions.map((value) => ({ value, label: value }))} />
+        <FormSelectField control={control} id="survey-bill" name="bill" label={content.billLabel} placeholder="Chọn khoảng chi phí" options={content.billOptions.map((value) => ({ value, label: value }))} />
         <FormTextareaField control={control} id="survey-note" name="note" label={content.noteLabel} rows={4} placeholder={content.notePlaceholder} containerClassName="survey-wide" />
       </div>
 

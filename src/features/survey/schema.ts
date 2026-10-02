@@ -7,8 +7,8 @@ export const surveySchema = z.object({
   name: required,
   phone: required,
   location: required,
-  building: required,
-  bill: required,
+  building: z.string(),
+  bill: z.string(),
   note: z.string(),
   consent: z.boolean().refine((value) => value, {
     message: "Bạn cần xác nhận để gửi yêu cầu khảo sát.",
