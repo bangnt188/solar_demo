@@ -1,5 +1,7 @@
 # Plan kiến trúc animation
 
+> Cập nhật authority 2026-10-01: các thông số và kết quả bên dưới là lịch sử của đợt triển khai trước. Visual/motion hiện hành xem [DESIGN.md](../DESIGN.md), ownership xem [UI composition](ui-composition.md), kiểm chứng mới xem [browser evidence](design-browser-evidence.md). Source hiện dùng hero/reveal 2000ms và services media/list 0/18/35/100%; không dùng mô tả 760/520ms hoặc exit 89–100% bên dưới làm baseline hiện tại.
+
 **Trạng thái: đã triển khai trên các route công khai.** Phần 1 ghi baseline **trước** thay đổi; phần 8 ghi kết quả và giới hạn kiểm chứng. Giữ bố cục, nội dung, URL và kiến trúc Atomic hiện tại. Mode: Persuade. Mục tiêu là dẫn mắt từ thông tin đến hình ảnh mà không bắt khách chờ để đọc hoặc bấm CTA.
 
 ## 1. Cơ sở đã kiểm tra trước triển khai
@@ -99,7 +101,7 @@ src/styles/components.css                  # hiệu ứng theo section, media/re
 | Section | Thiết kế đề xuất | Mobile / giới hạn |
 | --- | --- | --- |
 | Vì sao chọn chúng tôi | Nhóm ảnh reveal 32px một lần; khối chữ fade nhẹ. Không parallax ba ảnh liên tục. | 16px; ảnh `.why-panel` đang ẩn ở màn nhỏ tiếp tục ẩn. Không thêm chuyển động chỉ để bù chỗ trống. |
-| Dự án tiêu biểu | Card reveal 32px theo nhóm hàng, stagger 30ms, tổng tối đa 90ms. Ảnh scale 1 → 1.02 khi hover trong crop. | Không zoom trên touch; không lift cả card vì hiện card không phải link. |
+| Dự án tiêu biểu | Thư viện UI dùng `ExpandingGallery`: ảnh co/mở theo hover, focus và tap; chi tiết dự án hiện trên panel đang chọn. Panel đầu hoạt động ngay khi tải. | Mobile xếp panel theo chiều dọc; giữ tên, địa điểm và thông số đọc được, không yêu cầu hover. |
 | Thiết bị/lưu trữ | Fade một lần theo nhóm, không lại bay từ hai bên; tên/thông số giữ yên khi đọc. | Không stagger kéo dài khi danh sách xếp dọc. |
 | FAQ | Giữ `<details>/<summary>`. Chuyển màu và biểu tượng 160–200ms; câu trả lời fade ngắn khi mở. | Không làm animation chiều cao custom trong đợt này; native disclosure bảo đảm tap/keyboard/no-JS, không lỗi khi bấm nhanh. |
 | Liên hệ cuối trang | Headline/CTA reveal đồng bộ 32px, 520ms; hover CTA đổi màu và icon đi 3px. | Không pulse vô hạn, không animate chiều rộng nút. Reduced-motion chỉ đổi màu. |
@@ -117,13 +119,13 @@ src/styles/components.css                  # hiệu ứng theo section, media/re
 
 ## 6. Cuộn toàn trang: yêu cầu và đề xuất an toàn
 
-**Chính sách:** không đặt trần px/giây cứng. Desktop hiện dùng Lenis `smoothWheel: true`, `wheelMultiplier: 0.5`, `lerp: 0.1`; mobile/touch giữ cuộn native. Browser không cung cấp nhận diện phần cứng trackpad-vs-wheel đáng tin cậy, vì vậy không suy đoán loại thiết bị từ số delta.
+**Chính sách:** không đặt trần px/giây cứng. Desktop dùng Lenis `smoothWheel: true`, `wheelMultiplier: 0.8` (tăng từ mức 0.5 trước đó), `lerp: 0.1`; mobile/touch giữ cuộn native. Browser không cung cấp nhận diện phần cứng trackpad-vs-wheel đáng tin cậy, vì vậy không suy đoán loại thiết bị từ số delta.
 
 Scroll smoothing chỉ điều chỉnh đầu vào wheel; animation section không đọc/cuộn theo từng frame. Trackpad momentum chưa được đo trên phần cứng thật.
 
-Phương án đề xuất:
+Thiết lập hiện tại:
 
-- Một instance Lenis trên desktop `(min-width: 1024px) and (hover: hover) and (pointer: fine)`, không reduced-motion, với `smoothWheel: true`, `wheelMultiplier: 0.5`, `lerp: 0.1`.
+- Một instance Lenis trên desktop `(min-width: 1024px) and (hover: hover) and (pointer: fine)`, không reduced-motion, với `smoothWheel: true`, `wheelMultiplier: 0.8`, `lerp: 0.1`.
 - Giữ `syncTouch: false`, `autoRaf: false` vì runtime tự quản lý RAF/lifecycle. Không điều chỉnh lerp theo heuristic `deltaY`; browser không cung cấp định danh hardware đáng tin cậy.
 - Scroll thật vẫn ở window; không biến toàn page thành container translateY. Khi Lenis đang active, bỏ xung đột với `html { scroll-behavior: smooth }`.
 - Anchor cùng trang chỉ có một chủ điều khiển; preserve hash/history/focus, tính offset header thật. Link Next sang route khác để Next xử lý rồi dừng inertia cũ. Kiểm tra `/#giai-phap`, `/#dich-vu`, Back/Forward và scroll restoration.

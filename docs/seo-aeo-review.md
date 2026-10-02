@@ -75,8 +75,8 @@ Giữ nguyên route để không tạo migration URL vô ích. Route group `(pub
 
 | Cụm URL | Nội dung tối thiểu trước khi xuất bản | Liên kết cần có |
 | --- | --- | --- |
-| `/giai-phap/` và `/giai-phap/ho-gia-dinh/`, `/giai-phap/ho-kinh-doanh/`, `/giai-phap/doanh-nghiep/` | Nhu cầu phù hợp/không phù hợp, cấu hình điển hình có giả định, giới hạn, điều kiện mái, giờ sử dụng điện, quy trình khảo sát | Hub → giải pháp → công trình liên quan → khảo sát; không chép một bài và đổi nhóm khách. |
-| `/dich-vu/` và trang dịch vụ có nội dung riêng | Phạm vi EPC/O&M thực tế, đầu ra bàn giao, trách nhiệm và điều kiện bảo hành đã xác nhận | Dịch vụ ↔ giải pháp/dự án có liên quan. |
+| `/giai-phap/` | Nội dung theo nhóm khách hàng: nhu cầu phù hợp/không phù hợp, giới hạn, điều kiện mái, giờ sử dụng điện và quy trình khảo sát; từng nhóm là section có anchor trên một trang | Trang giải pháp → trang dịch vụ/dự án liên quan → khảo sát; không tạo route con. |
+| `/dich-vu/` | Phạm vi EPC/O&M, cung ứng thiết bị, mô hình đầu tư, đầu ra bàn giao, trách nhiệm và điều kiện bảo hành đã xác nhận; từng nhóm là section có anchor | Dịch vụ ↔ giải pháp/dự án có liên quan; không tạo route con. |
 | `/du-an/[slug]/` | Slug ổn định; quyền công bố; ảnh thật; thời điểm; địa điểm phù hợp quyền riêng tư; công suất; thiết bị; bài toán và kết quả có chứng cứ/phương pháp đo | Danh mục → case study → giải pháp phù hợp; breadcrumb cha-con. |
 | `/thiet-bi/[slug]/` | Tên/model/hãng thật, thông số có đơn vị, datasheet nguồn, ảnh đúng thiết bị, ngày kiểm tra, bảo hành theo tài liệu; giá/tồn kho chỉ khi có nguồn cập nhật | Nhóm thiết bị → model → ứng dụng/công trình; Product/Offer chỉ khi dữ liệu đủ và chính xác. |
 | `/kien-thuc/` và `/kien-thuc/[slug]/` | Bài trả lời vấn đề khách hàng thực sự hỏi; tác giả/người duyệt có thật; nguồn kỹ thuật/pháp lý; ngày cập nhật có nghĩa; bảng tính phải ghi giả định | Bài hướng dẫn → giải pháp/thiết bị liên quan; không tạo hàng loạt bài cho mỗi biến thể từ khóa. |
