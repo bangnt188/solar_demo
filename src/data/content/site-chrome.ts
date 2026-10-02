@@ -24,7 +24,12 @@ export const siteChromeContent = {
     ],
     callToAction: { label: "Khảo sát", href: "/khao-sat/" },
   },
-  conversion: { surveyHref: "/khao-sat/" },
+  conversion: {
+    // Destinations for the demo; replace with the business contacts before publishing.
+    phoneHref: "tel:0939000000",
+    zaloHref: "https://zalo.me/0939000000",
+    surveyHref: "/khao-sat/",
+  },
   footer: {
     columns: [
       {

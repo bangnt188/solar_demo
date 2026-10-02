@@ -9,7 +9,7 @@ export function ProjectCard({ project, accent = false }: { project: Project; acc
       <div className="project-image">
         <Image
           src={imagePath(project.image)}
-          alt={project.imageAlt ?? `Hình minh họa: ${project.title}`}
+          alt={project.imageAlt ?? `Công trình ${project.title}`}
           fill
           sizes="(max-width: 760px) 100vw, 33vw"
         />

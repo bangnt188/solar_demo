@@ -251,7 +251,7 @@ Home hiện dùng `ProjectGallery` composition + `@solar/ui` ExpandingGallery, d
 
 ### FAQ, conversion dock and service stages
 
-FAQ dùng details/summary, ký hiệu +/− và nền nhạt. Dock có action Zalo/phone/survey; RootLayout hiện chỉ truyền surveyHref nên hai destination còn lại unavailable. Timeline dịch vụ là pattern riêng của trang; đường timeline chuyển từ giữa sang gutter mobile, không áp thành layout toàn site.
+FAQ dùng details/summary, ký hiệu +/− và nền nhạt. Dock hiển thị Zalo/phone/survey với link mặc định của bản demo từ siteChromeContent; desktop dùng nút tròn, mobile dùng thanh ngang có nhãn. Gallery dự án ban đầu thu gọn: desktop đặt tên dọc từ dưới lên trên theo ảnh mẫu, mobile dùng các hàng tên ngang. Không có icon +; hover/chạm/bàn phím mở ô. Cùng một tiêu đề xoay từ dọc sang ngang và thu nhỏ 22px → 18px trong 750ms trên desktop; thông tin phụ mờ hiện sau, không bay lên. Mobile giữ tiêu đề ngang tại chỗ và mở thông tin bằng chạm. Ảnh dự án là ảnh công trình thật do người dùng xác nhận. Timeline dịch vụ là pattern riêng của trang; đường timeline chuyển từ giữa sang gutter mobile, không áp thành layout toàn site.
 
 ## Do's and Don'ts
 

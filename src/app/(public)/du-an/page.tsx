@@ -18,7 +18,6 @@ export default function ProjectsPage() {
         <div className="container" data-motion="left">
           <h1>Dự án thực tế</h1>
           <p>Chọn nhóm khách hàng để xem các dự án theo loại hình công trình.</p>
-          <small>Ảnh hiện tại chỉ mang tính minh họa cho bản demo.</small>
         </div>
       </section>
       <section className="section container projects-section" aria-label="Dự án theo nhóm công trình">

@@ -34,7 +34,7 @@ export function WhyUsSection({ content }: { content: HomeContent["whyUs"] }) {
           {whyUsFeatures.map((f) => (
             <div className="why-feature-card" key={f.title}>
               <div className="why-feature-icon" aria-hidden="true">{f.icon}</div>
-              <h4>{f.title}</h4>
+              <h3>{f.title}</h3>
               <p>{f.desc}</p>
             </div>
           ))}

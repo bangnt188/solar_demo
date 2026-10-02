@@ -1,6 +1,6 @@
 import type { Equipment, Project } from "@/types/catalog";
 
-// Nội dung local cho bản demo: dự án có thật; ảnh hiển thị chỉ là hình minh họa.
+// Nội dung local cho bản demo: dự án và ảnh công trình thật do người dùng cung cấp.
 export const projects = [
   { title: "MINI HOUSE THÁI THẢO", category: "Hộ kinh doanh", location: "Khu ĐTM An Bình, TP. Cần Thơ", description: "Công suất lắp đặt: 38 KWP", system: "Hòa lưới lưu trữ", image: "proj-1.png" },
   { title: "LE GRANDE CENTRE", category: "Hộ kinh doanh", location: "18 Nguyễn Chí Thanh, Sóc Trăng, TP. Cần Thơ", description: "Công suất lắp đặt: 400 KWP và 429 KWP lưu trữ", system: "Hòa lưới lưu trữ", image: "proj-2.png" },

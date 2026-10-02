@@ -39,7 +39,7 @@ export const homeContent = {
   },
   services: {
     heading: "CHÚNG TÔI CÓ THỂ GIÚP\nBẠN NHỮNG GÌ?",
-    introduction: "Lúa Xanh Đồng Bằng cung cấp dịch vụ toàn diện từ thiết kế thi công EPC đến phân phối thiết bị và tư vấn mô hình đầu tư hiệu quả.",
+    introduction: "Chúng tôi thiết kế và thi công trọn gói hệ thống điện mặt trời, cung cấp thiết bị, hoặc tư vấn mô hình đầu tư phù hợp.",
     items: [
       { title: servicePages.epc.rowTitle, href: servicePages.epc.href, image: servicePages.epc.image, points: servicePages.epc.points },
       { title: servicePages.equipmentSupply.rowTitle, href: servicePages.equipmentSupply.href, image: servicePages.equipmentSupply.image, points: servicePages.equipmentSupply.points },

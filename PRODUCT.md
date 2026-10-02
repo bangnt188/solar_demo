@@ -27,7 +27,7 @@ Prospective household and business customers review service scope and provide pr
 - The site is a Next.js static export under `/solar_demo` in its demo deployment.
 - The survey route has five required fields and opens a prefilled email draft; there is no server-side lead capture.
 - The process timing, technical specifications, single-responsibility wording, and 25-year support/warranty statements shown in `public/images/demo/Dịch Vụ.png` are user-approved for the draft page but still need the user's real-world confirmation before production publication.
-- Zalo and phone destinations are not configured; the global dock leaves those actions disabled.
+- Keep Zalo, phone and survey actions visible. The user requested working demo links: `https://zalo.me/0939000000` and `tel:0939000000`, using the existing placeholder number. These defaults are configurable; verified business destinations have not been supplied.
 
 ## Brand Commitments
 
@@ -38,6 +38,7 @@ Use the business name Lúa Xanh Đồng Bằng, its existing logo, Vietnamese co
 - Existing site content and routes describe rooftop-solar services for households and businesses.
 - `public/images/demo/Dịch Vụ.png` contains the approved draft service-process copy and layout reference; operational promises in it remain unverified.
 - `public/images/demo/solar-roof.webp` and `public/images/demo/solar-farm.webp` are available illustrative assets.
+- The user confirmed that the six catalog project photos are real photographs of the projects; do not label these project photos as illustrations.
 - No approved customer testimonials or verified Zalo/phone destinations are in the repository.
 
 ## Product Principles

@@ -14,7 +14,7 @@ export function ServicesSection({ content }: { content: HomeContent["services"] 
   return (
     <section className="section services-section bg-slate-50" id="dich-vu">
       <div className="container">
-        <SectionHeading title={content.heading} />
+        <SectionHeading title={content.heading} description={content.introduction} />
         <div className="services-canva-grid">
           <Video
             src="https://www.youtube.com/watch?v=I-nslTMUxCs"

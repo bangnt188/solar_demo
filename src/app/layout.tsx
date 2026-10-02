@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader brandLabel={brand.label} brandLines={brand.lines} brandHref={brand.href} navLabel={navigation.label} navigation={navigation.items} callToAction={navigation.callToAction} />
         <main>{children}</main>
         <SiteFooter columns={footer.columns} note={footer.note} />
-        <ConversionDock surveyHref={conversion.surveyHref} />
+        <ConversionDock phoneHref={conversion.phoneHref} zaloHref={conversion.zaloHref} surveyHref={conversion.surveyHref} />
       </body>
     </html>
   );
