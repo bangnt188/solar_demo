@@ -1,0 +1,290 @@
+[
+  {
+    "width": 1440,
+    "route": "",
+    "status": 200,
+    "headings": [
+      {
+        "title": "GIẢI PHÁP CHUYÊN BIỆT\nCHO TỪNG NHÓM KHÁCH HÀNG",
+        "id": "",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "36px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "CHÚNG TÔI CÓ THỂ GIÚP\nBẠN NHỮNG GÌ?",
+        "id": "",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "36px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "CÂU HỎI THƯỜNG GẶP",
+        "id": "",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "36px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "route": "giai-phap/",
+    "status": 200,
+    "headings": [
+      {
+        "title": "Đâu là nhu cầu của gia đình bạn?",
+        "id": "solution-needs-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Giải pháp phù hợp với từng nhu cầu",
+        "id": "solution-systems-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Có thể áp dụng cho nhiều loại công trình",
+        "id": "solution-buildings-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Quy trình tư vấn & triển khai",
+        "id": "solution-process-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Mô hình hợp tác đầu tư",
+        "id": "solution-investment-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "34px",
+        "margin": "12px",
+        "lineHeight": "42.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scheme": "light",
+    "preview": {
+      "size": "24px",
+      "color": "rgb(19, 27, 46)",
+      "gap": "12px"
+    }
+  },
+  {
+    "width": 1440,
+    "scheme": "dark",
+    "preview": {
+      "size": "24px",
+      "color": "rgb(245, 246, 250)",
+      "gap": "12px"
+    }
+  },
+  {
+    "width": 390,
+    "route": "",
+    "status": 200,
+    "headings": [
+      {
+        "title": "GIẢI PHÁP CHUYÊN BIỆT\nCHO TỪNG NHÓM KHÁCH HÀNG",
+        "id": "",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "36px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "CHÚNG TÔI CÓ THỂ GIÚP\nBẠN NHỮNG GÌ?",
+        "id": "",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "36px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "CÂU HỎI THƯỜNG GẶP",
+        "id": "",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "36px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "route": "giai-phap/",
+    "status": 200,
+    "headings": [
+      {
+        "title": "Đâu là nhu cầu của gia đình bạn?",
+        "id": "solution-needs-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Giải pháp phù hợp với từng nhu cầu",
+        "id": "solution-systems-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Có thể áp dụng cho nhiều loại công trình",
+        "id": "solution-buildings-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Quy trình tư vấn & triển khai",
+        "id": "solution-process-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      },
+      {
+        "title": "Mô hình hợp tác đầu tư",
+        "id": "solution-investment-title",
+        "color": "rgb(0, 74, 173)",
+        "fontSize": "26px",
+        "margin": "12px",
+        "lineHeight": "32.5px",
+        "description": {
+          "size": "14.5px",
+          "gap": "0px",
+          "color": "rgb(100, 116, 139)",
+          "measure": "900px"
+        }
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "scheme": "light",
+    "preview": {
+      "size": "24px",
+      "color": "rgb(19, 27, 46)",
+      "gap": "12px"
+    }
+  },
+  {
+    "width": 390,
+    "scheme": "dark",
+    "preview": {
+      "size": "24px",
+      "color": "rgb(245, 246, 250)",
+      "gap": "12px"
+    }
+  }
+]

@@ -37,9 +37,7 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 
 /* --- Section Global --- */
 .section { padding-block: 60px; }
-.section-heading { margin: 0 0 12px; border-bottom: none; color: var(--color-primary); font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; letter-spacing: -.01em; line-height: 1.25; white-space: pre-line; }
 .section-title { font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; color: var(--color-primary); line-height: 1.25; margin: 0 0 12px 0; }
-.section-lead { color: var(--canva-text-muted); max-width: 900px; margin-bottom: 36px; font-size: 14.5px; line-height: 1.6; }
 
 /* --- Solutions Section --- */
 .solutions { background: #FFFFFF; }
@@ -358,7 +356,7 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 }
 @media (max-width: 700px) {
   .section { padding-block: 50px; }
-  .section-heading, .section-title, .why-us-title, .projects-title { font-size: 26px; }
+  .section-title, .why-us-title, .projects-title { font-size: 26px; }
   .hero h1 { font-size: 32px; }
   .hero-visual { height: 240px; }
   .projects-header { flex-direction: column; align-items: flex-start; gap: 16px; }

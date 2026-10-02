@@ -1,0 +1,15 @@
+.heading {
+  --ui-section-heading-color: var(--color-primary);
+  --ui-section-heading-size: clamp(24px, 3.2vw, 34px);
+}
+
+.description {
+  --ui-section-description-color: var(--canva-text-muted);
+  --ui-section-description-measure: 900px;
+  --ui-section-description-gap: 36px;
+  --ui-section-description-size: 14.5px;
+}
+
+@media (max-width: 700px) {
+  .heading { --ui-section-heading-size: 26px; }
+}

@@ -221,6 +221,10 @@ Bước dịch vụ chẵn giữ nền, radius và shadow cả mobile: selector 
 
 ## Components
 
+### Section headings
+
+`@solar/ui` xuất `SectionHeading` (heading level 2–6, description/eyebrow tùy chọn, ID trên heading). Solar dùng adapter tại `src/components/molecules/section-heading.tsx`: tiêu đề xanh, cỡ clamp(24px, 3.2vw, 34px), 26px ở ≤700px; mô tả 14.5px/1.6, measure 900px và gap 36px. CSS Module package giữ baseline, adapter ánh xạ token cục bộ; override `.section-lead` theo composition vẫn thuộc app. Không thêm wrapper. Contract, threat model và migration ở [ADR extraction](docs/adr/0002-section-heading-extraction.md).
+
 ### Buttons
 
 **CTA marketing:** `ActionLink` có primary/outline/plain. Primary/outline có border 2px, height tối thiểu 48px, padding 12px 28px, weight 800, cỡ 14.5px, dạng viên. Hover đổi nền và lift -1px. Ở ≤480px `.button` đổi padding 9px 13px/cỡ sm; hero có rule width riêng.

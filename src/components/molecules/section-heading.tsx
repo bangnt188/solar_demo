@@ -1,16 +1,14 @@
-type SectionHeadingProps = {
-  title: string;
-  description?: string;
-  eyebrow?: string;
-  id?: string;
-};
+import { SectionHeading as UiSectionHeading, type SectionHeadingProps as UiSectionHeadingProps } from "@solar/ui";
+import styles from "./section-heading.module.css";
+
+type SectionHeadingProps = Pick<UiSectionHeadingProps, "title" | "description" | "eyebrow" | "id">;
 
 export function SectionHeading({ title, description, eyebrow, id }: SectionHeadingProps) {
   return (
-    <>
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2 className="section-heading" id={id}>{title}</h2>
-      {description && <p className="section-lead">{description}</p>}
-    </>
+    <UiSectionHeading title={title} description={description} eyebrow={eyebrow} id={id}
+      headingClassName={`section-heading ${styles.heading}`}
+      descriptionClassName={`section-lead ${styles.description}`}
+      eyebrowClassName="eyebrow"
+    />
   );
 }

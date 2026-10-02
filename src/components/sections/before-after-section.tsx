@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SectionHeading } from "@/components/molecules/section-heading";
 
 type BeforeAfterSectionProps = {
   title: string;
@@ -11,8 +12,7 @@ export function BeforeAfterSection({ title, description, before, after }: Before
   return (
     <section className="section comparison-section" aria-labelledby="comparison-heading">
       <div className="container">
-        <h2 className="section-heading" id="comparison-heading">{title}</h2>
-        <p className="section-lead">{description}</p>
+        <SectionHeading title={title} description={description} id="comparison-heading" />
         <div className="comparison-grid">{before}{after}</div>
       </div>
     </section>
