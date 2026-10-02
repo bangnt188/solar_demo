@@ -3,7 +3,6 @@ export type HomeHeroContent = {
   tagline: string;
   description: string;
   primaryAction: { label: string; href: string };
-  secondaryAction: { label: string; href: string };
   image: string;
   imageAlt: string;
   bottomImage: string;

@@ -13,9 +13,11 @@ export function HeroSection({ content }: { content: HomeContent["hero"] }) {
           <p className="hero-desc">{content.description}</p>
           <div className="actions hero-actions">
             <ActionLink href={content.primaryAction.href} variant="primary" className="hero-btn-primary">{content.primaryAction.label}</ActionLink>
-            <ActionLink href={content.secondaryAction.href} variant="outline" className="hero-btn-outline">{content.secondaryAction.label}</ActionLink>
           </div>
-          <a className="hero-solutions-link" href="#giai-phap">Chọn giải pháp phù hợp với nhu cầu của bạn ↓</a>
+          <div className="hero-guidance">
+            <span>Chưa biết giải pháp nào phù hợp?</span>
+            <a className="hero-solutions-link" href="#giai-phap">Xem theo nhu cầu của bạn</a>
+          </div>
         </div>
         <div className="hero-visual">
           <Image src={imagePath(content.image)} alt={content.imageAlt} fill loading="eager" fetchPriority="high" sizes="(max-width: 900px) 100vw, 55vw" className="hero-img" />
