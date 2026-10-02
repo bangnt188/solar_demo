@@ -724,6 +724,7 @@ span.partners-brand { font-weight: 700; color: #334155; }
 .project-grid.projects-tab-grid--spotlight .project-title { font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.2; }
 .project-tab-empty { margin: 0; padding: 24px; border-radius: var(--radius-card); background: var(--color-surface); color: var(--color-text-secondary); text-align: center; }
 .project-gallery { --ui-expanding-gallery-duration: 750ms; --ui-expanding-gallery-content-duration: 550ms; }
+.projects-section > .project-gallery { border-radius: 0; }
 .project-gallery [data-expanding-gallery-media] img { transition-duration: 950ms; }
 .project-gallery [data-expanding-gallery-item] { min-block-size: 560px; }
 .project-gallery [data-active="false"]::after { background: linear-gradient(180deg, rgb(0 0 0 / 55%), rgb(0 0 0 / 72%)); }
