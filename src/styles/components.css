@@ -726,7 +726,8 @@ span.partners-brand { font-weight: 700; color: #334155; }
   .project-gallery[data-expanding-gallery-root] { block-size: auto; }
   .project-gallery [data-expanding-gallery-item] { flex: 0 0 auto; min-block-size: 0; block-size: 96px; transition: block-size 450ms var(--motion-ease-out); }
   .project-gallery [data-active="true"] { block-size: 360px; }
-  .project-gallery [data-expanding-gallery-item]::after { background: linear-gradient(180deg, rgb(0 0 0 / 62%), rgb(0 0 0 / 55%)); }
+  .project-gallery [data-active="false"]::after { background: linear-gradient(180deg, rgb(0 0 0 / 62%), rgb(0 0 0 / 55%)); }
+  .project-gallery [data-active="true"]::after { background: linear-gradient(180deg, rgb(0 0 0 / 8%) 0%, rgb(0 0 0 / 12%) 55%, rgb(0 0 0 / 60%) 100%); }
   .project-gallery [data-expanding-gallery-item] [data-expanding-gallery-content] { inset: 24px 16px auto; transform: none; }
   .project-gallery-title, .project-gallery [data-active="true"] .project-gallery-title { font-size: 16px; line-height: 1.45; letter-spacing: 0; white-space: normal; }
   .project-gallery [data-active="true"] .project-gallery-details { transition-delay: 250ms; }
