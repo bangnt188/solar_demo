@@ -12,7 +12,7 @@ Households and businesses considering rooftop solar, as confirmed for the servic
 
 ## Product Purpose
 
-The Lúa Xanh Đồng Bằng website presents rooftop-solar solutions and service information, then guides visitors to request a site survey. The existing survey form creates an email draft; it does not submit or store leads on a server.
+The Lúa Xanh Đồng Bằng website presents rooftop-solar solutions and service information, then guides visitors to request a site survey. The current survey flow validates the form and simulates submit success or failure in the browser; it does not persist leads on a server.
 
 ## Positioning
 
@@ -25,7 +25,7 @@ Prospective household and business customers review service scope and provide pr
 ## Capabilities and Constraints
 
 - The site is a Next.js static export under `/solar_demo` in its demo deployment.
-- The survey route has five required fields and opens a prefilled email draft; there is no server-side lead capture.
+- The survey route validates the required project/contact fields plus required contact-consent confirmation. Submit behavior is currently simulated in-browser with success/failure feedback; there is no server-side lead capture.
 - The process timing, technical specifications, single-responsibility wording, and 25-year support/warranty statements shown in `public/images/demo/Dịch Vụ.png` are user-approved for the draft page but still need the user's real-world confirmation before production publication.
 - Keep Zalo, phone and survey actions visible. The user requested working demo links: `https://zalo.me/0939000000` and `tel:0939000000`, using the existing placeholder number. These defaults are configurable; verified business destinations have not been supplied.
 
@@ -45,5 +45,5 @@ Use the business name Lúa Xanh Đồng Bằng, its existing logo, Vietnamese co
 
 - Describe project-specific service scope and technical fit without implying a fixed solution for every site.
 - Do not turn illustrative data or unverified service promises into verified proof.
-- Keep the survey's email-draft-only behavior explicit; do not claim server-side submission.
+- Keep the survey's non-persistent submit behavior documented in product/engineering context until a real backend is connected; do not treat the simulated result as proof of server-side lead capture.
 - Preserve the existing site navigation and responsive behavior.

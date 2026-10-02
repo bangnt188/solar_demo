@@ -10,6 +10,9 @@ export const surveySchema = z.object({
   building: required,
   bill: required,
   note: z.string(),
+  consent: z.boolean().refine((value) => value, {
+    message: "Bạn cần xác nhận để gửi yêu cầu khảo sát.",
+  }),
 });
 
 export type SurveyValues = z.infer<typeof surveySchema>;

@@ -1,6 +1,4 @@
 export type SurveyFormContent = {
-  recipient: string;
-  subject: string;
   nameLabel: string;
   phoneLabel: string;
   locationLabel: string;
@@ -13,8 +11,14 @@ export type SurveyFormContent = {
   notePlaceholder: string;
   buildingOptions: readonly string[];
   billOptions: readonly string[];
+  consentLabel: string;
   disclaimer: string;
   submitLabel: string;
+  submittingLabel: string;
+  successTitle: string;
+  successMessage: string;
+  failureTitle: string;
+  failureMessage: string;
 };
 
 export type SurveyScreenContent = {

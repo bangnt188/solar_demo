@@ -15,7 +15,6 @@ export function SurveyScreen({ content }: { content: SurveyScreenContent }) {
         <div data-motion="fade">
           <h2>{content.formHeading}</h2>
           <p>{content.formDescription}</p>
-          <p>{content.form.disclaimer}</p>
         </div>
         <div data-motion="right"><SurveyForm content={content.form} /></div>
       </section>
