@@ -58,7 +58,17 @@ export const homeContent = {
       { image: "solar-farm.webp", alt: "Hình minh họa tấm pin mặt trời" },
     ],
   },
-  featuredProjects: { heading: "DỰ ÁN TIÊU BIỂU", viewAllLabel: "XEM THÊM DỰ ÁN ❯", viewAllHref: "/du-an/" },
+  featuredProjects: {
+    heading: "DỰ ÁN TIÊU BIỂU",
+    viewAllLabel: "XEM THÊM DỰ ÁN ❯",
+    viewAllHref: "/du-an/",
+    projectTitles: [
+      "LE GRANDE CENTRE",
+      "CÔNG TY TNHH NƯỚC ĐÁ HƯNG THỊNH",
+      "NHÀ ANH NGUYỄN",
+      "ĐIỆN MÁY XANH CAO LÃNH",
+    ],
+  },
   testimonials: {
     title: "Chia sẻ từ khách hàng",
     description: "Trải nghiệm thực tế sẽ được cập nhật sau khi có nội dung được khách hàng xác nhận.",

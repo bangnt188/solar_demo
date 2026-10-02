@@ -27,7 +27,7 @@ export type HomeContent = {
     paragraphs: string[];
     images: { image: string; alt: string }[];
   };
-  featuredProjects: { heading: string; viewAllLabel: string; viewAllHref: string };
+  featuredProjects: { heading: string; viewAllLabel: string; viewAllHref: string; projectTitles: readonly string[] };
   testimonials: { title: string; description: string; items: { quote: string; name: string; role: string; location: string; system: string }[] };
   equipmentOffer: { heading: string; viewAllLabel: string; viewAllHref: string };
   faq: {
