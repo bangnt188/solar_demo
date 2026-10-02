@@ -147,7 +147,7 @@ export function MotionRuntime() {
         importing = false;
         lenis = new Lenis({
           smoothWheel: true,
-          wheelMultiplier: 0.5,
+          wheelMultiplier: 0.8,
           lerp: 0.1,
           syncTouch: false,
           autoRaf: false,
