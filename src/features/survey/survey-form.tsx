@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "@solar/ui";
+import { Button, Toast } from "@solar/ui";
 import { FormCheckboxField, FormSelectField, FormTextareaField, FormTextField } from "@solar/ui/forms";
 import type { SurveyFormContent } from "@/types/survey-content";
 import { surveySchema, type SurveyValues } from "./schema";
@@ -18,6 +18,8 @@ export function SurveyForm({ content }: { content: SurveyFormContent }) {
     reValidateMode: "onChange",
     defaultValues: { name: "", phone: "", location: "", building: "", bill: "", note: "", consent: false },
   });
+
+  const dismissToast = useCallback(() => setSubmitStatus("idle"), []);
 
   const submit = handleSubmit(async () => {
     setSubmitStatus("idle");
@@ -59,16 +61,26 @@ export function SurveyForm({ content }: { content: SurveyFormContent }) {
       </Button>
 
       {submitStatus === "success" && (
-        <div className="survey-submit-status survey-submit-status-success" role="status" aria-live="polite">
-          <strong>{content.successTitle}</strong>
-          <p>{content.successMessage}</p>
+        <div className="survey-toast-region">
+          <Toast
+            tone="success"
+            title={content.successTitle}
+            text={content.successMessage}
+            closeLabel="Đóng thông báo"
+            onDismiss={dismissToast}
+          />
         </div>
       )}
 
       {submitStatus === "error" && (
-        <div className="survey-submit-status survey-submit-status-error" role="alert">
-          <strong>{content.failureTitle}</strong>
-          <p>{content.failureMessage}</p>
+        <div className="survey-toast-region">
+          <Toast
+            tone="error"
+            title={content.failureTitle}
+            text={content.failureMessage}
+            closeLabel="Đóng thông báo"
+            onDismiss={dismissToast}
+          />
         </div>
       )}
     </form>
