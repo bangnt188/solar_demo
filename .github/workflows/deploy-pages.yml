@@ -2,7 +2,7 @@ name: Deploy demo to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
   workflow_dispatch:
 
 permissions:
@@ -12,32 +12,43 @@ permissions:
 
 concurrency:
   group: github-pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     env:
       NEXT_PUBLIC_SITE_URL: https://bangnt188.github.io/solar_demo/
       SEO_INDEXABLE: "false"
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout app + private UI submodule
+        uses: actions/checkout@v4
         with:
-          submodules: true
-          token: ${{ secrets.COMPONENT_UI_READ_TOKEN || github.token }}
-      - uses: actions/setup-node@v4
+          submodules: recursive
+          token: ${{ secrets.COMPONENT_UI_READ_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: "22"
           cache: npm
+
       - run: npm ci
       - run: npm run build
       - run: npm run test:export
       - run: touch out/.nojekyll
-      - uses: actions/upload-pages-artifact@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
           path: out
-      - id: deployment
+
+      - name: Deploy GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
