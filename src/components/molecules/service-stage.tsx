@@ -13,18 +13,24 @@ function ClockIcon() {
 
 export function ServiceStage({ number, stage }: { number: string; stage: ServiceStageContent }) {
   return (
-    <li className="service-stage">
-      <div className="service-stage-copy">
-        <span className="service-stage-number" aria-hidden="true">{number}</span>
+    <li className="service-stage" data-service-stage>
+      <div className="service-stage-copy" data-motion="up" data-motion-scroll="service-copy">
+        <span className="service-stage-number" data-service-stage-number aria-hidden="true">{number}</span>
         <div>
           <h2>{stage.title}</h2>
           <p className="service-stage-turnaround"><ClockIcon />{stage.turnaround}</p>
         </div>
       </div>
-      <figure className="service-stage-visual">
-        <Image src={imagePath(stage.image)} alt={stage.imageAlt} fill sizes="(max-width: 760px) 76vw, 150px" />
+      <figure className="service-stage-visual" data-motion="up" data-motion-scroll="service-media">
+        <Image
+          src={imagePath(stage.image)}
+          alt={stage.imageAlt}
+          fill
+          sizes="(max-width: 760px) 76vw, 150px"
+          data-service-stage-image
+        />
       </figure>
-      <ul className="service-stage-details">
+      <ul className="service-stage-details" data-motion="up" data-motion-scroll="service-details">
         {stage.details.map((detail) => <li key={detail}>{detail}</li>)}
       </ul>
     </li>

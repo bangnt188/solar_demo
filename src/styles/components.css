@@ -599,13 +599,149 @@ span.partners-brand { font-weight: 700; color: #334155; }
 .service-stage:nth-child(even) .service-stage-copy { grid-column: 3; grid-row: 1; flex-direction: row-reverse; text-align: right; }
 .service-stage:nth-child(even) .service-stage-details { grid-column: 1; grid-row: 1; }
 .service-stage:nth-child(even) .service-stage-turnaround { justify-content: flex-end; }
+
+/* Service process choreography: scroll-linked when supported, shared @solar/ui reveal as fallback. */
+.service-stage {
+  --service-stage-copy-x: calc(-1 * var(--ui-motion-distance-lg));
+  --service-stage-copy-y: 0px;
+  --service-stage-details-x: var(--ui-motion-distance-lg);
+  --service-stage-details-y: 0px;
+}
+
+.service-stage:nth-child(even) {
+  --service-stage-copy-x: var(--ui-motion-distance-lg);
+  --service-stage-details-x: calc(-1 * var(--ui-motion-distance-lg));
+}
+
+@supports (animation-timeline: view(block)) and (animation-range: entry 0% exit 100%) {
+  .service-stage::before {
+    transform-origin: top center;
+    animation-name: service-stage-line-draw;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view(block);
+    animation-range: entry 8% cover 48%;
+  }
+
+  .service-stage-copy[data-motion-scroll="service-copy"] {
+    animation-name: service-stage-copy-enter;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view(block);
+    animation-range: entry 6% cover 32%;
+  }
+
+  .service-stage-number[data-service-stage-number] {
+    animation-name: service-stage-number-enter;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view(block);
+    animation-range: entry 8% cover 34%;
+  }
+
+  .service-stage-visual[data-motion-scroll="service-media"] {
+    animation-name: service-stage-media-enter;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view(block);
+    animation-range: entry 12% cover 40%;
+  }
+
+  .service-stage-visual [data-service-stage-image] {
+    animation-name: service-stage-image-settle;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view(block);
+    animation-range: entry 12% cover 42%;
+  }
+
+  .service-stage-details[data-motion-scroll="service-details"] {
+    animation-name: service-stage-details-enter;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view(block);
+    animation-range: entry 18% cover 46%;
+  }
+
+  @keyframes service-stage-line-draw {
+    from { scale: 1 0; opacity: .3; }
+    to { scale: 1 1; opacity: 1; }
+  }
+
+  @keyframes service-stage-copy-enter {
+    from {
+      opacity: .45;
+      translate: var(--service-stage-copy-x) var(--service-stage-copy-y);
+    }
+    65% { opacity: .9; }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes service-stage-number-enter {
+    from {
+      opacity: .35;
+      scale: .88;
+      translate: 0 12px;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes service-stage-media-enter {
+    from {
+      opacity: .4;
+      scale: .94;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes service-stage-image-settle {
+    from { scale: 1.06; }
+    to { scale: 1; }
+  }
+
+  @keyframes service-stage-details-enter {
+    from {
+      opacity: .42;
+      translate: var(--service-stage-details-x) var(--service-stage-details-y);
+    }
+    70% { opacity: .92; }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+}
 @media (max-width: 760px) {
   .service-overview-hero { padding-block: 34px 28px; }
   .service-overview-image { height: 280px; }
   .service-process { --service-process-leading: 12px; padding-block: var(--service-process-leading) 48px; }
   .service-process-list::before, .service-stage::before { left: 25px; }
   .service-stage:last-child::before { bottom: calc(100% - 42px); }
-  .service-stage { grid-template-columns: minmax(0, 1fr); gap: 15px; min-height: 0; padding: 27px 0; border: 0; border-bottom: 1px solid var(--color-border); border-radius: 0; background: transparent; box-shadow: none; }
+  .service-stage {
+    --service-stage-copy-x: 0px;
+    --service-stage-copy-y: var(--ui-motion-distance-sm);
+    --service-stage-details-x: 0px;
+    --service-stage-details-y: var(--ui-motion-distance-sm);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+    min-height: 0;
+    padding: 27px 0;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
   .service-stage:nth-child(even) { border-bottom: 0; }
   .service-stage-copy, .service-stage:nth-child(even) .service-stage-copy { position: relative; grid-column: 1; grid-row: 1; align-items: flex-start; padding-left: 62px; flex-direction: row; text-align: left; }
   .service-stage-number { position: absolute; top: -8px; left: 0; width: 52px; background: var(--color-background); font-size: var(--font-size-3xl); text-align: center; }
@@ -615,6 +751,20 @@ span.partners-brand { font-weight: 700; color: #334155; }
   .service-stage-turnaround, .service-stage:nth-child(even) .service-stage-turnaround { align-items: flex-start; justify-content: flex-start; font-size: var(--font-size-sm); }
   .service-stage-visual { grid-column: 1; grid-row: 2; width: min(calc(100% - 62px), 300px); height: 180px; aspect-ratio: auto; margin: 0 0 0 62px; }
   .service-stage-details, .service-stage:nth-child(even) .service-stage-details { grid-column: 1; grid-row: 3; gap: 9px; padding-left: calc(62px + 20px); font-size: var(--font-size-sm); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-stage::before,
+  .service-stage-copy[data-motion-scroll],
+  .service-stage-number[data-service-stage-number],
+  .service-stage-visual[data-motion-scroll],
+  .service-stage-visual [data-service-stage-image],
+  .service-stage-details[data-motion-scroll] {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+    scale: 1 !important;
+  }
 }
 
 /* Reusable controls and feedback from the component reference. */
