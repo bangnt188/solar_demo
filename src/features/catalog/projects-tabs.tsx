@@ -43,12 +43,8 @@ export function ProjectsTabs({ projects }: { projects: readonly Project[] }) {
 
     return {
       value: tab.value,
-      label: (
-        <span className="projects-tab-label">
-          <span>{tab.label}</span>
-          <span className="projects-tab-count">{tabProjects.length} dự án</span>
-        </span>
-      ),
+      label: tab.label,
+      count: tabProjects.length,
       content: (
         <div className="projects-tab-panel" data-project-group={tab.value} data-project-count={tabProjects.length}>
           <div className="projects-tab-heading">
@@ -73,5 +69,16 @@ export function ProjectsTabs({ projects }: { projects: readonly Project[] }) {
     };
   });
 
-  return <div className="projects-tabs"><Tabs label="Nhóm dự án" defaultValue="household" items={items} /></div>;
+  return (
+    <div className="projects-tabs">
+      <Tabs
+        label="Nhóm dự án"
+        variant="pill"
+        size="md"
+        scrollable
+        defaultValue="household"
+        items={items}
+      />
+    </div>
+  );
 }
