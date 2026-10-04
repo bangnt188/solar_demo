@@ -2,7 +2,7 @@ name: Deploy demo to GitHub Pages
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,6 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_SITE_URL: https://bangnt188.github.io/solar_demo/
