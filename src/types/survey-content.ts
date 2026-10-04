@@ -15,6 +15,8 @@ export type SurveyFormContent = {
   disclaimer: string;
   submitLabel: string;
   submittingLabel: string;
+  cooldownButtonLabel: string;
+  cooldownMessage: string;
   successTitle: string;
   successMessage: string;
   failureTitle: string;

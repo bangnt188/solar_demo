@@ -301,6 +301,8 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 .survey-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .survey-fields .survey-wide { grid-column: 1 / -1; }
 .survey-disclaimer { margin: 24px 0; color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.survey-cooldown { margin: 12px 0 0; color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.5; }
+.survey-cooldown strong { color: var(--color-primary-dark); font-variant-numeric: tabular-nums; }
 .survey-fields input, .survey-fields select, .survey-fields textarea { display: block; width: 100%; min-width: 0; margin-top: 8px; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-background); color: var(--color-text-primary); font: inherit; font-weight: 400; }
 .survey-fields input:focus-visible, .survey-fields select:focus-visible, .survey-fields textarea:focus-visible { outline: 2px solid var(--focus-color); outline-offset: 2px; }
 .survey-fields textarea { resize: vertical; }
