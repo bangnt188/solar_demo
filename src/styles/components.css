@@ -732,20 +732,42 @@ span.partners-brand { font-weight: 700; color: #334155; }
     --service-stage-copy-y: var(--ui-motion-distance-sm);
     --service-stage-details-x: 0px;
     --service-stage-details-y: var(--ui-motion-distance-sm);
+    --service-stage-node-halo: var(--color-background);
     grid-template-columns: minmax(0, 1fr);
     gap: 15px;
     min-height: 0;
     padding: 27px 0;
     border: 0;
-    border-bottom: 1px solid var(--color-border);
     border-radius: 0;
     background: transparent;
     box-shadow: none;
   }
-  .service-stage:nth-child(even) { border-bottom: 0; }
-  .service-stage-copy, .service-stage:nth-child(even) .service-stage-copy { position: relative; grid-column: 1; grid-row: 1; align-items: flex-start; padding-left: 62px; flex-direction: row; text-align: left; }
-  .service-stage-number { position: absolute; top: -8px; left: 0; width: 52px; background: var(--color-background); font-size: var(--font-size-3xl); text-align: center; }
-  .service-stage:nth-child(even) .service-stage-number { background: var(--surface-container-low); }
+  .service-stage:nth-child(even) {
+    --service-stage-node-halo: var(--surface-container-low);
+    border-radius: 14px;
+    background: var(--surface-container-low);
+    box-shadow: 0 8px 22px #131b2e12;
+  }
+  .service-stage::before { z-index: 0; }
+  .service-stage-copy, .service-stage:nth-child(even) .service-stage-copy { position: relative; z-index: 1; grid-column: 1; grid-row: 1; align-items: flex-start; padding-left: 62px; flex-direction: row; text-align: left; }
+  .service-stage-number {
+    position: absolute;
+    z-index: 2;
+    top: -8px;
+    left: 1px;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    box-shadow: 0 0 0 4px var(--service-stage-node-halo);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-2xl);
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+  }
   .service-stage-copy > div { min-width: 0; }
   .service-stage-copy h2 { font-size: var(--font-size-xl); }
   .service-stage-turnaround, .service-stage:nth-child(even) .service-stage-turnaround { align-items: flex-start; justify-content: flex-start; font-size: var(--font-size-sm); }
