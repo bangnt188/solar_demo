@@ -23,7 +23,7 @@ Package có các control phổ biến `Avatar`, `ButtonGroup`, `ProgressBar`, `M
 
 Visual canonical: [DESIGN.md](DESIGN.md); kiến trúc composition và ảnh nghiệm thu component nằm ở [UI composition](docs/ui-composition.md) và [docs/ui-components-reference.png](docs/ui-components-reference.png). Chạy `npm run preview:ui --workspace=@solar/ui` để xem các component thật và thử trạng thái trong thư viện độc lập; bản preview này không thay trang sản phẩm của Solar.
 
-Server target có public API `GET /api/v1/{landing,projects,equipment}/`, published-content repositories, migration Neon/PostgreSQL và adapter ảnh R2. `POST /api/survey/` có DB intake, idempotency và shared rate limit nhưng mặc định tắt; chưa bật production. Auth/admin/editor và HTTP upload chưa triển khai. Demo packaging bỏ API/admin trong bản sao build, không sửa source gốc.
+Server target có public API `GET /api/v1/{landing,projects,equipment}/`, published-content repositories, migration Neon/PostgreSQL và adapter ảnh R2. `POST /api/survey/` có DB intake, idempotency và shared rate limit nhưng mặc định tắt; chưa bật production. Auth/authorization/admin nghiệp vụ và HTTP upload chưa triển khai. `/admin/` hiện là **demo giao diện với dữ liệu mẫu**, dùng route Next.js và shared UI. Demo packaging bỏ API và admin server-only trong bản sao build, chỉ cho phép các trang CMS demo đã liệt kê trong `scripts/demo-admin-routes.mjs`.
 
 ## GitHub Pages
 
@@ -33,7 +33,9 @@ Server target có public API `GET /api/v1/{landing,projects,equipment}/`, publis
 4. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
 5. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`, `/dich-vu/` cùng ba trang giải pháp và ba trang dịch vụ.
 
-Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo. Trang `/khao-sat/` mô phỏng gửi thử phía client, không gửi/lưu thông tin. Server intake chỉ bật sau khi có sandbox credentials, Turnstile và phê duyệt privacy/retention; không đưa secret vào frontend hay repository. `.env*` bị ignore trừ `.env.example`.
+CMS demo: <https://bangnt188.github.io/solar_demo/admin/>. Các route `/admin/projects/`, `/admin/equipment/`, `/admin/media/`, `/admin/leads/`, `/admin/editors/` và `/admin/login/` có HTML riêng, hỗ trợ mở trực tiếp/reload trên Pages; form sửa bản ghi mẫu dùng `/admin/projects/1/edit/`. Logo dùng asset gốc của website. Xem [hướng dẫn CMS](docs/admin-cms-demo.md).
+
+Pages chỉ phục vụ file tĩnh: CMS mô phỏng chỉnh sửa/lời mời/upload-preview trong bộ nhớ, **không có đăng nhập/authorization, CRUD bền vững, upload cloud hoặc API thật**. Dữ liệu và vai trò xem trước reset sau reload. Trang `/khao-sat/` mô phỏng gửi thử phía client, không gửi/lưu thông tin. Server intake chỉ bật sau khi có sandbox credentials, Turnstile và phê duyệt privacy/retention; không đưa secret vào frontend hay repository. `.env*` bị ignore trừ `.env.example`.
 
 ## SEO/AEO và cấu trúc xuất bản
 

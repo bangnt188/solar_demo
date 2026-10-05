@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
+import { demoAdminPaths, assertDemoRouteBoundary } from "../scripts/demo-admin-routes.mjs";
 
 const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://bangnt188.github.io/solar_demo/");
 const prefix = siteUrl.pathname.replace(/\/+$/, "") + "/";
@@ -38,9 +39,40 @@ test("home solution and service links resolve to exported anchors", () => {
   }
 });
 
+test("public CTA background uses the deployment prefix on Pages", () => {
+  assert.ok(page("").includes(`${prefix}images/demo/cta-banner-bg.png`));
+  assert.ok(existsSync("out/images/demo/cta-banner-bg.png"));
+});
+
 test("demo artifact excludes backend routes and environment files", () => {
-  for (const serverOnly of ["api", "admin", ".env", ".env.local", ".next"]) {
+  for (const serverOnly of ["api", ".env", ".env.local", ".next"]) {
     assert.equal(existsSync(join("out", serverOnly)), false, `Server-only artifact exported: ${serverOnly}`);
+  }
+});
+
+test("Pages exports every approved admin deep link with the real logo and no public chrome", () => {
+  for (const route of demoAdminPaths) {
+    const html = page(route.slice(1) + "/");
+    assert.ok(html.includes("CMS"), `Missing admin screen: ${route}`);
+    assert.match(html, /<meta name="robots" content="noindex, nofollow"/);
+    assert.ok(html.includes(`${prefix}images/common/logo.png`), `Missing original logo: ${route}`);
+    assert.doesNotMatch(html, /class="site-header|class="site-footer|conversion-dock/, `Public chrome leaked into ${route}`);
+    for (const [, url] of html.matchAll(/(?:src|href)="(\/[^"#?]+)(?:[?#][^"]*)?"/g)) {
+      assert.ok(url.startsWith(prefix), `Unprefixed admin asset/link: ${url}`);
+      const local = url.slice(prefix.length);
+      if (local.startsWith("_next/") || local.startsWith("images/")) assert.ok(existsSync(join("out", decodeURIComponent(local))), `Missing admin asset: ${local}`);
+    }
+  }
+  function htmlPaths(dir, path = "/admin") {
+    return readdirSync(dir, { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? htmlPaths(join(dir, entry.name), `${path}/${entry.name}`) : entry.name === "index.html" ? [path] : []);
+  }
+  assert.deepEqual(htmlPaths("out/admin").sort(), [...demoAdminPaths].sort(), "Unexpected admin page in Pages artifact");
+});
+
+test("demo boundary rejects backend and unapproved admin routes including route groups", () => {
+  assert.doesNotThrow(() => assertDemoRouteBoundary(["/(cms)/admin/page", "/(cms)/admin/projects/[id]/edit/page"]));
+  for (const route of ["/api/survey/route", "/(private)/api/auth/route", "/(private)/admin/settings/page", "/(cms)/admin/api/auth/route"]) {
+    assert.throws(() => assertDemoRouteBoundary([route]), /leaked/);
   }
 });
 

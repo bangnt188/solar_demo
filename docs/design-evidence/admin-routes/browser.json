@@ -1,0 +1,252 @@
+{
+  "errors": [],
+  "failedResponses": [],
+  "publicFindings": [],
+  "apiRequests": [],
+  "checks": [
+    {
+      "device": "desktop",
+      "route": "/admin/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/projects/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/projects/new/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/projects/1/edit/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/equipment/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/equipment/1/edit/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/media/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/leads/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/editors/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/login/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/forgot-password/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "route": "/admin/reset-password/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "desktop",
+      "savedAcrossRoute": true
+    },
+    {
+      "device": "desktop",
+      "providerPreserved": true
+    },
+    {
+      "device": "desktop",
+      "reloadReset": true
+    },
+    {
+      "device": "desktop",
+      "editorLeadNav": 0
+    },
+    {
+      "device": "desktop",
+      "legacyRedirect": true
+    },
+    {
+      "device": "desktop",
+      "publicChromePreserved": true
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/projects/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/projects/new/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/projects/1/edit/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/equipment/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/equipment/1/edit/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/media/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/leads/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/editors/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/login/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/forgot-password/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "route": "/admin/reset-password/",
+      "status": 200,
+      "overflow": false,
+      "logoLoaded": true,
+      "publicHeader": 0
+    },
+    {
+      "device": "mobile",
+      "detailFocus": true
+    },
+    {
+      "device": "mobile",
+      "savedAcrossRoute": true
+    },
+    {
+      "device": "mobile",
+      "providerPreserved": true
+    },
+    {
+      "device": "mobile",
+      "reloadReset": true
+    },
+    {
+      "device": "mobile",
+      "editorLeadNav": 0
+    },
+    {
+      "device": "mobile",
+      "legacyRedirect": true
+    },
+    {
+      "device": "mobile",
+      "publicChromePreserved": true
+    }
+  ]
+}

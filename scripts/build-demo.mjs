@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { assertDemoRouteBoundary } from './demo-admin-routes.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workspace = await mkdtemp(path.join(tmpdir(), 'solar-demo-build-'));
 try {
@@ -29,8 +30,10 @@ try {
   });
   if (exitCode !== 0) throw new Error('Demo build failed');
   const manifest = JSON.parse(await readFile(path.join(workspace, '.next/server/app-paths-manifest.json'), 'utf8'));
-  if (Object.keys(manifest).some(route => /^\/(api|admin)(\/|$)/.test(route))) throw new Error('Server routes leaked into demo artifact');
+  // The (cms) route group is a public, synthetic UI demo; allow only its
+  // reviewed pages. Production admin handlers and API remain excluded.
+  assertDemoRouteBoundary(Object.keys(manifest));
   await rm(path.join(root, 'out'), { recursive: true, force: true });
   await cp(path.join(workspace, 'out'), path.join(root, 'out'), { recursive: true });
-  console.log('Demo export ready: out/ (no server routes or cloud environment)');
+  console.log('Demo export ready: out/ (public site + admin UI demo; no API or cloud environment)');
 } finally { await rm(workspace, { recursive: true, force: true }); }

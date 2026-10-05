@@ -1,10 +1,12 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
+import { imagePath } from "@/config/site";
 import type { HomeContent } from "@/types/home-content";
 
 export function ContactSection({ content }: { content: HomeContent["contact"] }) {
   return (
     <div className="container contact-banner-wrapper" id="lien-he">
-      <section className="contact-banner" data-motion="up">
+      <section className="contact-banner" data-motion="up" style={{ "--contact-banner-image": `url("${imagePath("cta-banner-bg.png")}")` } as CSSProperties}>
         <div className="contact-banner-content">
           <h2>
             {content.heading.map((line) => (
