@@ -103,7 +103,7 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 .why-feature-icon { width: 48px; height: 48px; border-radius: 50%; background: #FFF7ED; color: var(--canva-orange); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px; }
 .why-feature-card h3 { font-size: 14px; font-weight: 800; color: var(--canva-text-dark); margin: 0 0 6px 0; line-height: 1.35; }
 .why-feature-card p { font-size: 12px; line-height: 1.5; color: var(--canva-text-muted); margin: 0; }
-.why-commitment-card { background: #F8FAFC; border-left: 4px solid var(--color-primary); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+.why-commitment-card { background: #F8FAFC; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
 .why-commitment-card p { font-size: 13.5px; line-height: 1.6; color: #334155; margin: 0; }
 .why-commitment-brand { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 14px; font-weight: 700; font-style: italic; color: #16A34A; }
 
@@ -314,24 +314,6 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 .survey-form .button:disabled { cursor: not-allowed; opacity: .6; }
 .survey-toast-region { position: fixed; z-index: 1000; inset-block-start: calc(20px + env(safe-area-inset-top)); inset-inline-end: 20px; width: min(22rem, calc(100vw - 32px)); }
 .survey-toast-region > * { width: 100%; }
-.toast { --ui-tone: var(--color-primary); --ui-tint: var(--surface-container-low); position: fixed; z-index: 1000; inset-block-start: calc(28px + env(safe-area-inset-top)); inset-inline-end: 28px; display: flex; align-items: center; gap: 16px; width: min(352px, calc(100vw - 32px)); min-height: 70px; padding: 14px 42px 14px 16px; overflow: hidden; border-radius: 12px; background: var(--ui-tint); box-shadow: 0 10px 28px #131b2e20; color: var(--color-text-primary); font-size: var(--font-size-sm); line-height: 1.45; animation: toast-enter 220ms var(--motion-ease-out) both; }
-.toast::before { position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--ui-tone); content: ""; }
-.ui-feedback-success { --ui-tone: #078052; --ui-tint: #eaf8f1; }
-.ui-feedback-info { --ui-tone: #0863e6; --ui-tint: #f0f5ff; }
-.ui-feedback-warning { --ui-tone: #eaa100; --ui-tint: #fff7eb; }
-.ui-feedback-error { --ui-tone: #c42228; --ui-tint: #fcecef; }
-.ui-status-icon { display: grid; flex: 0 0 32px; width: 32px; height: 32px; place-items: center; border-radius: 50%; background: var(--ui-tone); color: #fff; }
-.ui-status-icon svg { width: 19px; height: 19px; }
-.ui-info-mark { font-size: var(--font-size-2xl); font-weight: 800; line-height: 1; }
-.ui-feedback-copy { min-width: 0; flex: 1; }
-.ui-feedback-copy strong { display: block; color: var(--color-text-primary); font-size: var(--font-size-sm); font-weight: 800; }
-.ui-feedback-copy div { margin-top: 2px; color: var(--color-text-secondary); }
-.toast-dismiss { position: absolute; top: 10px; right: 10px; display: grid; width: 30px; height: 30px; padding: 0; place-items: center; border: 0; background: transparent; color: var(--color-text-primary); cursor: pointer; }
-.toast-dismiss svg { width: 17px; height: 17px; }
-.toast-progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--ui-tone); transform-origin: left; animation: toast-countdown var(--toast-duration) linear forwards; }
-.toast-paused .toast-progress { animation-play-state: paused; }
-@keyframes toast-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes toast-countdown { to { transform: scaleX(0); } }
 @media (max-width: 900px) {
   .container { width: min(100% - 36px, 700px); }
   .nav { padding-block: 13px; align-items: flex-start; flex-wrap: wrap; }
@@ -428,8 +410,6 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 .comparison-section { background: var(--surface-container-low); }
 .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .comparison-card { padding: 26px; border-radius: 14px; background: white; }
-.comparison-before { border-top: 4px solid #ba1a1a; }
-.comparison-after { border-top: 4px solid var(--color-tertiary); }
 .comparison-label { color: var(--color-text-secondary); font-size: var(--font-size-sm); font-weight: 700; text-transform: uppercase; }
 .comparison-card h3 { margin: 12px 0; color: var(--color-primary); font-size: var(--font-size-2xl); }
 .comparison-card p { margin-bottom: 0; color: var(--color-text-secondary); }
