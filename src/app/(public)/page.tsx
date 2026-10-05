@@ -1,16 +1,19 @@
 import { HomeScreen } from "@/components/screens/home-screen";
-import { homeContent } from "@/data/content/home";
-import { getEquipment, getProjects } from "@/services/catalog";
+import { getLanding } from "@/services/public-content";
 import { JsonLd } from "@/components/seo/json-ld";
 import { pageMetadata, pageStructuredData } from "@/lib/seo";
 
-export const metadata = pageMetadata("/");
+export async function generateMetadata() {
+  const { seo } = await getLanding();
+  return pageMetadata("/", { title: seo.title, description: seo.description, indexable: seo.requestedIndexable, image: seo.ogImage });
+}
 
-export default function Home() {
+export default async function Home() {
+  const landing = await getLanding();
   return (
     <>
-      <JsonLd data={pageStructuredData("/")} />
-      <HomeScreen content={homeContent} projects={getProjects()} equipment={getEquipment()} />
+      <JsonLd data={pageStructuredData("/", landing.seo)} />
+      <HomeScreen landing={landing} />
     </>
   );
 }

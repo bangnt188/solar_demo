@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SiteNavigation } from "@/components/organisms/site-navigation";
-import { basePath } from "@/config/site";
 import type { SiteLink } from "@/types/landing";
 
 type SiteHeaderProps = {
   brandLabel: string;
   brandLines: readonly string[];
   brandHref: string;
-  logoSrc?: string;
+  logoSrc: string;
   navLabel: string;
   navigation: readonly SiteLink[];
   callToAction: SiteLink;
@@ -19,7 +18,7 @@ export function SiteHeader({ brandLabel, brandLines, brandHref, logoSrc, navLabe
     <header className="site-header">
       <div className="container nav">
         <Link className="brand" href={brandHref} aria-label={brandLabel}>
-          <Image src={logoSrc ?? `${basePath}/images/common/logo.png`} alt="" width={44} height={44} className="brand-mark" loading="eager" />
+          <Image src={logoSrc} alt="" width={44} height={44} className="brand-mark" loading="eager" />
           <span className="brand-name">{brandLines.map((line) => <span key={line}>{line}</span>)}</span>
         </Link>
         <SiteNavigation navLabel={navLabel} navigation={navigation} callToAction={callToAction} />
@@ -29,9 +28,9 @@ export function SiteHeader({ brandLabel, brandLines, brandHref, logoSrc, navLabe
 }
 
 type FooterColumn = { title: string; items: readonly { label: string; href?: string }[] };
-type SiteFooterProps = { columns: readonly FooterColumn[]; note: string };
+type SiteFooterProps = { columns: readonly FooterColumn[]; note: string; logoSrc: string };
 
-export function SiteFooter({ columns, note }: SiteFooterProps) {
+export function SiteFooter({ columns, note, logoSrc }: SiteFooterProps) {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
@@ -56,7 +55,7 @@ export function SiteFooter({ columns, note }: SiteFooterProps) {
           ))}
         </div>
         <div className="footer-brand-mark" aria-hidden="true">
-          <Image src={`${basePath}/images/common/logo.png`} alt="" width={140} height={140} className="footer-watermark" />
+          <Image src={logoSrc} alt="" width={140} height={140} className="footer-watermark" />
         </div>
       </div>
       <div className="container footer-bottom">

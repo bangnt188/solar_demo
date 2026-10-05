@@ -20,26 +20,25 @@ const categoryTabs: Record<string, ProjectTabValue> = {
 };
 
 function groupProjects(projects: readonly Project[]) {
-  const grouped: Record<ProjectTabValue, Project[]> = {
-    household: [],
-    "small-business": [],
-    enterprise: [],
-  };
-
+  const groups = new Map<string, { value: string; label: string; projects: Project[] }>(
+    projectTabs.map(tab => [tab.value, { ...tab, projects: [] }]),
+  );
   for (const project of projects) {
-    if (!Object.prototype.hasOwnProperty.call(categoryTabs, project.category)) {
-      throw new Error(`Map project category to a tab: ${project.category}`);
+    const mapped = Object.hasOwn(categoryTabs, project.category) ? categoryTabs[project.category] : undefined;
+    const value = mapped ?? `category:${project.category}`;
+    let group = groups.get(value);
+    if (!group) {
+      group = { value, label: project.category, projects: [] };
+      groups.set(value, group);
     }
-    grouped[categoryTabs[project.category]].push(project);
+    group.projects.push(project);
   }
-
-  return grouped;
+  return [...groups.values()];
 }
 
 export function ProjectsTabs({ projects }: { projects: readonly Project[] }) {
-  const groupedProjects = groupProjects(projects);
-  const items = projectTabs.map((tab) => {
-    const tabProjects = groupedProjects[tab.value];
+  const items = groupProjects(projects).map((tab) => {
+    const tabProjects = tab.projects;
 
     return {
       value: tab.value,

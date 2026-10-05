@@ -1,0 +1,36 @@
+name: Check backend server target
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SITE_URL: https://solar.example.invalid/
+      SEO_INDEXABLE: "false"
+      SURVEY_INTAKE_ENABLED: "false"
+      NEXT_TELEMETRY_DISABLED: "1"
+      # Build-only dummy configuration, not a live cloud connection.
+      DATABASE_URL: postgresql://build:build@database.example.invalid/solar
+    steps:
+      - name: Checkout app + private UI submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.COMPONENT_UI_READ_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run test:core
+      - run: npm run build:server

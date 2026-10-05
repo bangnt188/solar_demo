@@ -1,6 +1,6 @@
 # Lúa Xanh Đồng Bằng — Next.js demo
 
-Nhánh `dev` là bản demo frontend Next.js static, xuất sang GitHub Pages tại <https://bangnt188.github.io/solar_demo/>. Nhánh `main` dành cho production Vercel sau khi hoàn thiện backend; **không merge bản demo này vào production như một CMS đang hoạt động**.
+Nhánh `dev` tích hợp backend giai đoạn 1 và giữ hai build target: demo static xuất GitHub Pages tại <https://bangnt188.github.io/solar_demo/>, server Next.js đọc public content từ PostgreSQL. Nhánh `main` dành cho production Vercel; **backend core không đồng nghĩa CMS/auth/admin đã hoàn thành hoặc cloud đã được nghiệm thu**. Xem [backend core](docs/backend-core.md).
 
 ## Chạy local
 
@@ -23,7 +23,7 @@ Package có các control phổ biến `Avatar`, `ButtonGroup`, `ProgressBar`, `M
 
 Visual canonical: [DESIGN.md](DESIGN.md); kiến trúc composition và ảnh nghiệm thu component nằm ở [UI composition](docs/ui-composition.md) và [docs/ui-components-reference.png](docs/ui-components-reference.png). Chạy `npm run preview:ui --workspace=@solar/ui` để xem các component thật và thử trạng thái trong thư viện độc lập; bản preview này không thay trang sản phẩm của Solar.
 
-Các khu vực còn chưa triển khai (`src/app/admin`, `src/app/api`, `src/components/admin`, `src/infrastructure/*`, `database/*`, `public/icons`, `public/documents`) vẫn chỉ là placeholders; không có route admin/API trên Pages.
+Server target có public API `GET /api/v1/{landing,projects,equipment}/`, published-content repositories, migration Neon/PostgreSQL và adapter ảnh R2. `POST /api/survey/` có DB intake, idempotency và shared rate limit nhưng mặc định tắt; chưa bật production. Auth/admin/editor và HTTP upload chưa triển khai. Demo packaging bỏ API/admin trong bản sao build, không sửa source gốc.
 
 ## GitHub Pages
 
@@ -33,7 +33,7 @@ Các khu vực còn chưa triển khai (`src/app/admin`, `src/app/api`, `src/com
 4. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
 5. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`, `/dich-vu/` cùng ba trang giải pháp và ba trang dịch vụ.
 
-Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo. Trang `/khao-sat/` tạo bản nháp email từ thông tin người dùng điền; người dùng phải tự xác nhận gửi trong ứng dụng email. Website không tự gửi hoặc lưu dữ liệu khảo sát. Không đưa secret vào frontend hay repository; `.env*` bị ignore trừ `.env.example`.
+Pages chỉ phục vụ file tĩnh: **không có admin login/CRUD, upload, API, lưu survey hay phân quyền** ở bản demo. Trang `/khao-sat/` mô phỏng gửi thử phía client, không gửi/lưu thông tin. Server intake chỉ bật sau khi có sandbox credentials, Turnstile và phê duyệt privacy/retention; không đưa secret vào frontend hay repository. `.env*` bị ignore trừ `.env.example`.
 
 ## SEO/AEO và cấu trúc xuất bản
 
@@ -55,7 +55,9 @@ Xem [review điểm nghẽn, cấu trúc thư mục/URL và bằng chứng kiể
 
 ## Lộ trình production
 
-Trước khi đưa `main` lên Vercel: cấu hình `NEXT_PUBLIC_SITE_URL` theo URL chính thức (domain gốc tự bỏ prefix Pages), giữ `SEO_INDEXABLE=false` cho preview. Static export vẫn phù hợp nếu chỉ phục vụ nội dung; chỉ bỏ `output: "export"` khi triển khai chức năng server. Giữ quy ước URL có dấu `/` cuối hoặc chuẩn bị redirect nhất quán trước khi đổi; không tự xóa `trailingSlash` làm lệch canonical. Triển khai server-side authentication/authorization, Neon, R2 upload có kiểm tra quyền/kích thước/MIME/quota, survey lưu Neon trước rồi đồng bộ Google Sheets. Quản lý secret trên Vercel theo `.env.example`; không bật tính năng server trên Pages. Domain cutover chỉ sau khi preview Vercel được duyệt; giữ WordPress cũ để rollback, lập redirect từ URL cũ theo dữ liệu thật và không đổi DNS email.
+Backend giai đoạn 1 đã được tích hợp riêng từ `mvp-dev`, không kéo UI cũ hoặc mock Sheets/MVP runner vào `dev`. `npm run build:demo` tạo `out/` không cần cloud secrets; `npm run build:server` tạo runtime Next.js, yêu cầu `NEXT_PUBLIC_SITE_URL` là HTTPS origin không có prefix Pages. Giữ `SEO_INDEXABLE=false` cho preview. Trước khi đưa `main` lên production: cấu hình sandbox và kiểm chứng Neon/R2 theo [runbook](docs/neon-r2-setup.md), hoàn thành auth/authorization/admin/publish/upload và duyệt nội dung/quyền ảnh. Không tự publish seed DRAFT hoặc bật intake production.
+
+Kiểm chứng backend local: `npm run typecheck`, `npm run test:core`, `npm run test:integration`. Integration runner dùng PostgreSQL tạm, kiểm migration rollback/journal, published projection, survey commit/idempotency/rate limits và HTTP Next thật; không dùng dữ liệu cloud. Migration operator: `npm run db:migrate`; seed sandbox: `npm run db:seed:sandbox`. Chi tiết contract và giới hạn bằng chứng trong [backend-core.md](docs/backend-core.md).
 
 Quy ước CSS về selector, cascade, token và breakpoint: [docs/css-conventions.md](docs/css-conventions.md).
 

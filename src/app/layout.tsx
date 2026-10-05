@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AnnouncementBar } from "@/components/organisms/announcement-bar";
 import { ConversionDock } from "@/components/organisms/conversion-dock";
 import { SiteFooter, SiteHeader } from "@/components/organisms/site-chrome";
-import { siteChromeContent } from "@/data/content/site-chrome";
+import { getLanding } from "@/services/public-content";
 import { siteUrl } from "@/config/site";
 import { siteName } from "@/lib/seo";
 import "@solar/ui/styles";
@@ -15,18 +15,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { announcement, brand, navigation, conversion, footer } = siteChromeContent;
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const { chrome } = await getLanding();
+  const { announcement, brand, navigation, conversion, footer } = chrome;
 
   return (
     <html lang="vi" data-scroll-behavior="smooth">
       <body data-ui-root>
-        <AnnouncementBar actionLabel={announcement.actionLabel} actionHref={announcement.actionHref}>
+        {announcement.enabled && <AnnouncementBar actionLabel={announcement.actionLabel} actionHref={announcement.actionHref}>
           <strong>{announcement.lead}</strong>{announcement.body}
-        </AnnouncementBar>
-        <SiteHeader brandLabel={brand.label} brandLines={brand.lines} brandHref={brand.href} navLabel={navigation.label} navigation={navigation.items} callToAction={navigation.callToAction} />
+        </AnnouncementBar>}
+        <SiteHeader brandLabel={brand.label} brandLines={brand.lines} brandHref={brand.href} logoSrc={brand.logo} navLabel={navigation.label} navigation={navigation.items} callToAction={navigation.callToAction} />
         <main>{children}</main>
-        <SiteFooter columns={footer.columns} note={footer.note} />
+        <SiteFooter columns={footer.columns} note={footer.note} logoSrc={brand.logo} />
         <ConversionDock phoneHref={conversion.phoneHref} zaloHref={conversion.zaloHref} surveyHref={conversion.surveyHref} />
       </body>
     </html>
