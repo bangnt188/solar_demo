@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { AppError } from "./errors";
+import { AccessError, BackendError } from "@shared/backend";
 
 export type RoutePolicy = { kind: "public-read" } | { kind: "public-write"; authorize: (request: Request) => Promise<void> } | { kind: "protected"; authorize: (request: Request) => Promise<void> };
 export type Endpoint<Input, Output> = {
@@ -25,10 +26,11 @@ export function route<Input, Output>(endpoint: Endpoint<Input, Output>) {
       if (request.method === "HEAD") return new Response(null, { headers });
       return Response.json({ data: result, requestId }, { status: endpoint.successStatus ?? 200, headers });
     } catch (error) {
-      const known = error instanceof AppError;
+      const known = error instanceof AppError || error instanceof AccessError || error instanceof BackendError;
       const code = known ? error.code : "INTERNAL";
       // Config/dependency errors stay generic even when their internal message is useful to operators.
-      const message = known && error.status < 500 ? error.message : "Dịch vụ tạm thời chưa sẵn sàng. Vui lòng thử lại sau.";
+      const message = error instanceof AppError && error.status < 500 ? error.message : known && error.status < 500
+        ? "Yêu cầu không hợp lệ hoặc không có quyền truy cập." : "Dịch vụ tạm thời chưa sẵn sàng. Vui lòng thử lại sau.";
       if (!known || error.status >= 500) console.error(JSON.stringify({ event: "request.failed", requestId, code }));
       return Response.json({ error: { code, message, requestId } }, { status: known ? error.status : 500, headers });
     }

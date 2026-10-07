@@ -8,22 +8,22 @@
   ],
   "scripts": {
     "build:ui": "npm run build --workspace=@solar/ui",
-    "predev": "npm run build:ui",
+    "predev": "npm run build:backend && npm run build:ui",
     "dev": "next dev",
-    "prebuild": "npm run build:ui",
+    "prebuild": "npm run build:backend && npm run build:ui",
     "build": "node scripts/build-demo.mjs",
-    "prebuild:demo": "npm run build:ui",
+    "prebuild:demo": "npm run build:backend && npm run build:ui",
     "build:demo": "node scripts/build-demo.mjs",
-    "prebuild:server": "npm run build:ui",
+    "prebuild:server": "npm run build:backend && npm run build:ui",
     "build:server": "node scripts/next-server.mjs build",
-    "predev:server": "npm run build:ui",
+    "predev:server": "npm run build:backend && npm run build:ui",
     "dev:server": "node scripts/next-server.mjs dev",
     "start:server": "node scripts/next-server.mjs start",
-    "pretypecheck": "npm run build:ui && npm run typecheck:ui && npm run typecheck:backend",
+    "pretypecheck": "npm run build:backend && npm run build:ui && npm run typecheck:ui && npm run typecheck:backend",
     "typecheck": "tsc --noEmit",
     "test:export": "node --test tests/export.test.mjs",
     "test:core": "node --conditions=react-server --import tsx --test tests/core.test.ts",
-    "pretest:integration": "npm run build:ui",
+    "pretest:integration": "npm run build:backend && npm run build:ui",
     "test:integration": "bash scripts/test-integration.sh",
     "db:migrate": "node --conditions=react-server --import tsx scripts/database.ts migrate",
     "db:seed:sandbox": "node --conditions=react-server --import tsx scripts/database.ts seed",
@@ -33,7 +33,10 @@
     "build:backend": "npm run build --workspace=@shared/backend",
     "typecheck:backend": "npm run typecheck --workspace=@shared/backend",
     "test:backend": "npm run test --workspace=@shared/backend",
-    "typecheck:ui": "npm run typecheck --workspace=@solar/ui"
+    "typecheck:ui": "npm run typecheck --workspace=@solar/ui",
+    "check:backend": "npm run check:integrity --workspace=@shared/backend",
+    "test:backend:consumer": "npm run build:backend && node --conditions=react-server --import tsx --test tests/backend-consumer.test.ts",
+    "pretest:core": "npm run build:backend"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1141.0",
@@ -52,7 +55,7 @@
     "server-only": "0.0.1",
     "sharp": "0.35.4",
     "zod": "^4.6.5",
-    "@shared/backend": "0.1.0"
+    "@shared/backend": "0.2.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

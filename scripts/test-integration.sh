@@ -36,3 +36,4 @@ if [[ "$(psql "${psql_args[@]}" -Atc 'SELECT count(*) FROM solar_appdata.project
 SOLAR_TEST_PG_SOCKET="$test_root" node --conditions=react-server --import tsx --test tests/integration.test.ts
 psql "${psql_args[@]}" -q -c "UPDATE solar_appdata.media SET public_use_approved=true WHERE static_path='images/common/logo.png'"
 SOLAR_TEST_PG_SOCKET="$test_root" node tests/server-http.mjs
+SOLAR_TEST_PG_SOCKET="$test_root" node --conditions=react-server --import tsx --test tests/backend-database.test.ts
