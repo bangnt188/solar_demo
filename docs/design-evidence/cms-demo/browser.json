@@ -1,0 +1,117 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "device": "desktop",
+      "page": "home",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "leadUpdate": "Đã cập nhật khảo sát mẫu."
+    },
+    {
+      "device": "desktop",
+      "page": "projects",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "catalogSaved": true
+    },
+    {
+      "device": "desktop",
+      "page": "equipment",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "page": "media",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "page": "leads",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "emptyVisible": true
+    },
+    {
+      "device": "desktop",
+      "page": "users",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "editorLeadMenu": 0,
+      "editorAccountMenu": 0
+    },
+    {
+      "device": "desktop",
+      "page": "login",
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "resetFeedback": "Phản hồi mẫu: Nếu email thuộc tài khoản được cấp, bạn sẽ nhận được hướng dẫn khôi phục. Demo không gửi email."
+    },
+    {
+      "device": "mobile",
+      "page": "home",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "leadUpdate": "Đã cập nhật khảo sát mẫu."
+    },
+    {
+      "device": "mobile",
+      "page": "projects",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "catalogSaved": true
+    },
+    {
+      "device": "mobile",
+      "page": "equipment",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "page": "media",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "page": "leads",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "emptyVisible": true
+    },
+    {
+      "device": "mobile",
+      "page": "users",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "editorLeadMenu": 0,
+      "editorAccountMenu": 0
+    },
+    {
+      "device": "mobile",
+      "page": "login",
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "resetFeedback": "Phản hồi mẫu: Nếu email thuộc tài khoản được cấp, bạn sẽ nhận được hướng dẫn khôi phục. Demo không gửi email."
+    }
+  ]
+}

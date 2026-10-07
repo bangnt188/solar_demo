@@ -1,0 +1,147 @@
+{
+  "environment": {
+    "url": "http://127.0.0.1:3000/solar_demo/",
+    "server": "existing Next.js dev server",
+    "browser": "Chromium headless on macOS",
+    "date": "2026-10-01"
+  },
+  "initial": [
+    {
+      "url": "http://127.0.0.1:3000/solar_demo/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "bodyFont": "\"Plus Jakarta Sans\", Arial, Helvetica, sans-serif",
+      "bodySize": "16px",
+      "bodyLeading": "24.8px",
+      "heroSize": "50px",
+      "containerWidth": "1200px",
+      "heroDuration": "2s",
+      "revealDuration": "2s",
+      "plusJakartaLoaded": true,
+      "fonts": [
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        }
+      ],
+      "primary": "#004aad",
+      "uiPrimary": "#004aad",
+      "accent": "#e89c25",
+      "uiAccent": "#febb3c",
+      "heroRenderedFonts": [
+        {
+          "familyName": "Arial",
+          "postScriptName": "Arial-BoldMT",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ],
+      "faqOpen": false,
+      "serviceStage": {
+        "background": "rgb(248, 250, 252)",
+        "radius": "14px",
+        "shadow": "rgba(19, 27, 46, 0.07) 0px 8px 22px 0px"
+      },
+      "reducedMotion": {
+        "matched": true,
+        "scrollBehavior": "auto",
+        "serviceTimeline": "none",
+        "activeAnimations": 0
+      }
+    },
+    {
+      "url": "http://127.0.0.1:3000/solar_demo/",
+      "width": 390,
+      "scrollWidth": 424,
+      "bodyFont": "\"Plus Jakarta Sans\", Arial, Helvetica, sans-serif",
+      "bodySize": "16px",
+      "bodyLeading": "24.8px",
+      "heroSize": "32px",
+      "containerWidth": "358px",
+      "heroDuration": "2s",
+      "revealDuration": "2s",
+      "plusJakartaLoaded": true,
+      "fonts": [
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        }
+      ],
+      "primary": "#004aad",
+      "uiPrimary": "#004aad",
+      "accent": "#e89c25",
+      "uiAccent": "#febb3c",
+      "heroRenderedFonts": [
+        {
+          "familyName": "Arial",
+          "postScriptName": "Arial-BoldMT",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ],
+      "mobileMenuOpen": true,
+      "faqOpen": false,
+      "serviceStage": {
+        "background": "rgb(248, 250, 252)",
+        "radius": "14px",
+        "shadow": "rgba(19, 27, 46, 0.07) 0px 8px 22px 0px"
+      },
+      "reducedMotion": {
+        "matched": true,
+        "scrollBehavior": "auto",
+        "serviceTimeline": "none",
+        "activeAnimations": 0
+      }
+    }
+  ],
+  "confirmation": [
+    {
+      "width": 1440,
+      "settledScrollWidth": 1440,
+      "faqBefore": true,
+      "faqAfterClose": false,
+      "faqAfterOpen": true,
+      "afterFaqScrollWidth": 1440,
+      "reducedScrollWidth": 1440
+    },
+    {
+      "width": 390,
+      "settledScrollWidth": 424,
+      "faqBefore": true,
+      "faqAfterClose": false,
+      "faqAfterOpen": true,
+      "afterFaqScrollWidth": 424,
+      "reducedScrollWidth": 390
+    }
+  ],
+  "notes": [
+    "Initial faqOpen=false means the initially-open FAQ closed after Enter, not a failure; confirmation records both transitions.",
+    "document.fonts.check=true is not evidence of Plus Jakarta Sans loading; CDP reports rendered Arial.",
+    "Homepage screenshots use reduced motion for stable capture; service captures use default motion.",
+    "Viewport 390 has overflow in default motion and no overflow with reduced motion; root cause unconfirmed."
+  ]
+}
