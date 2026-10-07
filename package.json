@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "packages/ui"
+    "packages/ui",
+    "packages/backend"
   ],
   "scripts": {
     "build:ui": "npm run build --workspace=@solar/ui",
@@ -18,7 +19,7 @@
     "predev:server": "npm run build:ui",
     "dev:server": "node scripts/next-server.mjs dev",
     "start:server": "node scripts/next-server.mjs start",
-    "pretypecheck": "npm run build:ui",
+    "pretypecheck": "npm run build:ui && npm run typecheck:ui && npm run typecheck:backend",
     "typecheck": "tsc --noEmit",
     "test:export": "node --test tests/export.test.mjs",
     "test:core": "node --conditions=react-server --import tsx --test tests/core.test.ts",
@@ -28,7 +29,11 @@
     "db:seed:sandbox": "node --conditions=react-server --import tsx scripts/database.ts seed",
     "smoke:cloud": "node --conditions=react-server --import tsx scripts/smoke-cloud.ts",
     "pretest:ui": "npm run build:ui",
-    "test:ui": "node --import tsx --test packages/ui/tests/*.test.ts packages/ui/tests/*.test.tsx"
+    "test:ui": "node --import tsx --test packages/ui/tests/*.test.ts packages/ui/tests/*.test.tsx",
+    "build:backend": "npm run build --workspace=@shared/backend",
+    "typecheck:backend": "npm run typecheck --workspace=@shared/backend",
+    "test:backend": "npm run test --workspace=@shared/backend",
+    "typecheck:ui": "npm run typecheck --workspace=@solar/ui"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1141.0",
@@ -46,7 +51,8 @@
     "react-hook-form": "^7.89.0",
     "server-only": "0.0.1",
     "sharp": "0.35.4",
-    "zod": "^4.6.5"
+    "zod": "^4.6.5",
+    "@shared/backend": "0.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

@@ -28,3 +28,7 @@ Trạng thái 27/09/2026: SQL, migration runner, PostgreSQL/R2 adapters, public 
 - [Animation plan](animation-plan.md)
 - [SEO/AEO review](seo-aeo-review.md)
 - [Search evidence](search-evidence.md)
+
+## Shared backend framework
+
+`packages/backend` (`@shared/backend`) is registered as a workspace. Its application adapters remain project-owned; [portability and security boundaries](../packages/backend/docs/portability.md). Use `npm run build:backend`, `npm run typecheck:backend` and `npm run test:backend`. Root typecheck delegates library source checking to each package config; package previews/tests are outside the Next application compilation. This registration does not replace Solar core/services or deploy an API.
