@@ -1,0 +1,4 @@
+:HL["/solar_demo/_next/static/css/9d5c049303d4eaa9.css","style"]
+:HL["/solar_demo/_next/static/css/37e84927eda17f40.css","style"]
+:HL["/solar_demo/_next/static/css/b299c9b43752794d.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(cms)","param":null,"prefetchHints":4192,"slots":{"children":{"name":"admin","param":null,"prefetchHints":4192,"slots":{"children":{"name":"equipment","param":null,"prefetchHints":4192,"slots":{"children":{"name":"new","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}}}},"staleTime":300,"buildId":"yLnSJDtlWx9GWCrq5pAIz"}
