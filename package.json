@@ -7,6 +7,7 @@
     "packages/backend"
   ],
   "scripts": {
+    "pull": "node scripts/pull-submodules.mjs",
     "build:ui": "npm run build --workspace=@solar/ui",
     "predev": "npm run build:backend && npm run build:ui",
     "dev": "next dev",

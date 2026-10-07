@@ -13,6 +13,12 @@ npm run dev
 # http://localhost:3000/solar_demo/
 ```
 
+Chạy `npm run pull` để cập nhật các submodule theo nhánh trong `.gitmodules`
+(backend `main`, UI `main`). Lệnh dừng nếu submodule có thay đổi chưa commit.
+Sau khi pull, review rồi commit gitlink mới ở repo Solar để ghim các phiên bản
+đã chọn. Do các repo submodule đang private, cần đăng nhập GitHub CLI bằng
+`gh auth login` hoặc cấu hình Git credential có quyền đọc cả hai repo.
+
 Kiểm tra bản export: `npm run build && npm run test:export`. `@solar/ui` ở `packages/ui/` là npm workspace **và Git submodule** trỏ tới [component-ui](https://github.com/bangnt188/component-ui). Clone mới dùng `git clone --recurse-submodules`, hoặc chạy `git submodule update --init --recursive` trước `npm ci`. Package công khai các entry point `@solar/ui`, `@solar/ui/basic`, `@solar/ui/components`, `@solar/ui/forms`, `@solar/ui/validation`, `@solar/ui/i18n`, `@solar/ui/tokens`, `@solar/ui/styles`; theme import trong `src/app/layout.tsx`. `src/features/catalog/` giữ card cần kiểu dữ liệu và ảnh riêng Solar; `src/features/survey/` giữ schema/form nghiệp vụ, dùng adapter RHF của package. Sections, screens và chrome còn lại trong `src/components/` vẫn là composition của app Solar, không export từ package.
 
 `src/app/layout.tsx` import theme của package và gắn `data-ui-root` lên `<body>` để reset được giới hạn trong app. Chạy `npm run test:ui` để kiểm tra package; `npm run build && npm run test:export` xác minh app tiêu thụ UI và static export.
