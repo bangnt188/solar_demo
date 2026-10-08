@@ -166,7 +166,7 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 
 /* --- CTA Banner (Contact Section) --- */
 .contact-banner-wrapper { margin: 50px auto 40px; }
-.contact-banner { background: linear-gradient(135deg, rgba(0, 74, 173, 0.94) 0%, rgba(0, 45, 110, 0.94) 100%), var(--contact-banner-image, none) center/cover no-repeat; border-radius: 22px; padding: 48px 44px; color: #FFFFFF; box-shadow: 0 12px 32px rgba(0, 74, 173, 0.22); }
+.contact-banner { background: linear-gradient(135deg, rgba(0, 74, 173, 0.94) 0%, rgba(0, 45, 110, 0.94) 100%); border-radius: 22px; padding: 48px 44px; color: #FFFFFF; box-shadow: 0 12px 32px rgba(0, 74, 173, 0.22); }
 .contact-banner-content { width: 100%; }
 .contact-banner h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; line-height: 1.25; margin: 0 0 10px 0; color: #FFFFFF; }
 .contact-banner p { font-size: 15px; font-style: italic; opacity: 0.92; margin: 0 0 24px 0; }
