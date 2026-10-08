@@ -9,7 +9,7 @@ export function createMockContent(basePath: string): PublicContentRepository {
   return {
     async landing() {
       return {
-        chrome: { ...siteChromeContent, announcement: { ...siteChromeContent.announcement, enabled: true }, brand: { ...siteChromeContent.brand, logo: `${basePath}/images/common/logo.avif` }, conversion: { ...siteChromeContent.conversion, phoneHref: null, zaloHref: null } },
+        chrome: { ...siteChromeContent, announcement: { ...siteChromeContent.announcement, enabled: true }, brand: { ...siteChromeContent.brand, logo: `${basePath}/images/common/logo.avif` }, conversion: { ...siteChromeContent.conversion } },
         seo: { title: "Giải pháp điện mặt trời cho gia đình và doanh nghiệp", description: "Tìm hiểu giải pháp điện mặt trời của Lúa Xanh Đồng Bằng: khảo sát, thiết kế, thi công, vận hành và các công trình đã triển khai.", requestedIndexable: true },
         sections: Object.entries(homeContent).filter(([key]) => key !== "testimonials" || homeContent.testimonials.items.length > 0)
           .map(([key, content], position) => ({ key, content, position })) as RenderedSection[],
