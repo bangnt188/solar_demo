@@ -31,11 +31,11 @@ Visual canonical: [DESIGN.md](DESIGN.md); kiến trúc composition và ảnh ngh
 
 Server target có public API `GET /api/v1/{landing,projects,equipment}/`, published-content repositories, migration Neon/PostgreSQL và adapter ảnh R2. `POST /api/survey/` có DB intake, idempotency và shared rate limit nhưng mặc định tắt; chưa bật production. Auth/authorization/admin nghiệp vụ và HTTP upload chưa triển khai. `/admin/` hiện là **demo giao diện với dữ liệu mẫu**, dùng route Next.js và shared UI. Demo packaging bỏ API và admin server-only trong bản sao build, chỉ cho phép các trang CMS demo đã liệt kê trong `scripts/demo-admin-routes.mjs`.
 
-## GitHub Pages
+## GitHub Pages (static demo)
 
 1. Tạo/push nhánh `dev` lên `bangnt188/solar_demo`.
 2. Repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**. Repo admin vào **Settings → Environments → github-pages → Deployment branches/tags** thêm `dev` (giữ `main`); nếu không, workflow bị chặn trước khi build.
-3. Repo `component-ui` riêng tư cần Actions secret `COMPONENT_UI_READ_TOKEN` trong `solar_demo` với quyền **Contents: Read** trên **cả `solar_demo` và `component-ui`** (hoặc GitHub App token có cùng quyền). `actions/checkout` dùng cùng token cho repo cha và submodule trước `npm ci`; quyền Git trên máy cá nhân không tự cấp quyền cho GitHub Actions.
+3. Actions secret `COMPONENT_UI_READ_TOKEN` trong `solar_demo` cần quyền **Contents: Read** trên `solar_demo`, `component-ui` và `lib-ts-be` (hoặc GitHub App token có quyền tương đương), vì checkout recursive dùng cùng token cho repo app và các submodule. Quyền Git trên máy cá nhân không cấp quyền cho GitHub Actions.
 4. Push vào `dev` hoặc chạy workflow **Deploy demo to GitHub Pages**. Workflow cài dependency từ lockfile, export static, tải `out/` lên Pages và thêm `.nojekyll` để phục vụ `_next/`.
 5. Kiểm tra <https://bangnt188.github.io/solar_demo/> và các đường dẫn `/du-an/`, `/thiet-bi/`, `/khao-sat/`, `/dich-vu/` cùng ba trang giải pháp và ba trang dịch vụ.
 

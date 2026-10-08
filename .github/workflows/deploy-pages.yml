@@ -27,11 +27,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout app + private UI submodule
+      - name: Checkout app + private submodules
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          token: ${{ secrets.COMPONENT_UI_READ_TOKEN }}
+          token: ${{ secrets.COMPONENT_UI_READ_TOKEN || github.token }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
