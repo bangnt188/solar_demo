@@ -41,7 +41,7 @@ try {
   const home = await get('/');
   assert.equal(home.status, 200);
   const html = await home.text();
-  assert.ok(html.includes('/images/common/logo.png'));
+  assert.ok(html.includes('/images/common/logo.avif'));
   assert.equal(html.includes('PRIVATE-DISABLED-COPY'), false);
   assert.match(html, /name="robots" content="noindex/);
   const sitemap = await get('/sitemap.xml');

@@ -8,7 +8,7 @@ export const homeContent = {
     tagline: "Tận tâm · Đồng hành · Chất lượng",
     description: "Lúa Xanh Đồng Bằng cung cấp giải pháp điện mặt trời từ khảo sát, thiết kế, thi công đến vận hành và bảo trì dài hạn. Mỗi hệ thống được xây dựng dựa trên nhu cầu sử dụng điện, điều kiện công trình và hiệu quả đầu tư thực tế.",
     primaryAction: { label: "KHẢO SÁT MIỄN PHÍ", href: "/khao-sat/" },
-    image: "hero-workers.png",
+    image: "hero-workers.avif",
     imageAlt: "Hình minh họa thi công hệ thống điện mặt trời",
     bottomImage: "solar-farm.webp",
   },
@@ -78,7 +78,7 @@ export const homeContent = {
   faq: {
     heading: "CÂU HỎI THƯỜNG GẶP",
     introduction: "Giải đáp các băn khoăn phổ biến của chủ nhà và chủ doanh nghiệp trước khi quyết định đầu tư hệ thống điện mặt trời.",
-    image: "faq-consult.png",
+    image: "faq-consult.avif",
     imageAlt: "Hình minh họa tư vấn giải pháp điện mặt trời",
     actionLabel: "Tìm Hiểu Thêm",
     actionHref: "/khao-sat/",

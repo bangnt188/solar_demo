@@ -105,9 +105,9 @@ Ví dụ contract cho hero:
 }
 ```
 
-Các field khác của hero xem fixture đầy đủ. Binding trỏ UUID của `media`. STATIC giữ đường dẫn như `images/demo/solar-roof.webp` hoặc `images/common/logo.png`; adapter thêm `basePath`. R2 giữ object key như `landing/<revision-uuid>/<media-uuid>.webp`; adapter ghép `R2_PUBLIC_BASE_URL`, không lưu hostname theo môi trường trong từng row. URL identity của media bất biến; thay ảnh tạo asset ID/key mới.
+Các field khác của hero xem fixture đầy đủ. Binding trỏ UUID của `media`. STATIC giữ đường dẫn như `images/demo/solar-roof.webp` hoặc `images/common/logo.avif`; adapter thêm `basePath`. R2 giữ object key như `landing/<revision-uuid>/<media-uuid>.webp`; adapter ghép `R2_PUBLIC_BASE_URL`, không lưu hostname theo môi trường trong từng row. URL identity của media bất biến; thay ảnh tạo asset ID/key mới.
 
-MIME chỉ JPEG/PNG/WebP; R2 sau chuẩn hóa là WebP, ≤3 MiB, ≤20 megapixel. Metadata SQL constraints không thay bước decode/re-encode binary và quyền upload tại API. Namespace `landing` bổ sung vào storage adapter của MVP; cleanup phải kiểm cả landing bindings lẫn hai gallery, kể cả bản nháp/bản cũ còn được giữ. `media.state` và `public_use_approved` là trạng thái sống, không được snapshot giả thành “đã duyệt vĩnh viễn”.
+MIME của STATIC hỗ trợ JPEG/PNG/WebP/AVIF; R2 sau chuẩn hóa là WebP, ≤3 MiB, ≤20 megapixel. Metadata SQL constraints không thay bước decode/re-encode binary và quyền upload tại API. Namespace `landing` bổ sung vào storage adapter của MVP; cleanup phải kiểm cả landing bindings lẫn hai gallery, kể cả bản nháp/bản cũ còn được giữ. `media.state` và `public_use_approved` là trạng thái sống, không được snapshot giả thành “đã duyệt vĩnh viễn”.
 
 ### 2.6 Quy trình sửa và xuất bản
 

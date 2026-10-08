@@ -10,7 +10,7 @@ CREATE TABLE media (
   storage_kind text NOT NULL CHECK (storage_kind IN ('STATIC', 'R2')),
   object_key text,
   static_path text,
-  mime_type text NOT NULL CHECK (mime_type IN ('image/jpeg', 'image/png', 'image/webp')),
+  mime_type text NOT NULL CHECK (mime_type IN ('image/jpeg', 'image/png', 'image/webp', 'image/avif')),
   size_bytes bigint CHECK (size_bytes > 0 AND size_bytes <= 3145728),
   width integer CHECK (width > 0),
   height integer CHECK (height > 0),

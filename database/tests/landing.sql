@@ -23,6 +23,7 @@ SELECT pg_temp.assert((SELECT published_revision_id IS NULL FROM landing_site), 
 SELECT pg_temp.assert((SELECT count(*) = 6 FROM projects WHERE status = 'DRAFT'), 'six projects stay draft');
 SELECT pg_temp.assert((SELECT count(*) = 4 FROM equipment WHERE status = 'DRAFT'), 'four equipment stay draft');
 SELECT pg_temp.assert((SELECT count(*) = 18 FROM media WHERE NOT public_use_approved), 'all 18 demo media remain unapproved');
+SELECT pg_temp.assert((SELECT count(*) = 16 FROM media WHERE mime_type = 'image/avif'), 'demo static media use AVIF metadata');
 SELECT pg_temp.expect_error($q$UPDATE landing_sections SET enabled = false WHERE section_key = 'hero'$q$, '23514', 'cannot hide hero');
 SELECT pg_temp.expect_error($q$UPDATE landing_sections SET section_key = 'custom-html' WHERE section_key = 'faq'$q$, '23514', 'arbitrary section types blocked');
 SELECT pg_temp.expect_error($q$UPDATE landing_sections SET position = 0 WHERE section_key = 'faq'$q$, '23505', 'duplicate display position blocked');

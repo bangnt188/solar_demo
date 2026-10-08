@@ -24,7 +24,7 @@ export function ActionLink({ href, children, primary = false, icon }: {
 export function StatusBadge({ status }: {
     status: keyof typeof statusLabels;
 }) { return <span className={cn("badge", status)}>{statusLabels[status]}</span>; }
-export function Brand() { return <div className={cn("brand")}><span className={cn("brandmark")}><img src={`${basePath}/images/common/logo.png`} width="44" height="44" alt="Logo Lúa Xanh Đồng Bằng"/></span><div><strong>Lúa Xanh Đồng Bằng</strong><small>Không gian quản trị</small></div></div>; }
+export function Brand() { return <div className={cn("brand")}><span className={cn("brandmark")}><img src={`${basePath}/images/common/logo.avif`} width="44" height="44" alt="Logo Lúa Xanh Đồng Bằng"/></span><div><strong>Lúa Xanh Đồng Bằng</strong><small>Không gian quản trị</small></div></div>; }
 export function PageHeading({ title, description, actions }: {
     title: string;
     description: string;

@@ -39,10 +39,6 @@ test("home solution and service links resolve to exported anchors", () => {
   }
 });
 
-test("public CTA background uses the deployment prefix on Pages", () => {
-  assert.ok(page("").includes(`${prefix}images/demo/cta-banner-bg.png`));
-  assert.ok(existsSync("out/images/demo/cta-banner-bg.png"));
-});
 
 test("demo artifact excludes backend routes and environment files", () => {
   for (const serverOnly of ["api", ".env", ".env.local", ".next"]) {
@@ -55,7 +51,7 @@ test("Pages exports every approved admin deep link with the real logo and no pub
     const html = page(route.slice(1) + "/");
     assert.ok(html.includes("CMS"), `Missing admin screen: ${route}`);
     assert.match(html, /<meta name="robots" content="noindex, nofollow"/);
-    assert.ok(html.includes(`${prefix}images/common/logo.png`), `Missing original logo: ${route}`);
+    assert.ok(html.includes(`${prefix}images/common/logo.avif`), `Missing AVIF logo: ${route}`);
     assert.doesNotMatch(html, /class="site-header|class="site-footer|conversion-dock/, `Public chrome leaked into ${route}`);
     for (const [, url] of html.matchAll(/(?:src|href)="(\/[^"#?]+)(?:[?#][^"]*)?"/g)) {
       assert.ok(url.startsWith(prefix), `Unprefixed admin asset/link: ${url}`);

@@ -38,7 +38,7 @@ function bind(slot, staticPath) {
   let asset = media.find(item => item.staticPath === staticPath);
   if (!asset) {
     const image = fs.readFileSync(path.join(root, 'public', staticPath));
-    // Image dimensions from committed PNG/WebP assets; no external decoder needed.
+    // Image dimensions from committed PNG/WebP/AVIF assets; no external decoder needed.
     let width, height, mimeType;
     if (image.subarray(1, 4).toString() === 'PNG') {
       width = image.readUInt32BE(16); height = image.readUInt32BE(20); mimeType = 'image/png';
@@ -51,6 +51,11 @@ function bind(slot, staticPath) {
         width = (bits & 0x3fff) + 1; height = ((bits >>> 14) & 0x3fff) + 1;
       } else if (kind === 'VP8 ') { width = image.readUInt16LE(26) & 0x3fff; height = image.readUInt16LE(28) & 0x3fff; }
       else throw new Error(`Unsupported WebP fixture: ${staticPath}`);
+    } else if (image.subarray(4, 8).toString() === 'ftyp' && image.subarray(8, 12).toString() === 'avif') {
+      mimeType = 'image/avif';
+      const ispe = image.indexOf('ispe');
+      if (ispe < 0 || ispe + 16 > image.length) throw new Error(`Unsupported AVIF fixture: ${staticPath}`);
+      width = image.readUInt32BE(ispe + 8); height = image.readUInt32BE(ispe + 12);
     } else throw new Error(`Unsupported image fixture: ${staticPath}`);
     asset = { id: id(1, media.length), staticPath, mimeType, sizeBytes: image.length, width, height };
     media.push(asset);
@@ -64,7 +69,7 @@ function imageSlot(object, property, slot) {
   object[property + 'Slot'] = slot;
 }
 chrome.brand.logoSlot = 'chrome.logo';
-bind('chrome.logo', 'images/common/logo.png');
+bind('chrome.logo', 'images/common/logo.avif');
 chrome.announcement.enabled = true;
 chrome.conversion.phoneHref = null;
 chrome.conversion.zaloHref = null;

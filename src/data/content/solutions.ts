@@ -11,7 +11,7 @@ export const solutionPages = {
     anchor: "household",
     href: "/giai-phap/#household",
     title: "Giải pháp điện mặt trời cho hộ gia đình",
-    image: "sol-household.png",
+    image: "sol-household.avif",
     card: {
       title: "Giải pháp hộ gia đình",
       text: "Cân đối theo hóa đơn điện, thói quen sử dụng và điều kiện mái nhà.",
@@ -37,7 +37,7 @@ export const solutionPages = {
     anchor: "small-business",
     href: "/giai-phap/#small-business",
     title: "Giải pháp điện mặt trời cho hộ kinh doanh vừa và nhỏ",
-    image: "sol-business.png",
+    image: "sol-business.avif",
     card: {
       title: "Giải pháp hộ kinh doanh vừa & nhỏ",
       text: "Xem xét giờ vận hành, phụ tải ban ngày và diện tích mái trước khi đề xuất hệ thống.",
@@ -63,7 +63,7 @@ export const solutionPages = {
     anchor: "enterprise",
     href: "/giai-phap/#enterprise",
     title: "Giải pháp điện mặt trời cho doanh nghiệp và công nghiệp",
-    image: "sol-enterprise.png",
+    image: "sol-enterprise.avif",
     card: {
       title: "Giải pháp doanh nghiệp & công nghiệp",
       text: "Khảo sát phụ tải, mặt bằng, yêu cầu kỹ thuật và quy trình phối hợp của công trình.",

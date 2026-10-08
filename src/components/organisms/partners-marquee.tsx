@@ -8,15 +8,15 @@ import type { HomeContent } from "@/types/home-content";
 type Brand = HomeContent["partners"]["brands"][number];
 
 const partnerLogos: Record<string, string> = {
-  "AIKO": "partner-aiko.png",
-  "HUAWEI": "partner-huawei.png",
-  "solis": "partner-solis.png",
-  "SMA": "partner-sma.png",
+  "AIKO": "partner-aiko.webp",
+  "HUAWEI": "partner-huawei.webp",
+  "solis": "partner-solis.webp",
+  "SMA": "partner-sma.webp",
   "LONGi": "partner-longi.webp",
-  "CanadianSolar": "partner-canadian-solar.png",
-  "SUNGROW": "partner-sungrow.png",
-  "AESOLAR": "partner-ae-solar.png",
-  "Trina Solar": "partner-trina-solar.png",
+  "CanadianSolar": "partner-canadian-solar.webp",
+  "SUNGROW": "partner-sungrow.webp",
+  "AESOLAR": "partner-ae-solar.webp",
+  "Trina Solar": "partner-trina-solar.webp",
 };
 
 function brandNames(brands: Brand[]) {

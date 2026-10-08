@@ -2,7 +2,7 @@
 
 Đọc [thiết kế DB landing](../docs/landing-database-design.md) trước khi áp dụng.
 
-- `schema/001_landing.sql`: canonical DDL nội dung, áp dụng qua migration runner; không tạo auth/session.
+- `schema/001_landing.sql`: canonical DDL nội dung, áp dụng qua migration runner; static media hỗ trợ AVIF, còn R2 output giữ WebP; không tạo auth/session.
 - `schema/002_survey_submissions.sql`: DB intake khảo sát và shared rate-limit counters; public intake mặc định tắt.
 - `schema/landing-content.schema.json`: contract nội dung; runtime semantic validation đã có, write authorization/admin chưa triển khai.
 - `seeds/001_landing_demo.sql`: seed sandbox **DRAFT**, không tự publish và không ghi đè nội dung có sẵn.

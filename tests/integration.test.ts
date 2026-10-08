@@ -42,7 +42,7 @@ test("PostgreSQL adapter: unpublished gate, atomic projection, keyset paging, to
     await db.query("UPDATE solar_appdata.projects SET status='HIDDEN',deleted_at=now() WHERE id=$1", [first]);
     assert.equal((await repository.landing()).projects.some(item => item.id === first), false);
     assert.equal((await repository.projects({ limit: 100 })).items.some(item => item.id === first), false);
-    await db.query("UPDATE solar_appdata.media SET public_use_approved=false WHERE static_path='images/common/logo.png'");
+    await db.query("UPDATE solar_appdata.media SET public_use_approved=false WHERE static_path='images/common/logo.avif'");
     await assert.rejects(() => repository.landing(), error => error instanceof AppError && error.status === 503);
   } finally { await db.close(); }
 });
