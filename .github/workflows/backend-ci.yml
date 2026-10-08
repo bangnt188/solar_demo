@@ -32,5 +32,9 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - run: npm run check:backend
+      - run: npm run typecheck:backend
+      - run: npm run test:backend
+      - run: npm run test:backend:consumer
       - run: npm run test:core
       - run: npm run build:server
