@@ -507,21 +507,22 @@ html.lenis, html.lenis body { height: auto; }
 .partners-track[data-running="true"] { animation-play-state: running; }
 .partners-group { --brand-gap: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px var(--brand-gap); }
 .partners-track[data-ready="true"] .partners-group { flex: 0 0 auto; flex-wrap: nowrap; width: max-content; min-width: 100%; padding-inline-end: var(--brand-gap); white-space: nowrap; }
-.partners-brand { display: inline-flex; align-items: center; min-height: 44px; color: #1E293B; font-weight: 750; font-size: 19px; letter-spacing: 0.03em; opacity: .88; transition: transform 220ms var(--motion-ease-out), color 220ms ease, opacity 220ms ease; }
-strong.partners-brand { font-weight: 900; color: var(--color-primary); }
-span.partners-brand { font-weight: 700; color: #334155; }
-.partners-brand:hover { transform: translateY(-3px); color: var(--canva-orange); opacity: 1; }
+.partners-brand { display: inline-flex; width: 160px; min-height: 56px; align-items: center; justify-content: center; opacity: .92; transition: transform 220ms var(--motion-ease-out), opacity 220ms ease; }
+.partners-brand-logo { display: block; width: auto; max-width: 160px; height: 48px; object-fit: contain; }
+.partners-brand:hover { transform: translateY(-3px); opacity: 1; }
 @keyframes partners-glide { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--marquee-distance))); } }
 @media (max-width: 900px) {
   .partners-marquee { width: 100%; max-width: 100%; margin-top: 12px; }
   .partners-marquee > .partners-viewport { --partners-edge-fade: 52px; }
   .partners-group { --brand-gap: 32px; }
-  .partners-brand { font-size: 17px; }
+  .partners-brand { width: 140px; min-height: 50px; }
+  .partners-brand-logo { max-width: 140px; height: 42px; }
 }
 @media (max-width: 700px) {
   .partners-marquee > .partners-viewport { --partners-edge-fade: 32px; font-size: 16px; }
   .partners-group { --brand-gap: 24px; }
-  .partners-brand { font-size: 16px; }
+  .partners-brand { width: 116px; min-height: 44px; }
+  .partners-brand-logo { max-width: 116px; height: 36px; }
 }
 .project-card { transition: transform var(--motion-card) var(--motion-ease-out), box-shadow var(--motion-card) var(--motion-ease-out); }
 .project-image img { transition: transform var(--motion-card) var(--motion-ease-out); }

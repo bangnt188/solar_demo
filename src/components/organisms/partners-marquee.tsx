@@ -1,14 +1,35 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import { contentImageSrc as imagePath } from "@/config/site";
 import type { HomeContent } from "@/types/home-content";
 
 type Brand = HomeContent["partners"]["brands"][number];
 
+const partnerLogos: Record<string, string> = {
+  "AIKO": "partner-aiko.png",
+  "HUAWEI": "partner-huawei.png",
+  "solis": "partner-solis.png",
+  "SMA": "partner-sma.png",
+  "LONGi": "partner-longi.webp",
+  "CanadianSolar": "partner-canadian-solar.png",
+  "SUNGROW": "partner-sungrow.png",
+  "AESOLAR": "partner-ae-solar.png",
+  "Trina Solar": "partner-trina-solar.png",
+};
+
 function brandNames(brands: Brand[]) {
-  return brands.map((brand) => brand.emphasis
-    ? <strong className="partners-brand" key={brand.name}>{brand.name}</strong>
-    : <span className="partners-brand" key={brand.name}>{brand.name}</span>);
+  return brands.map((brand) => {
+    const logo = partnerLogos[brand.name];
+    return (
+      <span className="partners-brand" key={brand.name}>
+        {logo ? (
+          <Image className="partners-brand-logo" src={imagePath(logo)} alt={brand.name} width={180} height={64} />
+        ) : brand.name}
+      </span>
+    );
+  });
 }
 
 export function PartnersMarquee({ brands, label }: { brands: Brand[]; label: string }) {

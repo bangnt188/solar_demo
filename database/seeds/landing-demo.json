@@ -155,15 +155,11 @@
       "enabled": true,
       "content": {
         "title": "Đối Tác\nChiến Lược",
-        "brandsLabel": "Đối tác trong mẫu thiết kế",
+        "brandsLabel": "Logo các đối tác chiến lược",
         "brands": [
           {
             "name": "AIKO",
             "emphasis": false
-          },
-          {
-            "name": "BYD",
-            "emphasis": true
           },
           {
             "name": "HUAWEI",
@@ -192,6 +188,10 @@
           {
             "name": "AESOLAR",
             "emphasis": false
+          },
+          {
+            "name": "Trina Solar",
+            "emphasis": true
           }
         ]
       }

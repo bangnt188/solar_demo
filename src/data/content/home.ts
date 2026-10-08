@@ -14,10 +14,9 @@ export const homeContent = {
   },
   partners: {
     title: "Đối Tác\nChiến Lược",
-    brandsLabel: "Đối tác trong mẫu thiết kế",
+    brandsLabel: "Logo các đối tác chiến lược",
     brands: [
       { name: "AIKO", emphasis: false },
-      { name: "BYD", emphasis: true },
       { name: "HUAWEI", emphasis: false },
       { name: "solis", emphasis: true },
       { name: "SMA", emphasis: false },
@@ -25,6 +24,7 @@ export const homeContent = {
       { name: "CanadianSolar", emphasis: false },
       { name: "SUNGROW", emphasis: false },
       { name: "AESOLAR", emphasis: false },
+      { name: "Trina Solar", emphasis: true },
     ],
   },
   solutions: {
