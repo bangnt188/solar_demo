@@ -17,10 +17,6 @@ export type SurveyFormContent = {
   submittingLabel: string;
   cooldownButtonLabel: string;
   cooldownMessage: string;
-  successTitle: string;
-  successMessage: string;
-  failureTitle: string;
-  failureMessage: string;
 };
 
 export type SurveyScreenContent = {

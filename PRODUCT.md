@@ -25,7 +25,7 @@ Prospective household and business customers review service scope and provide pr
 ## Capabilities and Constraints
 
 - The site is a Next.js static export under `/solar_demo` in its demo deployment.
-- The survey route validates the required project/contact fields plus required contact-consent confirmation. Submit behavior is currently simulated in-browser with success/failure feedback; there is no server-side lead capture.
+- The survey route uses app-owned RHF/zod validation for required contact/project fields and initially unchecked contact consent. `@solar/ui/forms` owns submission in explicit demo mode, persistent demo disclosure and honest default system Toast feedback; no API is called and no lead/contact data is persisted. Its client-only UX limit stores timestamps under `solar:survey-rate-limit:v1`: three successes within five minutes start a five-minute cooldown; failures do not count. App labels/layout remain content-driven, and the form resets only after simulated success. A server build does not switch this consumer to live submission.
 - The process timing, technical specifications, single-responsibility wording, and 25-year support/warranty statements shown in `public/images/demo/Dịch Vụ.png` are user-approved for the draft page but still need the user's real-world confirmation before production publication.
 - Keep Zalo, phone and survey actions visible. The user requested working demo links: `https://zalo.me/0939000000` and `tel:0939000000`, using the existing placeholder number. These defaults are configurable; verified business destinations have not been supplied.
 

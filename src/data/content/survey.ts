@@ -25,9 +25,5 @@ export const surveyContent = {
     submittingLabel: "ĐANG GỬI...",
     cooldownButtonLabel: "THỬ LẠI SAU",
     cooldownMessage: "Bạn đã gửi 3 yêu cầu thành công. Có thể gửi thêm sau",
-    successTitle: "Gửi yêu cầu thành công",
-    successMessage: "Cảm ơn bạn. Chúng tôi sẽ liên hệ để trao đổi thêm về nhu cầu khảo sát.",
-    failureTitle: "Chưa thể gửi yêu cầu",
-    failureMessage: "Thông tin của bạn vẫn được giữ lại. Vui lòng thử gửi lại.",
   },
 } satisfies SurveyScreenContent;

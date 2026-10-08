@@ -239,7 +239,7 @@ Card package mặc định nền `ui-surface`, padding lg, radius control và bo
 
 Package field có label, mô tả/error và control CSS Module; min-size theo control token, padding sm/md, focus ring 3px/offset 2px, invalid đổi border sang error. Form Solar thêm selector `.survey-fields input/select/textarea` có specificity cao hơn class control cho một số property, gồm padding 12px 14px, margin-top 8px, border/nền/chữ app. Phải xem cascade consumer để quyết định field thực tế; preview primitive không đại diện toàn bộ form.
 
-Form đang dùng shared form adapters và nút package. Handler hiện vẫn mở `mailto:`; việc có endpoint trong working tree không chứng minh form UI đã nối endpoint.
+Form dùng shared form adapters, nút package và `SurveyForm`/`useSurveySubmission` từ `@solar/ui/forms`; Solar giữ RHF/zod và layout nghiệp vụ. `mode: "demo"` tường minh: package mô phỏng 700 ms với kết quả 50/50, không gọi API hay mở `mailto:`. Wrapper tự hiển thị disclosure demo thường trực và Toast hệ thống với nội dung thử nghiệm, không hứa đã nhận lead/liên hệ. Consent mặc định false; chỉ reset sau thành công. Hook sở hữu localStorage key `solar:survey-rate-limit:v1`, chỉ lưu mốc thời gian/cooldown: 3 thành công trong 5 phút chặn 5 phút, lỗi không tính; countdown và nhãn nút/message vẫn theo content của Solar. CSS Toast định vị thuộc package, không có bản riêng `.survey-toast-region` ở app. Việc có endpoint hoặc server build không chứng minh form UI đã nối endpoint; chế độ live cần async `onSubmit` thật.
 
 ### Chips
 

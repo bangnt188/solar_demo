@@ -312,8 +312,6 @@ nav a:hover, .site-footer a:hover { color: var(--color-primary); }
 .survey-consent label { min-height: 44px; align-items: flex-start; }
 .survey-consent input { flex: none; width: 18px; height: 18px; margin-top: 3px; accent-color: var(--color-primary); }
 .survey-form .button:disabled { cursor: not-allowed; opacity: .6; }
-.survey-toast-region { position: fixed; z-index: 1000; inset-block-start: calc(20px + env(safe-area-inset-top)); inset-inline-end: 20px; width: min(22rem, calc(100vw - 32px)); }
-.survey-toast-region > * { width: 100%; }
 @media (max-width: 900px) {
   .container { width: min(100% - 36px, 700px); }
   .nav { padding-block: 13px; align-items: flex-start; flex-wrap: wrap; }
