@@ -12,7 +12,11 @@ permissions:
 
 jobs:
   server:
+    # Forked PRs cannot access Environment secrets. Run private backend checks
+    # on dev pushes, manual dispatch, and same-repository PRs only.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    environment: github-pages
     env:
       NEXT_PUBLIC_SITE_URL: https://solar.example.invalid/
       SEO_INDEXABLE: "false"
@@ -21,11 +25,21 @@ jobs:
       # Build-only dummy configuration, not a live cloud connection.
       DATABASE_URL: postgresql://build:build@database.example.invalid/solar
     steps:
-      - name: Checkout app + private submodules
+      - name: Checkout app
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          token: ${{ secrets.COMPONENT_UI_READ_TOKEN || github.token }}
+          persist-credentials: false
+          submodules: false
+      - name: Fetch pinned private submodules
+        env:
+          SUBMODULE_READ_TOKEN: ${{ secrets.COMPONENT_UI_READ_TOKEN || secrets.SUBMODULE_READ_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SUBMODULE_READ_TOKEN" ]; then
+            echo "::error::Configure Environment secret COMPONENT_UI_READ_TOKEN (or SUBMODULE_READ_TOKEN) in github-pages."
+            exit 1
+          fi
+          git -c "url.https://x-access-token:$SUBMODULE_READ_TOKEN@github.com/.insteadOf=https://github.com/" submodule update --init --recursive --depth=1
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
