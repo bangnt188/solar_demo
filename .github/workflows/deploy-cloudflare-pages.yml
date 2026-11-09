@@ -76,3 +76,16 @@ jobs:
           publish_dir: ./out
           force_orphan: true
           commit_message: "deploy(lxdb): static site from dev"
+
+      # Pushes made with GITHUB_TOKEN may not trigger Workers Builds Git webhooks.
+      # Use a secret deploy hook to explicitly start the Worker build after publish.
+      - name: Trigger Cloudflare Workers build
+        env:
+          WORKER_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_WORKERS_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          if [ -z "$WORKER_DEPLOY_HOOK" ]; then
+            echo "::warning::Missing CLOUDFLARE_WORKERS_DEPLOY_HOOK. Build artifacts were published, but Workers auto-deploy may not run. Add the hook URL in the github-pages environment's Actions secrets."
+            exit 0
+          fi
+          curl --fail-with-body --retry 3 --retry-delay 2 --silent --show-error --request POST "$WORKER_DEPLOY_HOOK"
