@@ -25,8 +25,8 @@ export const siteChromeContent = {
     callToAction: { label: "Khảo sát", href: "/khao-sat/" },
   },
   conversion: {
-    phoneHref: "tel:0939126974",
-    zaloHref: "https://zalo.me/0939126974",
+    phoneHref: "tel:0913706067",
+    zaloHref: "https://zalo.me/0913706067",
     surveyHref: "/khao-sat/",
   },
   footer: {
@@ -52,12 +52,13 @@ export const siteChromeContent = {
         ],
       },
       {
-        title: "Liên hệ & Trụ sở",
+        title: "Thông tin doanh nghiệp",
         items: [
+          { label: "CÔNG TY TNHH LÚA XANH ĐỒNG BẰNG" },
           { label: "13 Đồng Khởi, Phường Ninh Kiều, TP. Cần Thơ" },
-          { label: "0939 126 974", href: "tel:0939126974" },
-          { label: "nguyenbang.skyone@gmail.com", href: "mailto:nguyenbang.skyone@gmail.com" },
-          { label: "Thứ 2 - Thứ 7: 07:30 - 18:00" },
+          { label: "0913 706 067", href: "tel:0913706067" },
+          { label: "luaxanhdongbang@gmail.com", href: "mailto:luaxanhdongbang@gmail.com" },
+          { label: "Mã số thuế: 1801796240" },
         ],
       },
     ],
