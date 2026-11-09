@@ -1,0 +1,35 @@
+1:"$Sreact.fragment"
+2:I[27410,["7620","static/chunks/7620-a1676fe0e3df508a.js","6897","static/chunks/6897-36ec5cd0f3033909.js","4869","static/chunks/4869-22c689c1eedf03ee.js","7307","static/chunks/7307-6bc1ba4290539208.js","7581","static/chunks/app/(public)/du-an/page-dd6abb19c5eeb0af.js"],"ProjectsTabs"]
+3:I[84548,[],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[84548,[],"ViewportBoundary"]
+9:I[84548,[],"MetadataBoundary"]
+7:X
+1a:X
+1a:C
+0:{"buildId":"22T780tFQuYv5AyVcNtzY","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://lxdb.captain-solution.tech/du-an/#webpage\",\"url\":\"https://lxdb.captain-solution.tech/du-an/\",\"name\":\"Dự án điện mặt trời đã triển khai\",\"description\":\"Các dự án điện mặt trời của Lúa Xanh Đồng Bằng tại Cần Thơ và Đồng Tháp: địa điểm, công suất lắp đặt và loại hệ thống. Ảnh đang dùng là minh họa.\",\"inLanguage\":\"vi-VN\",\"isPartOf\":{\"@id\":\"https://lxdb.captain-solution.tech/#website\"},\"breadcrumb\":{\"@id\":\"https://lxdb.captain-solution.tech/du-an/#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://lxdb.captain-solution.tech/du-an/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Trang chủ\",\"item\":\"https://lxdb.captain-solution.tech/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Dự án thực tế\",\"item\":\"https://lxdb.captain-solution.tech/du-an/\"}]}]}"}}],["$","nav",null,{"className":"ui_breadcrumbs-module__nav__975NU container breadcrumbs","aria-label":"Đường dẫn trang","children":["$","ol",null,{"className":"ui_breadcrumbs-module__list__hnTHb","children":[["$","li","/-0",{"className":"ui_breadcrumbs-module__item__7f3N4","children":[false,["$","a",null,{"href":"/","children":[false,["$","span",null,{"children":"Trang chủ"}]]}],["$","span",null,{"className":"ui_breadcrumbs-module__separator__Du23Z","aria-hidden":"true","children":"/"}]]}],["$","li","/du-an/-1",{"className":"ui_breadcrumbs-module__item__7f3N4","children":[false,["$","span",null,{"aria-current":"page","children":[false,["$","span",null,{"children":"Dự án thực tế"}]]}],false]}]]}]}],["$","section",null,{"className":"page-heading","children":["$","div",null,{"className":"container","data-motion":"left","children":[["$","h1",null,{"children":"Dự án thực tế"}],["$","p",null,{"children":"Chọn nhóm khách hàng để xem các dự án theo loại hình công trình."}]]}]}],["$","section",null,{"className":"section container projects-section","aria-label":"Dự án theo nhóm công trình","children":[["$","$L2",null,{"projects":[{"title":"MINI HOUSE THÁI THẢO","category":"Hộ kinh doanh","location":"Khu ĐTM An Bình, TP. Cần Thơ","description":"Công suất lắp đặt: 38 KWP","system":"Hòa lưới lưu trữ","image":"proj-1.avif"},{"title":"LE GRANDE CENTRE","category":"Hộ kinh doanh","location":"18 Nguyễn Chí Thanh, Sóc Trăng, TP. Cần Thơ","description":"Công suất lắp đặt: 400 KWP và 429 KWP lưu trữ","system":"Hòa lưới lưu trữ","image":"proj-2.avif"},{"title":"CÔNG TY TNHH NƯỚC ĐÁ HƯNG THỊNH","category":"Cơ sở sản xuất","location":"Quận Ô Môn, TP. Cần Thơ","description":"Công suất lắp đặt: 150 KWP","system":"Hòa lưới bám tải","image":"proj-3.avif"},{"title":"NHÀ ANH NGUYỄN","category":"Hộ gia đình","location":"B08 Khu Thủy Dương, Cái Khế, TP. Cần Thơ","description":"Công suất lắp đặt: 36 KWP và 48KWP lưu trữ","system":"Hòa lưới lưu trữ","image":"proj-4.avif"},{"title":"ĐIỆN MÁY XANH CAO LÃNH","category":"Showroom","location":"1 Đường 30/4, Phường Cao Lãnh, Tỉnh Đồng Tháp","description":"Công suất lắp đặt: 300 KWP","system":"Hòa lưới bám tải","image":"proj-5.avif"},{"title":"SÀI GÒN BAKERY","category":"Hộ kinh doanh","location":"Phường Ninh Kiều, TP. Cần Thơ","description":"Công suất lắp đặt: 43 KWP","system":"Hòa lưới lưu trữ","image":"proj-6.avif"}]}],null]}]],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Dự án điện mặt trời đã triển khai | Lúa Xanh Đồng Bằng"}],["$","meta","1",{"name":"description","content":"Các dự án điện mặt trời của Lúa Xanh Đồng Bằng tại Cần Thơ và Đồng Tháp: địa điểm, công suất lắp đặt và loại hệ thống. Ảnh đang dùng là minh họa."}],"$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16"]}]}]}],null]}],"isPartial":"$@17","staleTime":"$7","varyParams":null},{"rsc":"$L18","isPartial":"$@19","staleTime":"$7","varyParams":"$1a"}],"isUpgradeableISRFallback":false,"a":"$@1b","rootVaryParams":null,"needsRuntimeRequest":"$@1c"}
+1d:I[66149,[],"IconMark"]
+1e:I[44721,[],""]
+1f:I[50629,[],""]
+5:null
+a:["$","meta","2",{"name":"robots","content":"noindex, follow"}]
+b:["$","link","3",{"rel":"canonical","href":"https://lxdb.captain-solution.tech/du-an/"}]
+c:["$","meta","4",{"property":"og:title","content":"Dự án điện mặt trời đã triển khai | Lúa Xanh Đồng Bằng"}]
+d:["$","meta","5",{"property":"og:description","content":"Các dự án điện mặt trời của Lúa Xanh Đồng Bằng tại Cần Thơ và Đồng Tháp: địa điểm, công suất lắp đặt và loại hệ thống. Ảnh đang dùng là minh họa."}]
+e:["$","meta","6",{"property":"og:url","content":"https://lxdb.captain-solution.tech/du-an/"}]
+f:["$","meta","7",{"property":"og:site_name","content":"Lúa Xanh Đồng Bằng"}]
+10:["$","meta","8",{"property":"og:locale","content":"vi_VN"}]
+11:["$","meta","9",{"property":"og:type","content":"website"}]
+12:["$","meta","10",{"name":"twitter:card","content":"summary"}]
+13:["$","meta","11",{"name":"twitter:title","content":"Dự án điện mặt trời đã triển khai | Lúa Xanh Đồng Bằng"}]
+14:["$","meta","12",{"name":"twitter:description","content":"Các dự án điện mặt trời của Lúa Xanh Đồng Bằng tại Cần Thơ và Đồng Tháp: địa điểm, công suất lắp đặt và loại hệ thống. Ảnh đang dùng là minh họa."}]
+15:["$","link","13",{"rel":"icon","href":"/icon.png?99a89c331c442b63","type":"image/png","sizes":"240x240"}]
+16:["$","$L1d","14",{}]
+18:["$","$1","c",{"children":[null,["$","$L1e",null,{"parallelRouterKey":"children","template":["$","$L1f",null,{}]}]]}]
+1c:true
+7:300
+7:C
+1b:0
+17:"$undefined"
+19:"$undefined"
+6:"$undefined"

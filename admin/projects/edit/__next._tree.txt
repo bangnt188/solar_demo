@@ -1,0 +1,4 @@
+:HL["/_next/static/css/0db46a8a96386b33.css","style"]
+:HL["/_next/static/css/7e5e4393dd95c2a0.css","style"]
+:HL["/_next/static/css/b299c9b43752794d.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(cms)","param":null,"prefetchHints":4192,"slots":{"children":{"name":"admin","param":null,"prefetchHints":4192,"slots":{"children":{"name":"projects","param":null,"prefetchHints":4192,"slots":{"children":{"name":"edit","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}}}},"staleTime":300,"buildId":"22T780tFQuYv5AyVcNtzY"}
