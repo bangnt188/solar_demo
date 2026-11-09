@@ -1,4 +1,4 @@
-name: Publish LXDB demo to Cloudflare Pages
+name: Publish LXDB demo for Cloudflare Workers
 
 on:
   push:
@@ -9,12 +9,13 @@ permissions:
   contents: write
 
 concurrency:
-  group: cloudflare-pages-lxdb
+  group: cloudflare-workers-lxdb
   cancel-in-progress: true
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Legacy environment holds the private submodule read token; this job does not deploy to GitHub Pages.
     environment:
       name: github-pages
     env:
@@ -64,9 +65,10 @@ jobs:
           test -f out/robots.txt
           ! grep -q '/solar_demo/' out/index.html
 
-      # Cloudflare Pages is Git-integrated to this prebuilt, submodule-free
-      # branch. No Cloudflare API token or private source is sent to Cloudflare.
-      - name: Publish to Cloudflare deployment branch
+      # Workers Builds watches the prebuilt cf-pages branch.
+      # This uses the gh-pages action as a generic Git branch publisher; GitHub Pages hosting is disabled.
+      # No Cloudflare API token or private source repository is sent to Cloudflare.
+      - name: Publish assets to Workers build branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
