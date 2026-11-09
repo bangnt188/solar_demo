@@ -1,48 +1,51 @@
-# Solar LXDB — Deployment runbook (GitHub Pages demo / Next.js server)
+# Solar LXDB — Deployment runbook (Cloudflare Workers)
 
-Updated: 2026-10-09. Repository: https://github.com/bangnt188/solar_demo (branch `dev`).
+Updated: 2026-11-09. Source: https://github.com/bangnt188/solar_demo (branch `dev`).
 
-## Environments and boundaries
+## Current hosting
 
-- **Static demo:** GitHub Pages at https://bangnt188.github.io/solar_demo/. Built from `dev` using `.github/workflows/deploy-pages.yml`; `npm run build:demo`, `npm run test:export`, `out/` artifact. `SEO_INDEXABLE=false`. The public CMS demo and survey form are mock UX, not production CRUD or persisted intake.
-- **Backend/server:** `.github/workflows/backend-ci.yml` checks a separate Next.js server build (`npm run build:server`) with fake build-only DATABASE_URL and SURVEY_INTAKE_ENABLED=false. This CI does **not** deploy a backend or production system.
-- **Production:** `main` is reserved for production. Do not assume a deployed production backend, Neon, R2, auth or CMS from a green Pages workflow.
+- **Production demo domain:** https://lxdb.captain-solution.tech/ → Cloudflare Workers custom domain → `lxdb-solar-worker`.
+- **Worker preview:** https://lxdb-solar-worker.nguyenbang-skyone.workers.dev/
+- **Build source:** `dev` contains Next.js and private submodules `packages/ui`, `packages/backend`. `main` is untouched and reserved for a separate full-stack production deployment.
+- **Deploy artifact:** `cf-pages` is an orphan branch containing prebuilt `out/` files. Despite its historical name, this is **not GitHub Pages hosting**. Cloudflare Workers Builds tracks this branch.
+- **Fallback:** Cloudflare Pages project `lxdb-solar-demo` remains on `lxdb-solar-demo.pages.dev` for rollback only; its custom domain was removed. Do not configure a duplicate custom domain while Workers is serving traffic.
+- **GitHub Pages:** legacy workflow `.github/workflows/deploy-pages.yml` was deleted. Branch `gh-pages` contains old artifacts and is not used in deployment. To unpublish the legacy GitHub Pages website, repository admin must use GitHub Settings → Pages.
 
-## GitHub prerequisites
+## Build and deployment sequence
 
-1. Settings → Pages → Build and deployment → **Source: GitHub Actions**.
-2. Settings → Environments → `github-pages`: permit deployment from `dev`. Any required reviewers may delay execution.
-3. Settings → Environments → `github-pages` → Environment secrets: `COMPONENT_UI_READ_TOKEN` (or `SUBMODULE_READ_TOKEN`). Token permissions: **Contents: Read**, selected repositories **component-ui** and **lib-ts-be**; optionally Solar repo itself. Never put PAT into code or a Google Doc. Environment secrets are visible to jobs with `environment: github-pages`; normal job without that binding cannot see them.
-4. `GITHUB_TOKEN` is used by actions/checkout for the Solar parent; the Environment token is used separately only for pinned private submodules. Permissions for demo workflow: `contents: read`, `pages: write`, `id-token: write`.
+1. Push source changes to `dev`.
+2. Workflow `.github/workflows/deploy-cloudflare-pages.yml` runs from `dev`. It uses `environment: github-pages` **only** to read the legacy private-submodule token `COMPONENT_UI_READ_TOKEN` (or `SUBMODULE_READ_TOKEN`). It does **not** deploy to GitHub Pages.
+3. Checkout pinned submodules → Node 22 → `npm ci` → `npm run typecheck` → `npm run build:demo` → `npm run test:export`. Build env: `NEXT_PUBLIC_SITE_URL=https://lxdb.captain-solution.tech/`, `SEO_INDEXABLE=false`, `DEPLOY_TARGET=demo`.
+4. Action `peaceiris/actions-gh-pages@v4` publishes **only** `out/` to orphan branch `cf-pages`. It is used as a generic Git branch publisher; the GitHub Pages website is not involved.
+5. Cloudflare Workers Builds triggers on `cf-pages` and deploys static assets onto `lxdb-solar-worker` using account-managed build credentials.
+6. **Critical security boundary:** Workers build copies the prebuilt branch files with `cp -R ./* /tmp/lxdb-public-assets/`. The shell glob excludes root dotfiles (especially `.git`, `.wrangler`). The deploy command points to **`/tmp/lxdb-public-assets`**, never to the checkout root. Do not revert to `wrangler deploy --assets .` because that includes Git metadata and build temp files.
+7. Verify Workers Builds result is `success`, custom domain is mapped to `lxdb-solar-worker`, homepage and deep links work, and private-submodule code / environment files were not published.
 
-## Automatic pipeline
+## Cloudflare configuration
 
-Push `dev` → checkout parent with built-in token → fetch pinned private submodules → Node 22 + npm ci → npm run typecheck → npm run build:demo → npm run test:export → validate `out/index.html` → upload Pages artifact → GitHub Pages deploy.
+- Account: `4e577220abb44fa926f2a11b8cf10b55`
+- Zone: `captain-solution.tech`
+- Worker: `lxdb-solar-worker`
+- Builds connected repo: `bangnt188/solar_demo`, production branch: `cf-pages`.
+- Build: `mkdir -p /tmp/lxdb-public-assets && cp -R ./* /tmp/lxdb-public-assets/ && test -f /tmp/lxdb-public-assets/index.html && test -f /tmp/lxdb-public-assets/404.html`
+- Deploy: `npx --yes wrangler@4.148.0 deploy --assets /tmp/lxdb-public-assets --name lxdb-solar-worker --compatibility-date 2026-11-09`
+- Worker uses an existing account build token. Recommended follow-up: create a dedicated narrowly scoped token for `lxdb-solar-worker` rather than reusing the `le-grande-centre` build token.
+- The Worker hosts a **static demo**. No live CMS auth/CRUD or survey submissions. Backend `server` target stays separate.
 
-Backend CI separately checks integrity, backend typechecks and tests, consumer tests, core tests and `build:server` with dummy config. Only trusted dev pushes/manual dispatch/same-repo PRs run checks needing the private Environment token; fork PRs skip this sensitive job, and must be vetted by maintainers before merge.
-
-## Verification
-
-- Actions → “Deploy demo to GitHub Pages”: workflow, build and deployment green.
-- Confirm `head_sha` of the successful deployment run matches current `dev` commit SHA; a green old run does not prove current code is deployed.
-- Open https://bangnt188.github.io/solar_demo/ and validate `/du-an/`, `/thiet-bi/`, `/khao-sat/`, `/admin/` under `/solar_demo/`.
-- After a failed build, **do not** claim the website updated. The last published GitHub Pages version may remain live.
-- The old `gh-pages/deployment.json` manifest can be stale: after GitHub Actions artifact deployments the `gh-pages` branch need not change. Use Actions deployment SHA as source of truth.
-
-## Operations, errors and rollback
-
-- `SUBMODULE_READ_TOKEN missing`: verify secret is an Environment secret under `github-pages`, the job has `environment: github-pages`, and environment branch policy allows `dev`.
-- `Repository not found` or `could not read Username`: verify PAT expiration, Contents: Read scope and **both** private repos. Checkout parent with the built-in GitHub token before fetching submodules.
-- `npm ci`/workspace errors: check checked-in `package-lock.json` plus two pinned submodule commits, do not float dependencies inside deploy.
-- `Build static site`/export errors: run `npm ci`, `npm run typecheck`, `npm run build:demo`, `npm run test:export` locally with same `NEXT_PUBLIC_SITE_URL`, `SEO_INDEXABLE=false`.
-- To rollback: identify the last known good dev commit and create an auditable revert commit on `dev` (not a force-push); let Actions publish the reverted source. An old successful workflow run is not necessarily a rollback of the currently checked-out source.
-- For a token leak: revoke/rotate token immediately; replace only the GitHub Environment secret; rerun deployment.
-
-## Links
+## Verification and rollback
 
 - Source: https://github.com/bangnt188/solar_demo/tree/dev
-- Pages workflow: https://github.com/bangnt188/solar_demo/actions/workflows/deploy-pages.yml
-- Backend checks: https://github.com/bangnt188/solar_demo/actions/workflows/backend-ci.yml
-- Existing guidance: README.md, docs/backend-core.md, docs/neon-r2-setup.md
+- CI: https://github.com/bangnt188/solar_demo/actions/workflows/deploy-cloudflare-pages.yml
+- Cloudflare: https://dash.cloudflare.com/4e577220abb44fa926f2a11b8cf10b55/workers-and-pages
+- Test `/`, `/du-an/`, `/thiet-bi/`, `/dich-vu/`, `/giai-phap/`, `/khao-sat/`, `/admin/`, asset loading, links and Lighthouse. Compare published footer contacts against signed LXDB company data; do not include developer personal contacts.
+- After a failed GitHub Actions build, the last successful Worker deployment remains. After a failed Workers Build, confirm its deploy did not change Worker version before attempting rollback.
+- Code rollback: create a revert commit on `dev`, let Actions republish `cf-pages`, wait for successful Workers Build. Avoid force-updating `main`.
+- Infrastructure rollback: if needed, detach Worker custom domain and reattach the Cloudflare Pages fallback domain with the correct DNS. Only do this with validation and an outage plan.
+- GitHub Pages clean-up is separate from Worker hosting: removing the old workflow stops future GH Pages publishing, but does **not** itself unpublish any previously published GitHub Pages site. Do not delete `cf-pages`; that branch drives Workers Builds.
 
-Owner action if deploying a real server: provide a separate approved hosting target and server secrets outside Pages; do not enable survey intake or copy database credentials into this demo pipeline.
+## Security and access
+
+- Never commit private submodules, source secrets or PATs to public `cf-pages`.
+- Use private GitHub Environment secret only for checkout. Eventually migrate the secret to `cloudflare-worker` environment and update the workflow.
+- If a secret leak is suspected, revoke the credential, investigate logs and published assets, then rotate it before redeploy.
+- Keep `SEO_INDEXABLE=false` until demo content, images and production SEO have client approval.
