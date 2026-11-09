@@ -72,6 +72,16 @@ test("demo boundary rejects backend and unapproved admin routes including route 
   }
 });
 
+test("public site uses LXDB company contacts, never developer personal contacts", () => {
+  for (const route of routes) {
+    const html = page(route);
+    assert.match(html, /tel:0913706067/, `Missing company hotline: ${route}`);
+    assert.match(html, /mailto:luaxanhdongbang@gmail\.com/, `Missing company email: ${route}`);
+    assert.match(html, /1801796240/, `Missing company tax ID: ${route}`);
+    assert.doesNotMatch(html, /0939126974|nguyenbang\.skyone@gmail\.com/, `Developer contact leaked: ${route}`);
+  }
+});
+
 test("demo canonical URLs agree with its noindex and empty sitemap policy", () => {
   for (const route of routes) {
     const html = page(route);
