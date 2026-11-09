@@ -8,7 +8,7 @@ Updated: 2026-11-09. Source: https://github.com/bangnt188/solar_demo (branch `de
 - **Worker preview:** https://lxdb-solar-worker.nguyenbang-skyone.workers.dev/
 - **Build source:** `dev` contains Next.js and private submodules `packages/ui`, `packages/backend`. `main` is untouched and reserved for a separate full-stack production deployment.
 - **Deploy artifact:** `cf-pages` is an orphan branch containing prebuilt `out/` files. Despite its historical name, this is **not GitHub Pages hosting**. Cloudflare Workers Builds tracks this branch.
-- **Fallback:** Cloudflare Pages project `lxdb-solar-demo` remains on `lxdb-solar-demo.pages.dev` for rollback only; its custom domain was removed. Do not configure a duplicate custom domain while Workers is serving traffic.
+- **Fallback:** Cloudflare Pages project `lxdb-solar-demo` remains on `lxdb-solar-demo.pages.dev` for rollback only; its custom domain was removed and its automatic production deployments are disabled. Do not configure a duplicate custom domain while Workers is serving traffic.
 - **GitHub Pages:** legacy workflow `.github/workflows/deploy-pages.yml` was deleted. Branch `gh-pages` contains old artifacts and is not used in deployment. To unpublish the legacy GitHub Pages website, repository admin must use GitHub Settings → Pages.
 
 ## Build and deployment sequence
@@ -20,6 +20,18 @@ Updated: 2026-11-09. Source: https://github.com/bangnt188/solar_demo (branch `de
 5. Cloudflare Workers Builds triggers on `cf-pages` and deploys static assets onto `lxdb-solar-worker` using account-managed build credentials.
 6. **Critical security boundary:** Workers build copies the prebuilt branch files with `cp -R ./* /tmp/lxdb-public-assets/`. The shell glob excludes root dotfiles (especially `.git`, `.wrangler`). The deploy command points to **`/tmp/lxdb-public-assets`**, never to the checkout root. Do not revert to `wrangler deploy --assets .` because that includes Git metadata and build temp files.
 7. Verify Workers Builds result is `success`, custom domain is mapped to `lxdb-solar-worker`, homepage and deep links work, and private-submodule code / environment files were not published.
+
+## One-time requirement for reliable automatic Worker deployment
+
+Cloudflare Workers Builds accepts ordinary pushes to `cf-pages` (verified), but a commit published by GitHub Actions using `GITHUB_TOKEN` did not start a Worker build reliably. A Deploy Hook named `solar-demo-artifact-published` has been created on the Cloudflare Worker for `cf-pages`.
+
+**Repository owner must add one Actions Environment secret** at GitHub → `solar_demo` → Settings → Environments → `github-pages` → Environment secrets:
+
+- Name: `CLOUDFLARE_WORKERS_DEPLOY_HOOK`.
+- Value: the complete Deploy Hook URL copied from Cloudflare → Workers & Pages → `lxdb-solar-worker` → Settings → Builds → Deploy Hooks → `solar-demo-artifact-published`.
+- Do **not** paste this URL into the public source repo or logs. It is a bearer-style credential; rotate the hook if exposed.
+
+The workflow explicitly POSTs the secret URL **after** pushing static artifacts. Until this secret exists, the workflow emits a warning and the Worker may not automatically update on every `dev` commit. The previous deployed Worker version stays live. Avoid describing untested auto-deploy as complete.
 
 ## Cloudflare configuration
 
